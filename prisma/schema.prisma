@@ -1,0 +1,197 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// AUTH
+// ─────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+
+  accounts  Account[]
+  sessions  Session[]
+  ratings   Rating[]
+  comments  Comment[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// PLACES
+// ─────────────────────────────────────────────
+
+model Place {
+  id          String      @id @default(cuid())
+  name        String
+  slug        String      @unique
+  description String
+  categoryId  String
+  address     String
+  city        String      @default("Lagos")
+  lat         Float
+  lng         Float
+  costLevel   Int         @default(2)  // 1=Budget, 2=Mid, 3=Premium
+  view360Url  String?
+  isPublished Boolean     @default(false)
+  isFeatured  Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  category    Category     @relation(fields: [categoryId], references: [id])
+  images      PlaceImage[]
+  menuItems   MenuItem[]
+  ratings     Rating[]
+  comments    Comment[]
+  events      Event[]
+}
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  icon        String  // tabler icon name, e.g. "ti-glass-cocktail"
+  image       String? // cover image url
+  description String?
+  order       Int     @default(0)
+
+  places Place[]
+}
+
+model PlaceImage {
+  id        String  @id @default(cuid())
+  url       String
+  alt       String?
+  isPrimary Boolean @default(false)
+  placeId   String
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+}
+
+model MenuItem {
+  id      String  @id @default(cuid())
+  name    String
+  price   Int     // in Naira
+  placeId String
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// EVENTS
+// ─────────────────────────────────────────────
+
+model Event {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  description String
+  category    EventCategory
+  imageUrl    String?
+  cost        Int           @default(0)  // 0 = free
+  startTime   DateTime
+  endTime     DateTime?
+  address     String?
+  city        String        @default("Lagos")
+  lat         Float?
+  lng         Float?
+  isPublished Boolean       @default(false)
+  isFeatured  Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  placeId  String?
+  place    Place?    @relation(fields: [placeId], references: [id])
+  comments Comment[]
+}
+
+enum EventCategory {
+  MUSIC
+  FOOD
+  ART
+  TECH
+  SPORTS
+  FASHION
+  COMEDY
+  OTHER
+}
+
+// ─────────────────────────────────────────────
+// SOCIAL
+// ─────────────────────────────────────────────
+
+model Rating {
+  id        String   @id @default(cuid())
+  score     Float    // 1.0 – 5.0
+  userId    String
+  placeId   String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, placeId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  body      String
+  userId    String
+  placeId   String?
+  eventId   String?
+  createdAt DateTime @default(now())
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place Place? @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  event Event? @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+model WaitlistEntry {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}

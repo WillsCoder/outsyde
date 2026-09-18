@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4efe6;
+  --foreground: #111110;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-mono: var(--font-geist-mono);
+  --color-brand-orange: #ff5c2b;
+  --color-brand-night: #111110;
+  --color-brand-gold: #f5a623;
+  --color-brand-lagoon: #1d9e75;
+  --color-brand-sand: #f4efe6;
+  --font-sans: var(--font-dm);
+  --font-display: var(--font-jakarta);
+  --font-regular: var(--font-mulish);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111110;
+    --foreground: #ededed;
+  }
+}
+
+@layer base {
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-regular);
+}
+
+/* container settings */
+.box {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .box {
+    width: 540px;
+  }
+}
+
+@media (min-width: 600px) {
+  .box {
+    width: 590px;
+  }
+}
+
+@media (min-width: 680px) {
+  .box {
+    width: 670px;
+  }
+}
+
+@media (min-width: 768px) {
+  .box {
+    width: 720px;
+  }
+}
+
+@media (min-width: 958px) {
+  .box {
+    width: 880px;
+  }
+}
+
+@media (min-width: 992px) {
+  .box {
+    width: 960px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .box {
+    width: 1120px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .box {
+    width: 1140px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .box {
+    width: 1250px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .box {
+    width: 1360px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .box {
+    width: 1460px;
+  }
+}
+
+.section {
+  padding: 60px 0px;
+}
+
+@media (max-width: 1000px) {
+  .section {
+    padding: 40px 0px;
+  }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.cover-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 73.1%,
+    rgba(0, 0, 0, 0.75) 79.75%
+  );
+}
+
+.grid-wrapper {
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #f8fafc;
+}
+
+.grid-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(to right, rgba(17, 17, 16, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 16, 0.08) 1px, transparent 1px);
+
+  /* Larger grid boxes */
+  background-size: 100px 100px;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 0%,
+    #000 60%,
+    transparent 100%
+  );
+
+  mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 0%,
+    #000 60%,
+    transparent 100%
+  );
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+.bg-pattern-dots {
+  background-image: radial-gradient(
+    circle,
+    rgb(17 17 16 / 0.14) 1.2px,
+    transparent 1.6px
+  );
+  background-size: 22px 22px;
+}
+
+/* grid pattern */
+.bg-pattern-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.15) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
+/* diagonal stripes */
+.bg-pattern-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(17 17 16 / 0.08) 0,
+    rgb(17 17 16 / 0.08) 2px,
+    transparent 2px,
+    transparent 14px
+  );
+}
