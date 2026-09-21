@@ -14,10 +14,6 @@ export default async function EventDetailPage({
 }) {
   const event = await prisma.event.findUnique({
     where: { slug: params.slug },
-    include: {
-      category: true,
-      comments: { include: { user: true }, orderBy: { createdAt: "desc" } },
-    },
   });
 
   if (!event || !event.isPublished) notFound();
