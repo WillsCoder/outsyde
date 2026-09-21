@@ -11,8 +11,18 @@ export type Place ={
 export type PlaceDetail = PlaceDetailType & {
   category: { id: string; name: string } | null;
   images: { url: string; isPrimary: boolean }[];
-  ratings: any[];
-  comments: any[];
+  ratings: {
+    id: string;
+    score: number;
+    user: { name: string | null; image: string | null };
+    createdAt: Date;
+  }[];
+  comments: {
+    id: string;
+    body: string;
+    user: { name: string | null; image: string | null };
+    createdAt: Date;
+  }[];
 };
 
 
