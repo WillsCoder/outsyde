@@ -253,6 +253,13 @@ export type EnumEventCategoryFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumEventCategoryFilter<$PrismaModel> | $Enums.EventCategory
 }
 
+export type EnumTicketTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.TicketType | Prisma.EnumTicketTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTicketTypeFilter<$PrismaModel> | $Enums.TicketType
+}
+
 export type FloatNullableFilter<$PrismaModel = never> = {
   equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
   in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
@@ -272,6 +279,16 @@ export type EnumEventCategoryWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumEventCategoryFilter<$PrismaModel>
   _max?: Prisma.NestedEnumEventCategoryFilter<$PrismaModel>
+}
+
+export type EnumTicketTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TicketType | Prisma.EnumTicketTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTicketTypeWithAggregatesFilter<$PrismaModel> | $Enums.TicketType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTicketTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTicketTypeFilter<$PrismaModel>
 }
 
 export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -531,6 +548,13 @@ export type NestedEnumEventCategoryFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumEventCategoryFilter<$PrismaModel> | $Enums.EventCategory
 }
 
+export type NestedEnumTicketTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.TicketType | Prisma.EnumTicketTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTicketTypeFilter<$PrismaModel> | $Enums.TicketType
+}
+
 export type NestedEnumEventCategoryWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.EventCategory | Prisma.EnumEventCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.EventCategory[] | Prisma.ListEnumEventCategoryFieldRefInput<$PrismaModel>
@@ -539,6 +563,16 @@ export type NestedEnumEventCategoryWithAggregatesFilter<$PrismaModel = never> = 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumEventCategoryFilter<$PrismaModel>
   _max?: Prisma.NestedEnumEventCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumTicketTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TicketType | Prisma.EnumTicketTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TicketType[] | Prisma.ListEnumTicketTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTicketTypeWithAggregatesFilter<$PrismaModel> | $Enums.TicketType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTicketTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTicketTypeFilter<$PrismaModel>
 }
 
 export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {

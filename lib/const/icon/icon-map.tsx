@@ -1,0 +1,16 @@
+export const iconMap: Record<string, string> = {
+  "ti-tree": "🌳",
+  "ti-mountain": "⛰️",
+  "ti-sun": "☀️",
+  "ti-water": "💧",
+  "ti-bike": "🚲",
+  "ti-hiking": "🥾",
+  "ti-umbrella": "☂️",
+  "ti-disco": "🪩",
+  "ti-sofa": "🛋️",
+  "ti-glass-cocktail": "🍸",
+  "ti-cofee": "☕",
+  "ti-palette": "🎨",
+  "ti-map-pin": "📍",
+  "ti-tools-kitchen-2": "🍳",
+};

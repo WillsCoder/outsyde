@@ -27,13 +27,13 @@ export type AggregateEvent = {
 }
 
 export type EventAvgAggregateOutputType = {
-  cost: number | null
+  ticketPrice: number | null
   lat: number | null
   lng: number | null
 }
 
 export type EventSumAggregateOutputType = {
-  cost: number | null
+  ticketPrice: number | null
   lat: number | null
   lng: number | null
 }
@@ -45,7 +45,9 @@ export type EventMinAggregateOutputType = {
   description: string | null
   category: $Enums.EventCategory | null
   imageUrl: string | null
-  cost: number | null
+  ticketType: $Enums.TicketType | null
+  ticketPrice: number | null
+  ticketUrl: string | null
   startTime: Date | null
   endTime: Date | null
   address: string | null
@@ -66,7 +68,9 @@ export type EventMaxAggregateOutputType = {
   description: string | null
   category: $Enums.EventCategory | null
   imageUrl: string | null
-  cost: number | null
+  ticketType: $Enums.TicketType | null
+  ticketPrice: number | null
+  ticketUrl: string | null
   startTime: Date | null
   endTime: Date | null
   address: string | null
@@ -87,7 +91,9 @@ export type EventCountAggregateOutputType = {
   description: number
   category: number
   imageUrl: number
-  cost: number
+  ticketType: number
+  ticketPrice: number
+  ticketUrl: number
   startTime: number
   endTime: number
   address: number
@@ -104,13 +110,13 @@ export type EventCountAggregateOutputType = {
 
 
 export type EventAvgAggregateInputType = {
-  cost?: true
+  ticketPrice?: true
   lat?: true
   lng?: true
 }
 
 export type EventSumAggregateInputType = {
-  cost?: true
+  ticketPrice?: true
   lat?: true
   lng?: true
 }
@@ -122,7 +128,9 @@ export type EventMinAggregateInputType = {
   description?: true
   category?: true
   imageUrl?: true
-  cost?: true
+  ticketType?: true
+  ticketPrice?: true
+  ticketUrl?: true
   startTime?: true
   endTime?: true
   address?: true
@@ -143,7 +151,9 @@ export type EventMaxAggregateInputType = {
   description?: true
   category?: true
   imageUrl?: true
-  cost?: true
+  ticketType?: true
+  ticketPrice?: true
+  ticketUrl?: true
   startTime?: true
   endTime?: true
   address?: true
@@ -164,7 +174,9 @@ export type EventCountAggregateInputType = {
   description?: true
   category?: true
   imageUrl?: true
-  cost?: true
+  ticketType?: true
+  ticketPrice?: true
+  ticketUrl?: true
   startTime?: true
   endTime?: true
   address?: true
@@ -272,7 +284,9 @@ export type EventGroupByOutputType = {
   description: string
   category: $Enums.EventCategory
   imageUrl: string | null
-  cost: number
+  ticketType: $Enums.TicketType
+  ticketPrice: number | null
+  ticketUrl: string | null
   startTime: Date
   endTime: Date | null
   address: string | null
@@ -316,7 +330,9 @@ export type EventWhereInput = {
   description?: Prisma.StringFilter<"Event"> | string
   category?: Prisma.EnumEventCategoryFilter<"Event"> | $Enums.EventCategory
   imageUrl?: Prisma.StringNullableFilter<"Event"> | string | null
-  cost?: Prisma.IntFilter<"Event"> | number
+  ticketType?: Prisma.EnumTicketTypeFilter<"Event"> | $Enums.TicketType
+  ticketPrice?: Prisma.IntNullableFilter<"Event"> | number | null
+  ticketUrl?: Prisma.StringNullableFilter<"Event"> | string | null
   startTime?: Prisma.DateTimeFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeNullableFilter<"Event"> | Date | string | null
   address?: Prisma.StringNullableFilter<"Event"> | string | null
@@ -339,7 +355,9 @@ export type EventOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  cost?: Prisma.SortOrder
+  ticketType?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  ticketUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -365,7 +383,9 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"Event"> | string
   category?: Prisma.EnumEventCategoryFilter<"Event"> | $Enums.EventCategory
   imageUrl?: Prisma.StringNullableFilter<"Event"> | string | null
-  cost?: Prisma.IntFilter<"Event"> | number
+  ticketType?: Prisma.EnumTicketTypeFilter<"Event"> | $Enums.TicketType
+  ticketPrice?: Prisma.IntNullableFilter<"Event"> | number | null
+  ticketUrl?: Prisma.StringNullableFilter<"Event"> | string | null
   startTime?: Prisma.DateTimeFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeNullableFilter<"Event"> | Date | string | null
   address?: Prisma.StringNullableFilter<"Event"> | string | null
@@ -388,7 +408,9 @@ export type EventOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  cost?: Prisma.SortOrder
+  ticketType?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  ticketUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -417,7 +439,9 @@ export type EventScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"Event"> | string
   category?: Prisma.EnumEventCategoryWithAggregatesFilter<"Event"> | $Enums.EventCategory
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
-  cost?: Prisma.IntWithAggregatesFilter<"Event"> | number
+  ticketType?: Prisma.EnumTicketTypeWithAggregatesFilter<"Event"> | $Enums.TicketType
+  ticketPrice?: Prisma.IntNullableWithAggregatesFilter<"Event"> | number | null
+  ticketUrl?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   startTime?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeNullableWithAggregatesFilter<"Event"> | Date | string | null
   address?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
@@ -438,7 +462,9 @@ export type EventCreateInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -460,7 +486,9 @@ export type EventUncheckedCreateInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -482,7 +510,9 @@ export type EventUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -504,7 +534,9 @@ export type EventUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -526,7 +558,9 @@ export type EventCreateManyInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -547,7 +581,9 @@ export type EventUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -567,7 +603,9 @@ export type EventUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -598,7 +636,9 @@ export type EventCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  cost?: Prisma.SortOrder
+  ticketType?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrder
+  ticketUrl?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
   address?: Prisma.SortOrder
@@ -613,7 +653,7 @@ export type EventCountOrderByAggregateInput = {
 }
 
 export type EventAvgOrderByAggregateInput = {
-  cost?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrder
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
 }
@@ -625,7 +665,9 @@ export type EventMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  cost?: Prisma.SortOrder
+  ticketType?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrder
+  ticketUrl?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
   address?: Prisma.SortOrder
@@ -646,7 +688,9 @@ export type EventMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  cost?: Prisma.SortOrder
+  ticketType?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrder
+  ticketUrl?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
   address?: Prisma.SortOrder
@@ -661,7 +705,7 @@ export type EventMinOrderByAggregateInput = {
 }
 
 export type EventSumOrderByAggregateInput = {
-  cost?: Prisma.SortOrder
+  ticketPrice?: Prisma.SortOrder
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
 }
@@ -717,6 +761,10 @@ export type EnumEventCategoryFieldUpdateOperationsInput = {
   set?: $Enums.EventCategory
 }
 
+export type EnumTicketTypeFieldUpdateOperationsInput = {
+  set?: $Enums.TicketType
+}
+
 export type NullableFloatFieldUpdateOperationsInput = {
   set?: number | null
   increment?: number
@@ -748,7 +796,9 @@ export type EventCreateWithoutPlaceInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -769,7 +819,9 @@ export type EventUncheckedCreateWithoutPlaceInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -819,7 +871,9 @@ export type EventScalarWhereInput = {
   description?: Prisma.StringFilter<"Event"> | string
   category?: Prisma.EnumEventCategoryFilter<"Event"> | $Enums.EventCategory
   imageUrl?: Prisma.StringNullableFilter<"Event"> | string | null
-  cost?: Prisma.IntFilter<"Event"> | number
+  ticketType?: Prisma.EnumTicketTypeFilter<"Event"> | $Enums.TicketType
+  ticketPrice?: Prisma.IntNullableFilter<"Event"> | number | null
+  ticketUrl?: Prisma.StringNullableFilter<"Event"> | string | null
   startTime?: Prisma.DateTimeFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeNullableFilter<"Event"> | Date | string | null
   address?: Prisma.StringNullableFilter<"Event"> | string | null
@@ -840,7 +894,9 @@ export type EventCreateWithoutCommentsInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -861,7 +917,9 @@ export type EventUncheckedCreateWithoutCommentsInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -898,7 +956,9 @@ export type EventUpdateWithoutCommentsInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -919,7 +979,9 @@ export type EventUncheckedUpdateWithoutCommentsInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -940,7 +1002,9 @@ export type EventCreateManyPlaceInput = {
   description: string
   category: $Enums.EventCategory
   imageUrl?: string | null
-  cost?: number
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
   startTime: Date | string
   endTime?: Date | string | null
   address?: string | null
@@ -960,7 +1024,9 @@ export type EventUpdateWithoutPlaceInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -981,7 +1047,9 @@ export type EventUncheckedUpdateWithoutPlaceInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1002,7 +1070,9 @@ export type EventUncheckedUpdateManyWithoutPlaceInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cost?: Prisma.IntFieldUpdateOperationsInput | number
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1053,7 +1123,9 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   description?: boolean
   category?: boolean
   imageUrl?: boolean
-  cost?: boolean
+  ticketType?: boolean
+  ticketPrice?: boolean
+  ticketUrl?: boolean
   startTime?: boolean
   endTime?: boolean
   address?: boolean
@@ -1077,7 +1149,9 @@ export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   description?: boolean
   category?: boolean
   imageUrl?: boolean
-  cost?: boolean
+  ticketType?: boolean
+  ticketPrice?: boolean
+  ticketUrl?: boolean
   startTime?: boolean
   endTime?: boolean
   address?: boolean
@@ -1099,7 +1173,9 @@ export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   description?: boolean
   category?: boolean
   imageUrl?: boolean
-  cost?: boolean
+  ticketType?: boolean
+  ticketPrice?: boolean
+  ticketUrl?: boolean
   startTime?: boolean
   endTime?: boolean
   address?: boolean
@@ -1121,7 +1197,9 @@ export type EventSelectScalar = {
   description?: boolean
   category?: boolean
   imageUrl?: boolean
-  cost?: boolean
+  ticketType?: boolean
+  ticketPrice?: boolean
+  ticketUrl?: boolean
   startTime?: boolean
   endTime?: boolean
   address?: boolean
@@ -1135,7 +1213,7 @@ export type EventSelectScalar = {
   placeId?: boolean
 }
 
-export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "category" | "imageUrl" | "cost" | "startTime" | "endTime" | "address" | "city" | "lat" | "lng" | "isPublished" | "isFeatured" | "createdAt" | "updatedAt" | "placeId", ExtArgs["result"]["event"]>
+export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "category" | "imageUrl" | "ticketType" | "ticketPrice" | "ticketUrl" | "startTime" | "endTime" | "address" | "city" | "lat" | "lng" | "isPublished" | "isFeatured" | "createdAt" | "updatedAt" | "placeId", ExtArgs["result"]["event"]>
 export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   place?: boolean | Prisma.Event$placeArgs<ExtArgs>
   comments?: boolean | Prisma.Event$commentsArgs<ExtArgs>
@@ -1161,7 +1239,9 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     description: string
     category: $Enums.EventCategory
     imageUrl: string | null
-    cost: number
+    ticketType: $Enums.TicketType
+    ticketPrice: number | null
+    ticketUrl: string | null
     startTime: Date
     endTime: Date | null
     address: string | null
@@ -1604,7 +1684,9 @@ export interface EventFieldRefs {
   readonly description: Prisma.FieldRef<"Event", 'String'>
   readonly category: Prisma.FieldRef<"Event", 'EventCategory'>
   readonly imageUrl: Prisma.FieldRef<"Event", 'String'>
-  readonly cost: Prisma.FieldRef<"Event", 'Int'>
+  readonly ticketType: Prisma.FieldRef<"Event", 'TicketType'>
+  readonly ticketPrice: Prisma.FieldRef<"Event", 'Int'>
+  readonly ticketUrl: Prisma.FieldRef<"Event", 'String'>
   readonly startTime: Prisma.FieldRef<"Event", 'DateTime'>
   readonly endTime: Prisma.FieldRef<"Event", 'DateTime'>
   readonly address: Prisma.FieldRef<"Event", 'String'>

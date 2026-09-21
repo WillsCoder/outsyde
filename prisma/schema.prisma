@@ -16,16 +16,18 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String    @unique
+  firstName     String?
+  lastName      String?
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
+  password      String?   // credentials users only — null for Google users
   role          Role      @default(USER)
+  accounts      Account[]
+  sessions      Session[]
+  ratings       Rating[]
+  comments      Comment[]
   createdAt     DateTime  @default(now())
-
-  accounts  Account[]
-  sessions  Session[]
-  ratings   Rating[]
-  comments  Comment[]
 }
 
 enum Role {
@@ -59,6 +61,14 @@ model Session {
   expires      DateTime
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 // ─────────────────────────────────────────────
@@ -125,30 +135,6 @@ model MenuItem {
 // EVENTS
 // ─────────────────────────────────────────────
 
-model Event {
-  id          String        @id @default(cuid())
-  title       String
-  slug        String        @unique
-  description String
-  category    EventCategory
-  imageUrl    String?
-  cost        Int           @default(0)  // 0 = free
-  startTime   DateTime
-  endTime     DateTime?
-  address     String?
-  city        String        @default("Lagos")
-  lat         Float?
-  lng         Float?
-  isPublished Boolean       @default(false)
-  isFeatured  Boolean       @default(false)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-
-  placeId  String?
-  place    Place?    @relation(fields: [placeId], references: [id])
-  comments Comment[]
-}
-
 enum EventCategory {
   MUSIC
   FOOD
@@ -158,6 +144,37 @@ enum EventCategory {
   FASHION
   COMEDY
   OTHER
+}
+
+enum TicketType {
+  FREE
+  PAID
+}
+
+model Event {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  description   String
+  category      EventCategory
+  imageUrl      String?
+  ticketType    TicketType    @default(FREE)
+  ticketPrice   Int?          // in Naira, null if free
+  ticketUrl     String?       // link to buy ticket
+  startTime     DateTime
+  endTime       DateTime?
+  address       String?
+  city          String        @default("Lagos")
+  lat           Float?
+  lng           Float?
+  isPublished   Boolean       @default(false)
+  isFeatured    Boolean       @default(false)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  placeId       String?
+  place         Place?        @relation(fields: [placeId], references: [id])
+  comments      Comment[]
 }
 
 // ─────────────────────────────────────────────
@@ -189,6 +206,10 @@ model Comment {
   place Place? @relation(fields: [placeId], references: [id], onDelete: Cascade)
   event Event? @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
+
+// ─────────────────────────────────────────────
+// WAITLIST
+// ─────────────────────────────────────────────
 
 model WaitlistEntry {
   id        String   @id @default(cuid())

@@ -57,6 +57,11 @@ export type Account = Prisma.AccountModel
  */
 export type Session = Prisma.SessionModel
 /**
+ * Model VerificationToken
+ * 
+ */
+export type VerificationToken = Prisma.VerificationTokenModel
+/**
  * Model Place
  * 
  */
@@ -91,3 +96,8 @@ export type Rating = Prisma.RatingModel
  * 
  */
 export type Comment = Prisma.CommentModel
+/**
+ * Model WaitlistEntry
+ * 
+ */
+export type WaitlistEntry = Prisma.WaitlistEntryModel

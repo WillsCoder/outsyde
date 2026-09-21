@@ -1,5 +1,5 @@
-import LayoutFooter from "@/modules/layout/footer";
-import LayoutHeader from "@/modules/layout/header";
+import LayoutFooter from "@/modules/explorer/layout/footer";
+import LayoutHeader from "@/modules/explorer/layout/header";
 
 export default function RootLayout({
   children,

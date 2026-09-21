@@ -1,4 +1,4 @@
-import HomeComponents from "@/modules/home";
+import HomeComponents from "@/modules/explorer/home";
 
 export default function Home() {
   return (

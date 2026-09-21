@@ -54,13 +54,15 @@ export const ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
+  VerificationToken: 'VerificationToken',
   Place: 'Place',
   Category: 'Category',
   PlaceImage: 'PlaceImage',
   MenuItem: 'MenuItem',
   Event: 'Event',
   Rating: 'Rating',
-  Comment: 'Comment'
+  Comment: 'Comment',
+  WaitlistEntry: 'WaitlistEntry'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -82,9 +84,12 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  firstName: 'firstName',
+  lastName: 'lastName',
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
+  password: 'password',
   role: 'role',
   createdAt: 'createdAt'
 } as const
@@ -118,6 +123,15 @@ export const SessionScalarFieldEnum = {
 } as const
 
 export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const VerificationTokenScalarFieldEnum = {
+  identifier: 'identifier',
+  token: 'token',
+  expires: 'expires'
+} as const
+
+export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
 
 
 export const PlaceScalarFieldEnum = {
@@ -182,7 +196,9 @@ export const EventScalarFieldEnum = {
   description: 'description',
   category: 'category',
   imageUrl: 'imageUrl',
-  cost: 'cost',
+  ticketType: 'ticketType',
+  ticketPrice: 'ticketPrice',
+  ticketUrl: 'ticketUrl',
   startTime: 'startTime',
   endTime: 'endTime',
   address: 'address',
@@ -220,6 +236,15 @@ export const CommentScalarFieldEnum = {
 } as const
 
 export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+export const WaitlistEntryScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  createdAt: 'createdAt'
+} as const
+
+export type WaitlistEntryScalarFieldEnum = (typeof WaitlistEntryScalarFieldEnum)[keyof typeof WaitlistEntryScalarFieldEnum]
 
 
 export const SortOrder = {
