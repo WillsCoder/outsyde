@@ -16,9 +16,6 @@ export default async function EventDetailPage({
     where: { slug: params.slug },
     include: {
       category: true,
-      images: true,
-      menuItems: true,
-      ratings: { include: { user: true } },
       comments: { include: { user: true }, orderBy: { createdAt: "desc" } },
     },
   });
