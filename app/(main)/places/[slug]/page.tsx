@@ -11,10 +11,12 @@ export async function generateStaticParams() {
 export default async function PlaceDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const place = await prisma.place.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       category: true,
       images: true,
