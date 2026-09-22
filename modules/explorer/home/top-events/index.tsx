@@ -1,11 +1,10 @@
-import React from 'react'
-import prisma from '@/lib/prisma';
-import HeaderSection from './display/header-section';
-import SwiperSection from './display/swiper-section';
-import { EventCard } from '@/lib/const/types/event';
+import React from "react";
+import { prisma } from "@/lib/prisma";
+import HeaderSection from "./display/header-section";
+import SwiperSection from "./display/swiper-section";
+import { EventCard } from "@/lib/const/types/event";
 
 const TopEvents = async () => {
-
   const events = await prisma.event.findMany({
     where: { isPublished: true },
     include: {
@@ -17,7 +16,7 @@ const TopEvents = async () => {
     ],
     take: 10,
   });
-  
+
   return (
     <div>
       <div className="section">
@@ -39,6 +38,6 @@ const TopEvents = async () => {
       </div>
     </div>
   );
-}
+};
 
-export default TopEvents
+export default TopEvents;

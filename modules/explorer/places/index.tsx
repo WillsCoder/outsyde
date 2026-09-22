@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import PlacesGrid from "./components/places-grid";
 import PlacesFilters from "./components/places-filter";
 
