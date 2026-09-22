@@ -212,7 +212,7 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
               {categoriesWithCount?.map((cat, i) => (
                 <Link
                   key={cat.slug}
-                  href={`/places?slug=${cat.slug}`}
+                  href={`/places?category=${cat.slug}`}
                   ref={(el) => {
                     cardRefs.current[i] = el;
                   }}

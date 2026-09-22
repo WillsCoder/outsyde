@@ -76,7 +76,7 @@ const Footer = () => {
       {/* watermark */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display text-[22vw] font-extrabold leading-none tracking-tight text-brand-night/[0.04]"
+        className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display text-[22vw] font-extrabold leading-none tracking-tight text-brand-night/4"
       >
         OUTSYDE
       </div>

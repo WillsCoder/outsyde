@@ -1,10 +1,9 @@
+import EventsIndex from "@/modules/explorer/events";
 
 type SearchParams = {
   category?: string;
-  area?: string;
-  cost?: string;
-  q?: string;
-  sort?: string;
+  when?: string;
+  ticket?: string;
 };
 
 type Props = {
@@ -14,7 +13,7 @@ type Props = {
 const Events = async ({ searchParams }: Props) => {
   const params = await searchParams;
 
-  return <>events</>;
+  return <EventsIndex searchParams={params} />;
 };
 
 export default Events;

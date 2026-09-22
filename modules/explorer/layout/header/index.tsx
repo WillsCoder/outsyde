@@ -32,7 +32,7 @@ const LayoutHeader = () => {
           </Link>
           <nav className="hidden md:flex items-center gap-0.5 bg-brand-night/2 border border-brand-night/20 rounded-full px-1.5 py-1">
             {navRoutes.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname.startsWith(`${item.href}`);
 
               return (
                 <Link
