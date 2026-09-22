@@ -14,7 +14,7 @@ type Props = {
 const Events = async ({ searchParams }: Props) => {
   const params = await searchParams;
 
-  return <></>;
+  return <>events</>;
 };
 
 export default Events;
