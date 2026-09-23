@@ -79,7 +79,7 @@ const EventsIndex = async ({ searchParams }: Props) => {
   });
 
   const pill = (active: boolean) =>
-    `inline-flex h-9 shrink-0 items-center rounded-full border px-4 text-sm font-semibold transition-colors ${
+    `inline-flex py-1 shrink-0 items-center rounded-full border px-4 text-sm font-semibold transition-colors ${
       active
         ? "border-brand-night bg-brand-night text-brand-sand"
         : "border-brand-night/15 bg-white text-brand-night/60 hover:border-brand-night/40 hover:text-brand-night"
@@ -88,9 +88,9 @@ const EventsIndex = async ({ searchParams }: Props) => {
   return (
     <main className="min-h-screen bg-brand-sand pb-20">
       {/* filters */}
-      <div className="sticky top-0 z-20 border-b border-brand-night/10 bg-brand-sand/90 backdrop-blur">
-        <div className="box scrollbar-none flex gap-6 overflow-x-auto py-4!">
-          <div className="flex items-center gap-2">
+      <div className="sticky top-0 z-20 pb-2 border-b border-brand-night/10 bg-brand-sand/90 backdrop-blur">
+        <div className="box scrollbar-none flex gap-6 overflow-x-auto py-2 md:py-4!">
+          <div className="flex items-center gap-0.5 lg:gap-2">
             <Link href={qs({ category: null })} className={pill(!category)}>
               All
             </Link>
@@ -104,7 +104,7 @@ const EventsIndex = async ({ searchParams }: Props) => {
               </Link>
             ))}
           </div>
-          <div className="flex items-center gap-2 border-l border-brand-night/10 pl-6">
+          <div className="flex items-center gap-0.5 lg:gap-2 border-l border-brand-night/10 pl-6">
             <Link href={qs({ when: null })} className={pill(!when)}>
               Anytime
             </Link>
@@ -118,20 +118,20 @@ const EventsIndex = async ({ searchParams }: Props) => {
               </Link>
             ))}
           </div>
-          <div className="flex items-center gap-2 border-l border-brand-night/10 pl-6">
-            <Link href={qs({ ticket: null })} className={pill(!ticket)}>
-              Any price
+        </div>
+        <div className="box flex items-center gap-0.5 lg:gap-2 ">
+          <Link href={qs({ ticket: null })} className={pill(!ticket)}>
+            Any price
+          </Link>
+          {TICKET_OPTIONS.map((t) => (
+            <Link
+              key={t.value}
+              href={qs({ ticket: t.value })}
+              className={pill(ticket === t.value)}
+            >
+              {t.label}
             </Link>
-            {TICKET_OPTIONS.map((t) => (
-              <Link
-                key={t.value}
-                href={qs({ ticket: t.value })}
-                className={pill(ticket === t.value)}
-              >
-                {t.label}
-              </Link>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
 
@@ -155,7 +155,7 @@ const EventsIndex = async ({ searchParams }: Props) => {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
             {events.map((event, index) => {
               const layout = [
                 "col-span-2 row-span-2",

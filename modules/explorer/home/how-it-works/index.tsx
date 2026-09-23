@@ -3,8 +3,17 @@ import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Button, Tag } from "@/components/ui";
+import { DiscoverIllustration } from "./components/discover-illustration";
+import { SaveIllustration } from "./components/save-illustration";
+import { GoIllustration } from "./components/go-illustration";
 
 gsap.registerPlugin(useGSAP);
+
+
+
+const illustrations = [DiscoverIllustration, SaveIllustration, GoIllustration];
+
+// ─── Steps data ───────────────────────────────────────────────────────────────
 
 const steps = [
   {
@@ -33,6 +42,8 @@ const steps = [
     extra: null,
   },
 ];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 const HowItWork = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -84,9 +95,7 @@ const HowItWork = () => {
 
   return (
     <section className="section relative" ref={containerRef}>
-      {/* Grid bg */}
-      <div className="grid-background"></div>
-      {/* Content */}
+      <div className="grid-background" />
       <div className="box">
         <div className="mb-6">
           <Tag text="How it works" />
@@ -97,7 +106,7 @@ const HowItWork = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-24">
           {steps.map((item, idx) => {
-            // const Icon = item.icon;
+            const Illustration = illustrations[idx];
             return (
               <div
                 key={idx}
@@ -108,16 +117,22 @@ const HowItWork = () => {
                   transformStyle: "preserve-3d",
                   willChange: "transform",
                 }}
-                className={`relative overflow-hidden group flex flex-col justify-end border-2 border-brand-gold rounded-2xl cursor-default ${idx === 2 ? "h-[70dvh] max-h-170" : "h-[50dvh] max-h-130"}`}
+                className={`relative overflow-hidden group flex flex-col justify-end border-2 border-brand-gold rounded-2xl cursor-default ${
+                  idx === 2 ? "h-[70dvh] max-h-170" : "h-[50dvh] max-h-130"
+                }`}
               >
-                {/* Gradient bg */}
-                <div className="absolute w-full h-full left-0 top-0 bg-gradient-to-t from-white/80"></div>
+                {/* Illustration */}
+                <Illustration />
+
+                {/* Bottom gradient */}
+                <div className="absolute w-full h-2/3 left-0 bottom-0 bg-linear-to-t from-white via-white/90 to-transparent pointer-events-none" />
+
+                {/* Content */}
                 <div className="card-content p-5 relative z-10">
-                  <p className="text-[11px] font-semibold tracking-widest uppercase text-brand-night/70 mb-3">
+                  <p className="text-[11px] font-semibold tracking-widest uppercase text-brand-night/50 mb-3">
                     Step 0{idx + 1}
                   </p>
 
-                  {/* Badges (card 1 & 3) */}
                   {item.badges && (
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {item.badges.map((b) => (
@@ -131,7 +146,6 @@ const HowItWork = () => {
                     </div>
                   )}
 
-                  {/* Saved spots list (card 2) */}
                   {item.extra && (
                     <div className="flex flex-col gap-1.5 mb-3">
                       {item.extra.map((spot) => (
@@ -140,7 +154,7 @@ const HowItWork = () => {
                           className="flex items-center gap-2"
                         >
                           <div
-                            className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${spot.color}`}
+                            className={`w-1.5 h-1.5 rounded-full shrink-0 ${spot.color}`}
                           />
                           <span className="text-xs lg:text-sm text-brand-night/70">
                             {spot.name}
@@ -159,7 +173,11 @@ const HowItWork = () => {
                   <p className="text-sm lg:text-base text-brand-night/80 mt-2 max-h-0 overflow-hidden opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-300 ease-out">
                     {item.description}
                   </p>
-                  <Button variant="ghost" size="sm" className="mt-6">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
                     {idx === 0
                       ? "Explore spots"
                       : idx === 1

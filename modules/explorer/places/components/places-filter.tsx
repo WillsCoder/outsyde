@@ -99,7 +99,7 @@ export default function PlacesFilters({
       </div>
 
       {/* Filter row */}
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex items-center gap-0.5 lg:gap-2 flex-wrap">
         {/* All */}
         <button
           onClick={clearAll}

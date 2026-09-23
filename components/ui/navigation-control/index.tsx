@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 import { Button } from "../button";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
 interface Props {
   next: () => void;
@@ -44,7 +45,7 @@ export const NavigationControl = ({
           } button bg-[#F2F3F4] circle place-center cursor-pointer ${boxSize}`}
           onClick={prev}
         >
-          ⮜
+          <IconArrowLeft/>
         </button>
         <button
           className={`${
@@ -52,7 +53,7 @@ export const NavigationControl = ({
           } button bg-[#F2F3F4] circle place-center cursor-pointer ${boxSize}`}
           onClick={next}
         >
-          ⮞
+          <IconArrowRight/>
         </button>
       </div>
     );
@@ -82,14 +83,16 @@ export const NavigationControl = ({
             value={"⮜"}
             className={`aspect-square shadow ${shouldHide ? "hidden md:flex" : "flex"} `}
           >
-            ⮜
+            <IconArrowLeft />
           </Button>
           <Button
             variant="ghost"
             disabled={!canNext}
             onClick={next}
             className={`aspect-square shadow ${shouldHide ? "hidden md:flex" : "flex"} `}
-          >⮞</Button>
+          >
+            <IconArrowRight />
+          </Button>
         </>
       )}
     </div>

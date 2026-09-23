@@ -1,112 +1,44 @@
 "use client";
 
 import { Button } from "@/components/ui";
-// import { PlaceType } from "@prisma/client";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Category } from "@/lib/const/types/category";
 import { iconMap } from "@/lib/const/icon/icon-map";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(useGSAP);
-
-const categories = [
-  {
-    name: "Bars",
-    slug: "bars",
-    icon: "🍾",
-    description: "Cocktail bars, lounges with drinks, and nightlife spots",
-    order: 1,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/bar.png",
-    count: 78,
-  },
-  {
-    name: "Restaurants",
-    slug: "restaurants",
-    icon: "🍝",
-    description: "Dine-in spots, casual eats, and fine dining",
-    order: 2,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/Restuarant.png",
-    count: 128,
-  },
-  {
-    name: "Lounges",
-    slug: "lounges",
-    icon: "🛋️",
-    description: "Chill spots to relax with drinks and good music",
-    order: 3,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/lounge.jpg",
-    count: 58,
-  },
-  {
-    name: "Beaches",
-    slug: "beaches",
-    icon: "🏝️",
-    description: "Beachfront spots for sun, sand, and good vibes",
-    order: 4,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/beach.webp",
-    count: 22,
-  },
-  {
-    name: "Parks",
-    slug: "parks",
-    icon: "🏕️",
-    description: "Green spaces and outdoor hangout spots",
-    order: 5,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/park.jpg",
-    count: 12,
-  },
-  {
-    name: "Clubs",
-    slug: "clubs",
-    icon: "🪩",
-    description: "Nightclubs and dance spots",
-    order: 6,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/club.png",
-    count: 71,
-  },
-  {
-    name: "Cafes",
-    slug: "cafes",
-    icon: "☕",
-    description: "Coffee shops and casual daytime spots",
-    order: 7,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/cafe.jpg",
-    count: 23,
-  },
-  {
-    name: "Art & culture",
-    slug: "art-culture",
-    icon: "🎨",
-    description: "Galleries, exhibitions, and cultural spaces",
-    order: 8,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/beach.webp",
-    count: 18,
-  },
-  {
-    name: "Other",
-    slug: "other",
-    icon: "📍",
-    description: "Everything else worth checking out",
-    order: 9,
-    image: "https://ik.imagekit.io/willsbucket/Outsyde/lounge.jpg",
-    count: 202,
-  },
-];
 
 interface PlacesCategoryProps {
   categories: Category[];
 }
 
 const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
+  const router = useRouter();
   const rowRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const timelines = useRef<gsap.core.Timeline[]>([]);
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [showLeft, setShowLeft] = useState<boolean>(false);
   const [showRight, setShowRight] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Detect mobile
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const categoriesWithCount = categories.map((cat) => ({
+    ...cat,
+    count: Math.floor(Math.random() * 31) + 20,
+  }));
 
   const updateButtons = () => {
     const row = rowRef.current;
@@ -114,6 +46,15 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
     const maxScroll = row.scrollWidth - row.clientWidth;
     setShowLeft(row.scrollLeft > 4);
     setShowRight(row.scrollLeft < maxScroll - 4);
+  };
+
+  // Activate a card by index — plays its timeline, reverses others
+  const activateCard = (i: number) => {
+    timelines.current.forEach((tl, j) => {
+      if (j === i) tl?.play();
+      else tl?.reverse();
+    });
+    setActiveIndex(i);
   };
 
   useGSAP(
@@ -155,9 +96,8 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
         timelines.current[i] = tl;
       });
 
-      // Default first category to highlighted state
+      // Always start with first card active
       timelines.current[0]?.play();
-
       updateButtons();
     },
     { scope: rowRef },
@@ -170,16 +110,33 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
     });
   };
 
-  const categoriesWithCount = categories.map((cat) => ({
-    ...cat,
-    count: Math.floor(Math.random() * 31) + 20,
-  }));
+  // Mobile: cycle to next/prev category
+  const cycleCategory = (dir: "prev" | "next") => {
+    const next =
+      dir === "next"
+        ? (activeIndex + 1) % categoriesWithCount.length
+        : (activeIndex - 1 + categoriesWithCount.length) %
+          categoriesWithCount.length;
+
+    activateCard(next);
+
+    // Scroll the active card into view
+    const card = cardRefs.current[next];
+    if (card) {
+      card.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
 
   return (
     <section className="section bg-white/50">
       <div className="box py-6 lg:py-12">
         <div className="lg:flex gap-6 lg:gap-12">
-          <div className="shrink-0 flex lg:flex-col items-baseline justify-between">
+          {/* Heading */}
+          <div className="shrink-0 flex lg:flex-col items-baseline justify-between mb-4 lg:mb-0">
             <div>
               <h2 className="text-3xl lg:text-7xl font-display font-medium text-brand-night tracking-tight">
                 Browse by vibe
@@ -188,19 +145,21 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
                 Find exactly what you're in the mood for
               </p>
             </div>
-            <Button variant="ghost" className="">
-              <span className="hidden md:inline-block md:pr-2">See all</span> ➔
+            <Button variant="ghost" className="hidden! lg:inline-flex">
+              <Link href="/places">See all ➔</Link>
             </Button>
           </div>
 
-          <div className="relative w-full overflow-hidden pt-6 lg:pt-0">
-            {showLeft && (
+          {/* Cards row */}
+          <div className="relative w-full overflow-hidden">
+            {/* Desktop scroll left */}
+            {showLeft && !isMobile && (
               <Button
                 variant="ghost"
                 onClick={() => scroll("left")}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 aspect-square"
+                className="absolute text-brand-night/50 left-2 top-1/2 -translate-y-1/2 z-10 aspect-square"
               >
-                ⮜
+                <IconArrowLeft />
               </Button>
             )}
 
@@ -209,76 +168,151 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
               onScroll={updateButtons}
               className="flex gap-2.5 overflow-x-auto scrollbar-none"
             >
-              {categoriesWithCount?.map((cat, i) => (
+              {categoriesWithCount.map((cat, i) => (
                 <Link
                   key={cat.slug}
                   href={`/places?category=${cat.slug}`}
                   ref={(el) => {
                     cardRefs.current[i] = el;
                   }}
+                  // Desktop: hover to activate
                   onMouseEnter={() => {
-                    timelines.current[i]?.play();
-                    setActiveIndex(i);
-                    if (i === categories.length - 1) {
+                    if (isMobile) return;
+                    activateCard(i);
+                    if (i === categoriesWithCount.length - 1) {
                       const row = rowRef.current;
-                      if (row) {
+                      if (row)
                         gsap.to(row, {
                           scrollLeft: row.scrollWidth - row.clientWidth,
                           duration: 0.35,
                           ease: "power2.out",
                         });
-                      }
                     }
                   }}
-                  onMouseLeave={() => {
-                    timelines.current[i]?.reverse();
-                    setActiveIndex(null);
+                  // Mobile: tap activates, second tap navigates
+                  onClick={(e) => {
+                    if (isMobile) {
+                      if (activeIndex !== i) {
+                        e.preventDefault();
+                        activateCard(i);
+                        const card = cardRefs.current[i];
+                        if (card)
+                          card.scrollIntoView({
+                            behavior: "smooth",
+                            block: "nearest",
+                            inline: "center",
+                          });
+                      }
+                      // if already active, allow navigation (default Link behavior)
+                    }
                   }}
-                  className="relative group flex-shrink-0 w-[130px] h-96 bg-brand-sand rounded-xl p-4 flex flex-col justify-between overflow-hidden"
+                  className="relative group shrink-0 w-32.5 h-96 bg-brand-sand rounded-xl p-4 flex flex-col justify-between overflow-hidden"
                 >
-                  {cat?.image && (
+                  {/* Background image */}
+                  {cat.image && (
                     <Image
-                      src={cat?.image}
+                      src={cat.image}
                       alt={cat.name}
                       width={500}
                       height={600}
-                      className={`absolute top-0 left-0 w-full h-full object-cover ${activeIndex === i ? "block" : "hidden"}`}
+                      className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 ${activeIndex === i ? "opacity-100" : "opacity-0"}`}
                     />
                   )}
-                  {/* Gradient Overlay */}
+                  {/* Gradient overlay */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-bl from-black/10 via-black/30 to-black/80 ${activeIndex === i ? "block" : "hidden"}`}
+                    className={`absolute inset-0 bg-linear-to-bl from-black/10 via-black/30 to-black/80 transition-opacity duration-300 ${activeIndex === i ? "opacity-100" : "opacity-0"}`}
                   />
 
-                  <div className="relative icon w-8 h-8 lg:w-12 lg:h-12 lg:text-2xl rounded-lg bg-white flex items-center justify-center text-brand-orange flex-shrink-0">
+                  <div className="relative icon w-8 h-8 lg:w-12 lg:h-12 lg:text-2xl rounded-lg bg-white flex items-center justify-center text-brand-orange shrink-0">
                     {iconMap[cat.icon] || cat.icon}
                   </div>
+
                   <div className="relative">
                     <p className="name text-base font-display font-medium text-brand-night whitespace-nowrap">
                       {cat.name}
                     </p>
                     {activeIndex === i && (
-                      <p className="text-sm text-brand-sand">
+                      <p className="text-sm text-brand-sand line-clamp-2">
                         {cat.description}
                       </p>
                     )}
                     <p
-                      className={`count text-xs font-medium  ${activeIndex === i ? "text-brand-orange!" : "text-brand-night/50"} mt-0.5 whitespace-nowrap`}
+                      className={`count text-xs font-medium mt-0.5 whitespace-nowrap ${activeIndex === i ? "text-brand-orange!" : "text-brand-night/50"}`}
                     >
                       {cat.count} spots
                     </p>
+                    {/* Mobile: "Go to page" button on active card */}
+                    {isMobile && activeIndex === i && (
+                      <Button
+                        size="sm"
+                        className="mt-3 w-full"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          router.push(`/places?category=${cat.slug}`);
+                        }}
+                      >
+                        Explore {cat.name} →
+                      </Button>
+                    )}
                   </div>
                 </Link>
               ))}
             </div>
 
-            {showRight && (
+            {/* Desktop scroll right */}
+            {showRight && !isMobile && (
               <Button
                 variant="ghost"
                 onClick={() => scroll("right")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 aspect-square"
+                className="absolute text-brand-night/50 right-2 top-1/2 -translate-y-1/2 z-10 aspect-square"
               >
-                ⮞
+                <IconArrowRight />
+              </Button>
+            )}
+
+            {/* Mobile navigation arrows */}
+            {isMobile && (
+              <div className="flex items-center justify-between mt-4">
+                <Button
+                  variant="ghost"
+                  onClick={() => cycleCategory("prev")}
+                  className="aspect-square text-brand-night/50"
+                  disabled={activeIndex === 0}
+                >
+                  <IconArrowLeft />
+                </Button>
+
+                {/* Dot indicators */}
+                <div className="flex gap-1.5">
+                  {categoriesWithCount.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => activateCard(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        activeIndex === i
+                          ? "w-5 bg-brand-orange"
+                          : "w-1.5 bg-brand-night/20"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <Button
+                  variant="ghost"
+                  onClick={() => cycleCategory("next")}
+                  className="aspect-square text-brand-night/50"
+                  disabled={activeIndex === categoriesWithCount.length - 1}
+                >
+                  <IconArrowRight />
+                </Button>
+              </div>
+            )}
+
+            {/* Mobile "See all" link */}
+            {isMobile && (
+              <Button variant="ghost" className="w-full mt-3">
+                <Link href="/places">See all places ➔</Link>
               </Button>
             )}
           </div>

@@ -35,19 +35,21 @@ export default function PlaceCard({
             alt={place.name}
             width={800}
             height={800}
-            className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
           <div className="w-full h-full bg-brand-night/10" />
         )}
-        {featured && (
-          <span className="absolute top-2.5 left-2.5 text-[10px] font-medium bg-brand-orange text-white rounded-full px-2.5 py-1">
-            ⭐ Featured
+        <div className="absolute top-2.5 left-2.5 flex flex-col gap-2">
+          {featured && (
+            <span className="text-[10px] font-medium bg-brand-orange text-white rounded-full px-2.5 py-1">
+              ⭐ Featured
+            </span>
+          )}
+          <span className="text-[10px] font-medium bg-brand-night/70 text-white rounded-full px-2.5 py-1 backdrop-blur-sm">
+            {place?.category?.name}
           </span>
-        )}
-        <span className="absolute top-2.5 left-2.5 mt-7 text-[10px] font-medium bg-brand-night/70 text-white rounded-full px-2.5 py-1 backdrop-blur-sm">
-          {place?.category?.name}
-        </span>
+        </div>
         <button
           onClick={(e) => e.preventDefault()}
           className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 flex items-center justify-center text-brand-night/50 hover:text-brand-orange transition-colors"

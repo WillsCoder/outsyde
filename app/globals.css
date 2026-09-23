@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-geist-sans);
   --color-brand-orange: #ff5c2b;
   --color-brand-night: #111110;
   --color-brand-gold: #f5a623;
@@ -19,12 +19,12 @@
   --font-regular: var(--font-mulish);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #111110;
     --foreground: #ededed;
   }
-}
+} */
 
 @layer base {
   html {
@@ -41,7 +41,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-regular);
+  font-family: var(--font-mono);
 }
 
 /* container settings */

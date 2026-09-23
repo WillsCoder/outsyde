@@ -6,6 +6,8 @@ import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationControl } from "@/components/ui";
 import { EventCard } from "@/lib/const/types/event";
+import { useRouter } from "next/navigation";
+import { format } from "date-fns";
 
 const getCardStyle = (index: number, activeIndex: number): CSSProperties => {
   const distance = index - activeIndex;
@@ -32,6 +34,7 @@ interface Props{
 }
 
 const SwiperSection = ({ events }: Props) => {
+  const router = useRouter()
   const sliderRef = useRef<any>(null);
   const [{ canNext, canPrev }, setNav] = useState({
     canNext: true,
@@ -77,7 +80,8 @@ const SwiperSection = ({ events }: Props) => {
             {events.map((event, index) => (
               <SwiperSlide
                 key={index}
-                className="!w-[230px] h-[340px]! lg:!w-[330px] lg:!h-[470px] px-5 lg:px-10 pb-5 lg:pb-10 pt-[58px]"
+                className="w-57.5! h-85! lg:w-82.5! lg:h-117.5! px-5 lg:px-10 pb-5 lg:pb-10 pt-14.5"
+                onClick={() => router.push(`events/${event.slug}`)}
               >
                 <div
                   className={`relative w-full overflow-hidden h-full px-4 py-6 rounded-2xl`}
@@ -94,7 +98,9 @@ const SwiperSection = ({ events }: Props) => {
                     )}
                     <div className="relative z-20 text-brand-sand p-5">
                       <p className="text-lg lg:text-xl">{event.title}</p>
-                      <p className="text-sm lg:text-base text-brand-sand/70">May 16, 2026 • 12:00 AM</p>
+                      <p className="text-sm lg:text-base text-brand-sand/70">
+                        {format(event.startTime, "MMM d, yyyy:00 a • 12M")}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -12,6 +12,12 @@ export const navRoutes = [
     session: ["auth", "anon"],
   },
   {
+    name: "About",
+    href: "/about",
+    icon: "❓",
+    session: ["auth", "anon"],
+  },
+  {
     name: "Blog",
     href: "/blog",
     icon: "📝",

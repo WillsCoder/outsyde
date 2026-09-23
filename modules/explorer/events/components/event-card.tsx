@@ -32,7 +32,7 @@ const EventCard = ({ event, pattern }: EventCardProps) => {
   return (
     <Link
       href={`/events/${event.slug}`}
-      className={`block ${pattern} h-full group overflow-hidden rounded-2xl border border-brand-night/10 bg-white transition-shadow hover:shadow-lg`}
+      className={`block ${pattern} h-full min-h-70 group overflow-hidden rounded-2xl border border-brand-night/10 bg-white transition-shadow hover:shadow-lg`}
     >
       <div className="relative overflow-hidden bg-brand-sand h-[calc(100%-8rem)]">
         {event.imageUrl ? (

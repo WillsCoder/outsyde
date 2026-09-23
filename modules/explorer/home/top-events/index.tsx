@@ -20,7 +20,7 @@ const TopEvents = async () => {
   return (
     <div>
       <div className="section">
-        <div className="relative h-[700px] lg:h-[850px] py-6">
+        <div className="relative h-175 lg:h-212.5 py-6">
           {/* content */}
           <div className="relative z-10">
             <div>
@@ -32,7 +32,7 @@ const TopEvents = async () => {
           </div>
           {/* center background */}
           <div className="absolute top-0 left-0 w-full h-full">
-            <div className="w-[87%] lg:w-[55%] mx-auto h-full bg-white dark:bg-[#010B18] rounded-[30px]"></div>
+            <div className="w-[87%] lg:w-[55%] mx-auto h-full bg-white rounded-[30px]"></div>
           </div>
         </div>
       </div>
