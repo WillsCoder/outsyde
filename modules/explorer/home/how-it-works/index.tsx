@@ -104,7 +104,7 @@ const HowItWork = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-12 md:mt-24">
           {steps.map((item, idx) => {
             const Illustration = illustrations[idx];
             return (

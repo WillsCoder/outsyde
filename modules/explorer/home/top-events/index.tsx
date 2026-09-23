@@ -20,7 +20,7 @@ const TopEvents = async () => {
   return (
     <div>
       <div className="section">
-        <div className="relative h-175 lg:h-212.5 py-6">
+        <div className="relative h-180 lg:h-212.5 py-6">
           {/* content */}
           <div className="relative z-10">
             <div>
