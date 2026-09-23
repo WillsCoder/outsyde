@@ -81,7 +81,7 @@ export const NavigationControl = ({
             disabled={!canPrev}
             onClick={prev}
             value={"⮜"}
-            className={`aspect-square shadow ${shouldHide ? "hidden md:flex" : "flex"} `}
+            className={`aspect-square shadow ${boxSize} ${shouldHide ? "hidden md:flex" : "flex"} `}
           >
             <IconArrowLeft />
           </Button>
@@ -89,7 +89,7 @@ export const NavigationControl = ({
             variant="ghost"
             disabled={!canNext}
             onClick={next}
-            className={`aspect-square shadow ${shouldHide ? "hidden md:flex" : "flex"} `}
+            className={`aspect-square shadow ${boxSize} ${shouldHide ? "hidden md:flex" : "flex"} `}
           >
             <IconArrowRight />
           </Button>

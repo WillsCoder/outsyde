@@ -118,7 +118,7 @@ const HowItWork = () => {
                   willChange: "transform",
                 }}
                 className={`relative overflow-hidden group flex flex-col justify-end border-2 border-brand-gold rounded-2xl cursor-default ${
-                  idx === 2 ? "h-[70dvh] max-h-170" : "h-[50dvh] max-h-130"
+                  idx === 2 ? "h-160 md:h-[70dvh] max-h-170" : "h-130 md:h-[50dvh] max-h-130"
                 }`}
               >
                 {/* Illustration */}
@@ -170,13 +170,13 @@ const HowItWork = () => {
                   <p className="font-medium text-xl lg:text-2xl text-brand-night">
                     {item.title}
                   </p>
-                  <p className="text-sm lg:text-base text-brand-night/80 mt-2 max-h-0 overflow-hidden opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-300 ease-out">
+                  <p className="text-sm lg:text-base text-brand-night/80 mt-2 md:max-h-0 overflow-hidden md:opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-300 ease-out">
                     {item.description}
                   </p>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="mt-4 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
                     {idx === 0
                       ? "Explore spots"

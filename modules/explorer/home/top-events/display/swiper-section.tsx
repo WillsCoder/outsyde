@@ -97,7 +97,7 @@ const SwiperSection = ({ events }: Props) => {
                       />
                     )}
                     <div className="relative z-20 text-brand-sand p-5">
-                      <p className="text-lg lg:text-xl">{event.title}</p>
+                      <p className="text-base lg:text-xl">{event.title}</p>
                       <p className="text-sm lg:text-base text-brand-sand/70">
                         {format(event.startTime, "MMM d, yyyy:00 a • 12M")}
                       </p>
@@ -108,13 +108,13 @@ const SwiperSection = ({ events }: Props) => {
             ))}
           </Swiper>
           {/* Navigation arrows positioned below the reviewer content */}
-          <div className="flex justify-center relative z-20 -top-20">
+          <div className="flex justify-center relative z-20 -top-16 md:-top-20">
             <NavigationControl
               canNext={canNext}
               canPrev={canPrev}
               next={handleNext}
               prev={handlePrev}
-              boxSize="w-8 h-8 lg:w-10 lg:h-10"
+              boxSize=""
               iconSize={20}
               showViewAll={false}
               shouldHide={false}

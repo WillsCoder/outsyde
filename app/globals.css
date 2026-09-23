@@ -226,3 +226,13 @@ body {
     transparent 14px
   );
 }
+
+.swiper-pagination-bullet {
+  background: #ffffff !important;
+  opacity: 0.4;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff5c2b !important;
+  opacity: 1;
+}
