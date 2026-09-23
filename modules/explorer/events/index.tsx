@@ -79,11 +79,11 @@ const EventsIndex = async ({ searchParams }: Props) => {
   });
 
   const pill = (active: boolean) =>
-    `inline-flex py-1 shrink-0 items-center rounded-full border px-4 text-sm font-semibold transition-colors ${
-      active
-        ? "border-brand-night bg-brand-night text-brand-sand"
-        : "border-brand-night/15 bg-white text-brand-night/60 hover:border-brand-night/40 hover:text-brand-night"
-    }`;
+    `text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all ${
+             active
+                ? "bg-brand-orange text-white border-brand-orange"
+                : "bg-white text-brand-night/60 border-brand-night/15 hover:border-brand-orange/40 hover:text-brand-orange"
+            }`;
 
   return (
     <main className="min-h-screen bg-brand-sand pb-20">
