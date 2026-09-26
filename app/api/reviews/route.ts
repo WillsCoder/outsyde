@@ -9,13 +9,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorised" }, { status: 401 });
   }
 
-  const { placeId, score, body } = await req.json();
+  // const { placeId, score, body } = await req.json();
+  const { eventId, placeId, score, body } = await req.json();
 
-  if (!placeId || !score || !body) {
-    return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+  if (!eventId && !placeId) {
+    return NextResponse.json(
+      { error: "Missing eventId or placeId" },
+      { status: 400 },
+    );
   }
 
-  if (score < 1 || score > 5) {
+  if (!body || body.trim().length < 10) {
+    return NextResponse.json({ error: "Comment too short" }, { status: 400 });
+  }
+
+  if (placeId && (score < 1 || score > 5)) {
     return NextResponse.json(
       { error: "Score must be between 1 and 5" },
       { status: 400 },
@@ -33,16 +41,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
 
   // Upsert rating (one per user per place)
-  await prisma.rating.upsert({
-    where: { userId_placeId: { userId: user.id, placeId } },
-    update: { score },
-    create: { userId: user.id, placeId, score },
-  });
+  if (placeId) {
+    await prisma.rating.upsert({
+      where: { userId_placeId: { userId: user.id, placeId } },
+      update: { score },
+      create: { userId: user.id, placeId, score },
+    });
+  }
 
   // Create comment
   await prisma.comment.create({
-    data: { userId: user.id, placeId, body: body.trim() },
+    data: {
+      body: body.trim(),
+      userId: user.id,
+      ...(eventId ? { eventId } : { placeId }),
+    },
   });
 
   return NextResponse.json({ ok: true });
 }
+

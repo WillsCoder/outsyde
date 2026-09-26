@@ -22,20 +22,29 @@ type Comment = {
   createdAt: Date
 }
 
-type Props = {
-  placeId: string
-  ratings: Rating[]
-  comments: Comment[]
-  avgRating: number
-}
+type Mode = 'place' | 'event'
 
-// ─── Sort options ─────────────────────────────────────────────────────────────
+type Props = {
+  mode?: Mode
+  placeId?: string
+  eventId?: string
+  ratings?: Rating[]
+  comments: Comment[]
+  avgRating?: number
+}
 
 type SortKey = 'recent' | 'top'
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
+const ReviewSection = ({
+  mode = 'place',
+  placeId,
+  eventId,
+  ratings = [],
+  comments,
+  avgRating = 0,
+}: Props) => {
   const { data: session } = useSession()
   const [isPending, startTransition] = useTransition()
   const [sort, setSort] = useState<SortKey>('recent')
@@ -44,6 +53,8 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
 
+  const isEvent = mode === 'event'
+  const hasRatings = !isEvent && ratings.length > 0
   const bars = ratingBars(ratings)
 
   const sortedComments = [...comments].sort((a, b) =>
@@ -53,16 +64,29 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
   )
 
   const handleSubmit = async () => {
-    // if (!session) { setError('Sign in to post a review.'); return }
-    if (score === 0) { setError('Please select a star rating.'); return }
-    if (body.trim().length < 10) { setError('Review must be at least 10 characters.'); return }
+    if (isEvent && body.trim().length < 10) {
+      setError('Comment must be at least 10 characters.')
+      return
+    }
+    if (!isEvent && score === 0) {
+      setError('Please select a star rating.')
+      return
+    }
+    if (body.trim().length < 10) {
+      setError(`${isEvent ? 'Comment' : 'Review'} must be at least 10 characters.`)
+      return
+    }
 
     setError('')
     startTransition(async () => {
       const res = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ placeId, score, body }),
+        body: JSON.stringify(
+          isEvent
+            ? { eventId, body }
+            : { placeId, score, body }
+        ),
       })
 
       if (res.ok) {
@@ -82,9 +106,9 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-brand-night">
-          Ratings & reviews
+          {isEvent ? 'Comments' : 'Ratings & reviews'}
           <span className="ml-2 text-sm font-normal text-brand-night/40">
-            ({ratings.length})
+            ({isEvent ? comments.length : ratings.length})
           </span>
         </h2>
         <div className="flex items-center gap-1 bg-brand-sand rounded-full p-1">
@@ -104,8 +128,8 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
         </div>
       </div>
 
-      {/* Rating summary */}
-      {ratings.length > 0 && (
+      {/* Rating summary — places only */}
+      {hasRatings && (
         <div className="flex gap-6 items-center">
           <div className="text-center">
             <p className="text-5xl font-bold text-brand-night leading-none">{avgRating.toFixed(1)}</p>
@@ -129,11 +153,13 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
         </div>
       )}
 
-      {/* Review list */}
+      {/* Comment/review list */}
       {sortedComments.length > 0 ? (
         <div className="flex flex-col gap-3">
           {sortedComments.map(comment => {
-            const rating = ratings.find(r => r.user.name === comment.user.name)
+            const rating = !isEvent
+              ? ratings.find(r => r.user.name === comment.user.name)
+              : undefined
             return (
               <div key={comment.id} className="border border-brand-night/7 rounded-xl p-4">
                 <div className="flex items-start gap-3 mb-3">
@@ -143,7 +169,7 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
                       <p className="text-sm font-medium text-brand-night truncate">
                         {comment.user.name ?? 'Anonymous'}
                       </p>
-                      <p className="text-xs text-brand-night/40 flex-shrink-0">
+                      <p className="text-xs text-brand-night/40 shrink-0">
                         {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
                       </p>
                     </div>
@@ -165,17 +191,21 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
         </div>
       ) : (
         <div className="text-center py-8 text-brand-night/40">
-          <p className="text-sm">No reviews yet. Be the first!</p>
+          <p className="text-sm">
+            {isEvent ? 'No comments yet. Be the first to comment!' : 'No reviews yet. Be the first!'}
+          </p>
         </div>
       )}
 
-      {/* Write a review */}
+      {/* Write a review / comment */}
       <div className="border-t border-brand-night/7 pt-6">
-        <h3 className="text-sm font-semibold text-brand-night mb-4">Leave a review</h3>
+        <h3 className="text-sm font-semibold text-brand-night mb-4">
+          {isEvent ? 'Leave a comment' : 'Leave a review'}
+        </h3>
 
         {success ? (
           <div className="bg-brand-lagoon/10 text-brand-lagoon text-sm font-medium rounded-xl px-4 py-3">
-            ✓ Review posted! Thanks for sharing your experience.
+            ✓ {isEvent ? 'Comment posted!' : 'Review posted!'} Thanks for sharing.
           </div>
         ) : session ? (
           <div className="flex flex-col gap-3">
@@ -187,13 +217,20 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
               </div>
             </div>
 
-            <StarSelector value={score} onChange={setScore} />
+            {/* Star selector — places only */}
+            {!isEvent && (
+              <StarSelector value={score} onChange={setScore} />
+            )}
 
             <textarea
               value={body}
               onChange={e => setBody(e.target.value)}
               rows={3}
-              placeholder="Share your experience — what was the vibe, what did you love?"
+              placeholder={
+                isEvent
+                  ? 'Share your thoughts on this event…'
+                  : 'Share your experience — what was the vibe, what did you love?'
+              }
               className="w-full border border-brand-night/12 rounded-xl px-4 py-3 text-sm text-brand-night placeholder:text-brand-night/30 outline-none focus:border-brand-orange transition-colors resize-none font-sans"
             />
 
@@ -205,16 +242,22 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
               <p className="text-xs text-brand-night/40">{body.length} / 500</p>
               <button
                 onClick={handleSubmit}
-                disabled={isPending || score === 0 || body.trim().length < 10}
+                disabled={
+                  isPending ||
+                  (!isEvent && score === 0) ||
+                  body.trim().length < 10
+                }
                 className="inline-flex items-center gap-2 text-sm font-medium bg-brand-orange text-white rounded-xl px-5 py-2.5 hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {isPending ? 'Posting…' : 'Post review'}
+                {isPending ? 'Posting…' : isEvent ? 'Post comment' : 'Post review'}
               </button>
             </div>
           </div>
         ) : (
           <div className="flex items-center justify-between bg-brand-sand rounded-xl px-5 py-4">
-            <p className="text-sm text-brand-night/60">Sign in to leave a review</p>
+            <p className="text-sm text-brand-night/60">
+              Sign in to {isEvent ? 'comment' : 'leave a review'}
+            </p>
             <a
               href="/login"
               className="text-sm font-medium bg-brand-night text-white rounded-xl px-4 py-2"
@@ -224,7 +267,6 @@ const ReviewSection = ({ placeId, ratings, comments, avgRating }: Props) => {
           </div>
         )}
       </div>
-
     </div>
   )
 }

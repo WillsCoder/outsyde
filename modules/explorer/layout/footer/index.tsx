@@ -5,18 +5,18 @@ const exploreLinks = [
   { label: "Places", href: "/places" },
   { label: "Events", href: "/events" },
   { label: "Categories", href: "/places" },
-  { label: "Submit a spot", href: "#" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const companyLinks = [
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
   { label: "For venues", href: "#" },
   { label: "Careers", href: "#" },
   { label: "Contact", href: "mailto:hello@outsyde.ng" },
 ];
 
 const supportLinks = [
-  { label: "FAQs", href: "#" },
+  { label: "FAQs", href: "/faqs" },
   { label: "Privacy policy", href: "#" },
   { label: "Terms of use", href: "#" },
 ];
@@ -72,37 +72,69 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-brand-sand text-brand-night">
-      {/* watermark */}
+    <footer
+      id="footer"
+      className="relative overflow-hidden bg-brand-gold/10 text-brand-night"
+    >
+      {/* oversized background wordmark */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display text-[22vw] font-extrabold leading-none tracking-tight text-brand-night/4"
+        className="pointer-events-none absolute bottom-[-5vw] left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display text-[28vw] font-black leading-none tracking-[-0.08em] text-brand-night/[0.035]"
       >
         OUTSYDE
       </div>
 
-      <div className="section relative z-10">
+      {/* orange accent */}
+      <div
+        aria-hidden
+        className="absolute right-0 top-0 h-40 w-40 translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/10 blur-3xl"
+      />
+
+      <div aria-hidden className="grid-background z-10 w-full h-full" />
+
+      <div className="section relative z-10 ">
         <div className="box">
-          <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
-            {/* brand column */}
-            <div>
-              <div className="flex items-end">
-                <Image
-                  src="/logo.png"
-                  alt="Outsyde Logo"
-                  width={500}
-                  height={500}
-                  className="w-10 md:w-12"
-                />
-                <span className="text-lg md:text-xl font-display font-bold tracking-tight">
-                  <span className="text-brand-orange">ut</span>syde
-                </span>
-              </div>
-              <p className="mt-3 max-w-xs leading-relaxed text-brand-night">
-                We outside, you coming? Discover the best spots, vibes, and
-                events in Lagos — curated for the streets.
+          {/* top statement */}
+          <div className="border-b border-brand-night/10 pb-12 md:pb-16">
+            <div className="max-w-5xl">
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
+                📍 Nigeria
               </p>
-              <div className="mt-6 flex gap-1 lg:gap-3">
+
+              <h2 className="max-w-4xl font-display text-5xl font-black leading-[0.9] tracking-[-0.04em] sm:text-6xl md:text-8xl">
+                WE OUTSIDE.
+                <span className="text-brand-orange"> YOU COMING?</span>
+              </h2>
+            </div>
+          </div>
+
+          {/* main footer content */}
+          <div className="grid gap-12 py-12 md:grid-cols-[1.2fr_2fr] md:py-16 lg:gap-24">
+            {/* brand */}
+            <div className="flex flex-col justify-between">
+              <div>
+                <a href="/" className="inline-flex items-center gap-2">
+                  <Image
+                    src="/logo.png"
+                    alt="Outsyde Logo"
+                    width={500}
+                    height={500}
+                    className="w-11 md:w-14"
+                  />
+
+                  <span className="font-display text-xl font-black tracking-tight md:text-2xl">
+                    <span className="text-brand-orange">ut</span>syde
+                  </span>
+                </a>
+
+                <p className="mt-5 max-w-xs text-sm leading-relaxed text-brand-night/60">
+                  Your guide to Nigeria after dark, under the sun, and
+                  everywhere worth being.
+                </p>
+              </div>
+
+              {/* socials */}
+              <div className="mt-8 flex gap-2">
                 {socials.map((s) => (
                   <a
                     key={s.name}
@@ -110,33 +142,39 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.name}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-brand-night/70 transition-colors hover:border-brand-orange hover:bg-brand-orange hover:text-brand-night"
+                    className="group flex h-11 w-11 items-center justify-center rounded-full border border-brand-night/10 bg-brand-sand transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange hover:bg-brand-orange"
                   >
-                    {s.icon}
+                    <span className="text-brand-night/70 transition-colors group-hover:text-brand-night">
+                      {s.icon}
+                    </span>
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* link columns */}
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {/* links */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
               {[
                 { title: "Explore", links: exploreLinks },
                 { title: "Company", links: companyLinks },
                 { title: "Support", links: supportLinks },
               ].map((col) => (
                 <div key={col.title}>
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-brand-orange">
+                  <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-orange">
                     {col.title}
                   </h3>
-                  <ul className="mt-4 space-y-3">
+
+                  <ul className="mt-5 space-y-3">
                     {col.links.map((link) => (
                       <li key={link.label}>
                         <a
                           href={link.href}
-                          className="text-sm text-brand-night/70 transition-colors hover:text-brand-night"
+                          className="group inline-flex items-center gap-1 text-sm text-brand-night/60 transition-colors hover:text-brand-night"
                         >
-                          {link.label}
+                          <span>{link.label}</span>
+                          <span className="translate-y-px opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">
+                            ↗
+                          </span>
                         </a>
                       </li>
                     ))}
@@ -147,18 +185,21 @@ const Footer = () => {
           </div>
 
           {/* bottom bar */}
-          <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-            <p className="text-xs text-brand-night/50">
-              © {new Date().getFullYear()} Outsyde. Made in Lagos 🇳🇬
-            </p>
-            <p className="text-xs text-brand-night/50">
+          <div className="flex flex-col gap-5 border-t border-brand-night/10 py-6 text-xs text-brand-night/45 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Outsyde. Made in Nigeria 🇳🇬</p>
+
+            <p className="font-medium">
               We outside<span className="text-brand-orange">.</span>
             </p>
+
             <a
               href="#top"
-              className="text-xs font-semibold uppercase tracking-widest text-brand-night/60 transition-colors hover:text-brand-orange"
+              className="group font-semibold uppercase tracking-[0.15em] transition-colors hover:text-brand-orange"
             >
-              Back to top ↑
+              Back to top
+              <span className="ml-2 inline-block transition-transform group-hover:-translate-y-1">
+                ↑
+              </span>
             </a>
           </div>
         </div>

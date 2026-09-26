@@ -79,7 +79,7 @@ const EventsIndex = async ({ searchParams }: Props) => {
   });
 
   const pill = (active: boolean) =>
-    `text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all ${
+    `text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all whitespace-nowrap ${
              active
                 ? "bg-brand-orange text-white border-brand-orange"
                 : "bg-white text-brand-night/60 border-brand-night/15 hover:border-brand-orange/40 hover:text-brand-orange"

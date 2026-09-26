@@ -307,6 +307,23 @@ export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedFloatNullableFilter<$PrismaModel>
 }
 
+export type EnumPostCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostCategory | Prisma.EnumPostCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostCategoryFilter<$PrismaModel> | $Enums.PostCategory
+}
+
+export type EnumPostCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostCategory | Prisma.EnumPostCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PostCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostCategoryFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -589,6 +606,23 @@ export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedFloatNullableFilter<$PrismaModel>
   _min?: Prisma.NestedFloatNullableFilter<$PrismaModel>
   _max?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumPostCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostCategory | Prisma.EnumPostCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostCategoryFilter<$PrismaModel> | $Enums.PostCategory
+}
+
+export type NestedEnumPostCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostCategory | Prisma.EnumPostCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostCategory[] | Prisma.ListEnumPostCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PostCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostCategoryFilter<$PrismaModel>
 }
 
 

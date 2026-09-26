@@ -77,3 +77,13 @@ export type Comment = Prisma.CommentModel
  * 
  */
 export type WaitlistEntry = Prisma.WaitlistEntryModel
+/**
+ * Model Post
+ * 
+ */
+export type Post = Prisma.PostModel
+/**
+ * Model PostTag
+ * 
+ */
+export type PostTag = Prisma.PostTagModel

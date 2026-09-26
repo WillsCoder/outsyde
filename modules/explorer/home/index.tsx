@@ -6,6 +6,8 @@ import TopEvents from "./top-events";
 import HowItWork from "./how-it-works";
 import SocialProof from "./social-proof";
 import Waitlist from "./waitlist";
+import BlogPreview from "./blog-preview";
+import { EventDetail } from "@/lib/const/types/event";
 
 const HomeComponents = async () => {
   const places = await prisma.place.findMany({
@@ -20,14 +22,31 @@ const HomeComponents = async () => {
     orderBy: { order: "asc" },
   });
 
+   const events = await prisma.event.findMany({
+     where: { isPublished: true },
+     include: {
+       place: { select: { id: true, name: true, slug: true } },
+     },
+     orderBy: [
+       { isFeatured: "desc" },
+       { startTime: "asc" }, // earliest upcoming first
+     ],
+     take: 1,
+   });
+
   return (
     <main>
-      <HeroSection places={places} />
+      <HeroSection
+        categories={categories}
+        places={places}
+        event={events?.[0] as EventDetail}
+      />
       <PlacesCategory categories={categories} />
       <TopEvents />
       <HowItWork />
       <SocialProof />
       <Waitlist />
+      <BlogPreview />
     </main>
   );
 };

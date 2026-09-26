@@ -14,6 +14,7 @@
     "@gsap/react": "^2.1.2",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@tailwindcss/typography": "^0.5.20",
     "@upstash/ratelimit": "^2.1.0",
     "@upstash/redis": "^1.39.0",
     "bcryptjs": "^3.0.3",

@@ -1,29 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { useRouter } from "next/navigation";
+import { Place } from "@/lib/const/types/places";
+import { EventDetail } from "@/lib/const/types/event";
+import { Category } from "@/lib/const/types/category";
 import PromoSlides from "./promo-slides";
 import PlacesSlide from "./places-slide";
 import TravelAgents from "./travel-agents";
 import HotFive from "./hot-five";
-import { Place } from "@/lib/const/types/places";
 
 interface HeroSectionProps {
   places: Place[];
+  event: EventDetail;
+  categories: Category[]
 }
-const HeroSection = ({ places }: HeroSectionProps) => {
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  const filters = [
-    { key: "all", label: "All" },
-    { key: "BAR", label: "🍹 Bars" },
-    { key: "MUSIC", label: "🎵 Events" },
-    { key: "BEACH", label: "🏖 Beaches" },
-    // { key: "RESTAURANT", label: "🍽 Food" },
-  ];
+const HeroSection = ({ places, event, categories }: HeroSectionProps) => {
+  const router = useRouter()
 
   return (
     <div className="box">
-      <div className="min-h-125 max-h-200 h-[80vh] hidden md:flex items-center py-6">
+      <div className="min-h-160 max-h-200 h-[80vh] hidden md:flex items-center py-6">
         <div className="w-full h-full flex gap-3">
           <div className="w-6/12 h-full flex flex-col gap-3">
             <div className="h-1/2 border rounded-2xl border-brand-night/30 overflow-hidden">
@@ -32,7 +29,7 @@ const HeroSection = ({ places }: HeroSectionProps) => {
             </div>
             <div className="h-1/2 flex gap-3">
               <div className="w-1/2 border rounded-2xl border-brand-night/30 overflow-hidden">
-                <HotFive />
+                <HotFive event={event} />
               </div>
               <div className="w-1/2 border rounded-2xl border-brand-night/30 overflow-hidden">
                 <TravelAgents />
@@ -68,17 +65,13 @@ const HeroSection = ({ places }: HeroSectionProps) => {
 
           {/* Category pills */}
           <div className="flex gap-2 flex-wrap">
-            {filters.map((f) => (
+            {categories.slice(0,3).map((cat) => (
               <button
-                key={f.key}
-                onClick={() => setActiveFilter(f.key)}
-                className={`text-[11px] font-medium px-3.5 py-1.5 rounded-full border transition-all ${
-                  activeFilter === f.key
-                    ? "bg-brand-orange text-white border-brand-orange"
-                    : "bg-white text-brand-night/60 border-brand-night/15 hover:border-brand-night/30"
-                }`}
+                key={cat.id}
+                onClick={() => router.push(`/places?category${cat.slug}`)}
+                className={`text-[11px] font-medium px-3.5 py-1.5 rounded-full border transition-all bg-white text-brand-night/60 border-brand-night/15 hover:border-brand-night/30`}
               >
-                {f.label}
+                {cat.icon} {cat.name}
               </button>
             ))}
           </div>

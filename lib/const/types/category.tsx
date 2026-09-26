@@ -5,4 +5,5 @@ export type Category = {
   description: string | null;
   order: number;
   image: string | null;
+  id: string
 };

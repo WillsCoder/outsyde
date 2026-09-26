@@ -146,17 +146,10 @@ const EventDetailsIndex = async({ event }: Props) => {
 
              {/* comments */}
              <div className="mt-10">
-               {/* <CommentSection
-                 eventId={event.id}
-                 slug={event.slug}
-                 comments={event.comments}
-                 isLoggedIn={!!session?.user}
-               /> */}
                <ReviewSection
-                 placeId={event.id}
-                 ratings={[]}
+                 mode="event"
+                 eventId={event.id}
                  comments={event.comments}
-                 avgRating={0}
                />
              </div>
            </div>

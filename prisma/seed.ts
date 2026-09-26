@@ -782,17 +782,259 @@ async function main() {
     },
   ];
 
-  
-for (const event of events) {
-  await prisma.event.upsert({
-    where: { slug: event.slug },
-    update: {},
-    create: event,
-  });
-  console.log(`  ✓ ${event.title}`);
-}
+  for (const event of events) {
+    await prisma.event.upsert({
+      where: { slug: event.slug },
+      update: {},
+      create: event,
+    });
+    console.log(`  ✓ ${event.title}`);
+  }
 
-console.log(`✓ ${events.length} events seeded`);
+  console.log(`✓ ${events.length} events seeded`);
+
+  // ─── Blog Posts ───────────────────────────────────────────────────────────────
+
+  // Get admin user (or create one)
+  const admin = await prisma.user.upsert({
+    where: { email: "admin@outsyde.ng" },
+    update: {},
+    create: {
+      name: "Outsyde Team",
+      email: "admin@outsyde.ng",
+      role: "ADMIN",
+    },
+  });
+
+  // Tags
+  const tags = await Promise.all([
+    prisma.postTag.upsert({
+      where: { slug: "lagos" },
+      update: {},
+      create: { name: "Lagos", slug: "lagos" },
+    }),
+    prisma.postTag.upsert({
+      where: { slug: "nightlife" },
+      update: {},
+      create: { name: "Nightlife", slug: "nightlife" },
+    }),
+    prisma.postTag.upsert({
+      where: { slug: "food" },
+      update: {},
+      create: { name: "Food", slug: "food" },
+    }),
+    prisma.postTag.upsert({
+      where: { slug: "beaches" },
+      update: {},
+      create: { name: "Beaches", slug: "beaches" },
+    }),
+    prisma.postTag.upsert({
+      where: { slug: "guides" },
+      update: {},
+      create: { name: "Guides", slug: "guides" },
+    }),
+    prisma.postTag.upsert({
+      where: { slug: "culture" },
+      update: {},
+      create: { name: "Culture", slug: "culture" },
+    }),
+  ]);
+
+  const [tagLagos, tagNightlife, tagFood, tagBeaches, tagGuides, tagCulture] =
+    tags;
+
+  const posts = [
+    {
+      title: "The Ultimate Guide to Lagos Nightlife in 2026",
+      slug: "ultimate-guide-lagos-nightlife-2026",
+      excerpt:
+        "From rooftop lounges in Ikoyi to beach clubs in Lekki, here's everything you need to know about going out in Lagos this year.",
+      coverImage:
+        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200",
+      category: "NIGHTLIFE" as const,
+      readTime: 8,
+      isPublished: true,
+      isFeatured: true,
+      publishedAt: new Date("2026-09-15"),
+      content: `
+<h2>Lagos After Dark</h2>
+<p>There's no city in Africa that does nightlife quite like Lagos. From the moment the sun dips below the horizon, the city transforms into something electric — rooftop bars fill up with the after-work crowd, DJs start their sets at beach clubs, and the streets of Victoria Island pulse with energy that lasts until dawn.</p>
+
+<h2>Where to Start: Victoria Island</h2>
+<p>VI is ground zero for Lagos nightlife. The Backyard Bar & Grill on Akin Adesola is where you want to be on a Friday evening — grab a table outside, order the signature cocktail, and watch Lagos come alive around you. For something more upscale, Sky Bar in Ikoyi offers panoramic views and a cocktail menu that rivals anywhere in the world.</p>
+
+<h2>Lekki: The New Wave</h2>
+<p>Lekki Phase 1 has become the heartbeat of a new generation of Lagos nightlife. Wabi Social draws the creative crowd with rotating DJ sets and themed nights. Escape Nightclub across three floors of Afrobeats, hip-hop, and electronic music is where you end up when everywhere else closes.</p>
+
+<h2>Tips for Going Out in Lagos</h2>
+<ul>
+<li>Get there early — the best spots fill up fast, especially on Fridays and Saturdays</li>
+<li>Most clubs don't really get going until after midnight</li>
+<li>Always have a plan B — Lagos traffic can delay even the best-laid plans</li>
+<li>Dress code matters more at premium spots like Quilox and Sky Bar</li>
+</ul>
+
+<h2>Safety First</h2>
+<p>Lagos is a safe city to go out in when you take the right precautions. Stick to well-known areas, arrange your transport in advance, and go with people you trust. The Lagos nightlife community is vibrant, welcoming, and growing every year.</p>
+    `.trim(),
+      authorId: admin.id,
+      tags: {
+        connect: [{ slug: "lagos" }, { slug: "nightlife" }, { slug: "guides" }],
+      },
+    },
+    {
+      title: "10 Best Brunch Spots in Lagos Right Now",
+      slug: "best-brunch-spots-lagos-2026",
+      excerpt:
+        "Weekend brunch in Lagos has levelled up. Here are the spots worth setting your alarm for — from full Nigerian spreads to avocado toast with a view.",
+      coverImage:
+        "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1200",
+      category: "FOOD" as const,
+      readTime: 6,
+      isPublished: true,
+      isFeatured: true,
+      publishedAt: new Date("2026-09-10"),
+      content: `
+<h2>The Lagos Brunch Scene</h2>
+<p>Saturday and Sunday mornings in Lagos used to mean just jollof rice and a cold malt at home. Not anymore. The city's brunch scene has exploded in the last two years, with spots across VI, Lekki, and Ikoyi now competing to offer the best midday spread in West Africa.</p>
+
+<h2>1. Double Four Kitchen, Lekki</h2>
+<p>The weekend queue at Double Four tells you everything you need to know. Their brioche French toast with berry compote is the stuff of Lagos brunch legend. Get there early or make peace with waiting — it's worth it.</p>
+
+<h2>2. Cactus Restaurant, Victoria Island</h2>
+<p>A Lagos institution that's been doing Sunday brunch right since before brunch was a thing. The eggs benedict are perfect and the service is impeccable. Dress up slightly — this is a Cactus crowd.</p>
+
+<h2>3. Nok by Alara, Surulere</h2>
+<p>If you want something truly different, Nok's Pan-African brunch menu takes you across the continent in one sitting. The Jollof Risotto at brunch might sound wild but it absolutely works.</p>
+
+<h2>Tips for Lagos Brunch</h2>
+<ul>
+<li>Book ahead for weekends — the best spots fill up by 11AM</li>
+<li>Arrive hungry. Lagos brunch portions are generous</li>
+<li>Budget ₦15,000–₦30,000 per person at premium spots</li>
+</ul>
+    `.trim(),
+      authorId: admin.id,
+      tags: {
+        connect: [{ slug: "food" }, { slug: "lagos" }, { slug: "guides" }],
+      },
+    },
+    {
+      title: "Tarkwa Bay: Everything You Need to Know Before You Go",
+      slug: "tarkwa-bay-complete-guide",
+      excerpt:
+        "Lagos's hidden island escape is closer than you think. Here's the complete guide to getting there, what to bring, and how to make the most of your day.",
+      coverImage:
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200",
+      category: "TRAVEL" as const,
+      readTime: 5,
+      isPublished: true,
+      isFeatured: false,
+      publishedAt: new Date("2026-09-05"),
+      content: `
+<h2>What is Tarkwa Bay?</h2>
+<p>Tarkwa Bay is a sheltered natural beach accessible only by boat from Lagos Island. No roads lead there. No hawkers on the beach. Just white sand, calm water, and a genuinely laid-back vibe that feels like a different country from the Lagos you know.</p>
+
+<h2>Getting There</h2>
+<p>Take a boat from the Ramp in Lagos Island (near Five Cowries Creek). The ride takes about 15–20 minutes and costs around ₦2,000–₦3,000 per person depending on the service. Boats run from early morning until late afternoon — don't miss the last one back.</p>
+
+<h2>What to Bring</h2>
+<ul>
+<li>Sunscreen — the Lagos sun on open water is no joke</li>
+<li>Cash — vendors on the beach are cash-only</li>
+<li>A waterproof bag for your phone</li>
+<li>Your own snacks and drinks if you want to save money</li>
+</ul>
+
+<h2>What to Expect</h2>
+<p>The beach itself is clean and well-maintained. You'll find vendors selling fresh coconut water, grilled fish, and small chops along the shore. There are beach chairs and umbrella rentals available. Swim in the calm lagoon-side waters or just lie back and watch the boats pass.</p>
+
+<h2>Best Time to Go</h2>
+<p>Early Saturday morning is the sweet spot — you get there before the crowd and enjoy the beach at its best. By noon it fills up significantly. Avoid public holidays unless you enjoy chaos with your coconut water.</p>
+    `.trim(),
+      authorId: admin.id,
+      tags: {
+        connect: [{ slug: "beaches" }, { slug: "lagos" }, { slug: "guides" }],
+      },
+    },
+    {
+      title: "Terra Kulture: Where Lagos Goes to Feel Culture",
+      slug: "terra-kulture-lagos-culture-hub",
+      excerpt:
+        "The arts centre that's been quietly keeping Nigerian culture alive in the heart of VI. Here's why Terra Kulture deserves a spot on every Lagosian's list.",
+      coverImage:
+        "https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=1200",
+      category: "CULTURE" as const,
+      readTime: 4,
+      isPublished: true,
+      isFeatured: false,
+      publishedAt: new Date("2026-08-28"),
+      content: `
+<h2>More Than Just an Art Gallery</h2>
+<p>Terra Kulture sits quietly on Tiamiyu Savage Street in Victoria Island, and if you've never been, you're missing one of Lagos's most special spaces. It's part gallery, part theatre, part restaurant, part bookshop — a cultural hub that holds its own against anything you'd find in London or New York.</p>
+
+<h2>The Gallery</h2>
+<p>Rotating exhibitions showcase Nigerian visual artists at every stage of their career. The current "New Voices" exhibition features 12 emerging artists whose work explores identity, heritage, and modern Lagos life. Entry is free.</p>
+
+<h2>The Theatre</h2>
+<p>Terra Kulture Arena hosts some of the most exciting live theatre in West Africa. From Yoruba classical performances to contemporary Nigerian plays, the programming is consistently excellent and the venue is intimate enough that there isn't a bad seat in the house.</p>
+
+<h2>The Restaurant</h2>
+<p>Stay for lunch. The Terra Kulture restaurant serves solid Nigerian and continental dishes in a setting surrounded by art. The pepper soup is excellent and the atmosphere makes it one of the most interesting lunch spots in VI.</p>
+    `.trim(),
+      authorId: admin.id,
+      tags: { connect: [{ slug: "culture" }, { slug: "lagos" }] },
+    },
+    {
+      title: "Lagos in 48 Hours: The Ultimate Weekend Itinerary",
+      slug: "lagos-48-hours-weekend-itinerary",
+      excerpt:
+        "Visiting Lagos for a weekend or just want to see the city with fresh eyes? Here's how to spend 48 hours hitting the best spots across the city.",
+      coverImage:
+        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200",
+      category: "GUIDES" as const,
+      readTime: 10,
+      isPublished: true,
+      isFeatured: true,
+      publishedAt: new Date("2026-08-20"),
+      content: `
+<h2>Day 1: Victoria Island & Ikoyi</h2>
+<h3>Morning</h3>
+<p>Start at Café Neo on Oyin Jolayemi for a flat white and a croissant. Walk along the waterfront and take in the Lagos skyline across the lagoon. Head to Terra Kulture for the morning exhibition — it opens at 10AM and you'll have the gallery mostly to yourself.</p>
+
+<h3>Afternoon</h3>
+<p>Lunch at Cactus Restaurant. Order the jollof rice and chicken — it's a Lagos institution for a reason. After lunch, explore Victoria Island on foot: the art galleries on Adeola Odeku, the boutiques, the energy of a city that never quite stops.</p>
+
+<h3>Evening</h3>
+<p>Sundowners at Sky Bar in Ikoyi. Watch the sun go down over Lagos from one of the best vantage points in the city. Dinner at Yellow Chilli for elevated Nigerian cuisine — the egusi is unmissable. End the night at The Backyard Bar & Grill.</p>
+
+<h2>Day 2: Lekki & The Beach</h2>
+<h3>Morning</h3>
+<p>Take a boat to Tarkwa Bay. Get there early — by 9AM the beach is peaceful and the water is perfect. Spend two to three hours swimming and eating fresh coconut before the crowd arrives.</p>
+
+<h3>Afternoon</h3>
+<p>Back on the mainland, head to Lekki for brunch at Double Four Kitchen. Spend the afternoon exploring Lekki Conservation Centre and walking the canopy bridge above the treetops.</p>
+
+<h3>Evening</h3>
+<p>Dinner at Nok by Alara in Surulere — the Pan-African menu is worth the drive. Then head to Escape Nightclub in Lekki to end your 48 hours the Lagos way: dancing until you can't anymore.</p>
+    `.trim(),
+      authorId: admin.id,
+      tags: {
+        connect: [{ slug: "guides" }, { slug: "lagos" }, { slug: "culture" }],
+      },
+    },
+  ];
+
+  for (const post of posts) {
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      update: {},
+      create: post,
+    });
+    console.log(`  ✓ ${post.title}`);
+  }
+
+  console.log(`✓ ${posts.length} posts seeded`);
 }
 
 (async () => {

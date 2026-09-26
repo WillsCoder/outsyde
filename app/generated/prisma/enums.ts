@@ -37,3 +37,16 @@ export const TicketType = {
 } as const
 
 export type TicketType = (typeof TicketType)[keyof typeof TicketType]
+
+
+export const PostCategory = {
+  LIFESTYLE: 'LIFESTYLE',
+  FOOD: 'FOOD',
+  NIGHTLIFE: 'NIGHTLIFE',
+  TRAVEL: 'TRAVEL',
+  CULTURE: 'CULTURE',
+  EVENTS: 'EVENTS',
+  GUIDES: 'GUIDES'
+} as const
+
+export type PostCategory = (typeof PostCategory)[keyof typeof PostCategory]

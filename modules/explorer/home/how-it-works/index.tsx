@@ -118,7 +118,7 @@ const HowItWork = () => {
                   willChange: "transform",
                 }}
                 className={`relative overflow-hidden group flex flex-col justify-end border-2 border-brand-gold rounded-2xl cursor-default ${
-                  idx === 2 ? "h-160 md:h-[70dvh] max-h-170" : "h-130 md:h-[50dvh] max-h-130"
+                  idx === 2 ? "h-160 md:h-[70dvh] min-h-155 max-h-170" : "h-130 min-h-120 md:h-[50dvh] max-h-130"
                 }`}
               >
                 {/* Illustration */}
