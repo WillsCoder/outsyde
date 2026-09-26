@@ -19,9 +19,11 @@ export const dynamicParams = true;
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await prisma.post.findUnique({ where: { slug: params.slug } });
+  const { slug } = await params;
+
+  const post = await prisma.post.findUnique({ where: { slug: slug } });
   if (!post) return {};
   return {
     title: `${post.title} — Outsyde`,
@@ -39,7 +41,7 @@ export default async function BlogDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-     const { slug } = await params;
+  const { slug } = await params;
 
   const post = await prisma.post.findUnique({
     where: { slug: slug, isPublished: true },
