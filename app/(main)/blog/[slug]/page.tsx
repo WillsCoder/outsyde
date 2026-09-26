@@ -37,24 +37,26 @@ export async function generateMetadata({
 export default async function BlogDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+     const { slug } = await params;
+
   const post = await prisma.post.findUnique({
-    where: { slug: params.slug, isPublished: true },
+    where: { slug: slug, isPublished: true },
     include: { author: true, tags: true },
   });
 
-   if (!post) notFound();
+  if (!post) notFound();
 
-     const related = await prisma.post.findMany({
-       where: {
-         isPublished: true,
-         category: post.category,
-         id: { not: post.id },
-       },
-       include: { author: true, tags: true },
-       take: 2,
-     });
-  
-   return <BlogDetailIndex post={post} related={related}/>
+  const related = await prisma.post.findMany({
+    where: {
+      isPublished: true,
+      category: post.category,
+      id: { not: post.id },
+    },
+    include: { author: true, tags: true },
+    take: 2,
+  });
+
+  return <BlogDetailIndex post={post} related={related} />;
 }
