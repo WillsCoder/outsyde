@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui";
 import { navRoutes } from "./nav-routes";
 import AuthUserDropdown from "./auth-user-drop";
 
 const LayoutHeader = () => {
-
-  const router = useRouter()
+  const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const pathname = usePathname();
-
+  const { data: session } = useSession();
 
   return (
     <>
@@ -113,21 +113,25 @@ const LayoutHeader = () => {
               ))}
             </nav>
 
-            <div className="h-px bg-white/10 my-4" />
+            {!session?.user?.email && (
+              <>
+                <div className="h-px bg-white/10 my-4" />
 
-            <button
-              onClick={() => router.push("/login")}
-              className="flex items-center gap-3 text-[15px] text-brand-sand pr-4 py-3 w-full rounded-xl hover:bg-white/7 transition-all"
-            >
-              🔐 Sign in
-            </button>
+                <button
+                  onClick={() => router.push("/login")}
+                  className="flex items-center gap-3 text-[15px] text-brand-sand pr-4 py-3 w-full rounded-xl hover:bg-white/7 transition-all"
+                >
+                  🔐 Sign in
+                </button>
 
-            <Button
-              onClick={() => router.push("/login")}
-              className="w-full mt-2 py-3.5! text-[15px]! rounded-xl!"
-            >
-              Get Started — It's Free
-            </Button>
+                <Button
+                  onClick={() => router.push("/login")}
+                  className="w-full mt-2 py-3.5! text-[15px]! rounded-xl!"
+                >
+                  Get Started — It's Free
+                </Button>
+              </>
+            )}
           </div>
         </div>
       )}

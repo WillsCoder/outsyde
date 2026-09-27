@@ -4,8 +4,9 @@ import { auth } from "@/auth";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string; requestId: string } },
+  { params }: { params: Promise<{ id: string; requestId: string }> },
 ) {
+    const { id, requestId } = await params;
   const session = await auth();
 
   if (!session?.user?.email) {
@@ -24,7 +25,7 @@ export async function PATCH(
   if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
 
-  const linkUp = await prisma.linkUp.findUnique({ where: { id: params.id } });
+  const linkUp = await prisma.linkUp.findUnique({ where: { id: id } });
   if (!linkUp)
     return NextResponse.json({ error: "Link Up not found" }, { status: 404 });
 
@@ -34,18 +35,18 @@ export async function PATCH(
   }
 
   const updated = await prisma.linkUpRequest.update({
-    where: { id: params.requestId },
+    where: { id: requestId },
     data: { status },
   });
 
   // If accepted, check if now full
   if (status === "ACCEPTED") {
     const acceptedCount = await prisma.linkUpRequest.count({
-      where: { linkUpId: params.id, status: "ACCEPTED" },
+      where: { linkUpId: id, status: "ACCEPTED" },
     });
     if (acceptedCount >= linkUp.maxSize - 1) {
       await prisma.linkUp.update({
-        where: { id: params.id },
+        where: { id: id },
         data: { status: "FULL" },
       });
     }
