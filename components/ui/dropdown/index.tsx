@@ -271,20 +271,22 @@ export const Dropdown: React.FC<DropdownProps> = ({
   // ---------------------------------------------------------------------------
   // Trigger clone
   // ---------------------------------------------------------------------------
+  type TriggerProps = React.HTMLAttributes<HTMLElement> & {disabled: boolean};
+  
   const triggerElement = cloneElement(trigger, {
     ref: triggerRef,
     onClick: (e: React.MouseEvent<HTMLElement>) => {
       e.preventDefault();
       toggle();
-      (trigger.props as any).onClick?.(e);
+      (trigger.props as TriggerProps).onClick?.(e);
     },
     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
       handleKeyDown(e);
-      (trigger.props as any).onKeyDown?.(e);
+      (trigger.props as TriggerProps).onKeyDown?.(e);
     },
     "aria-expanded": isOpen,
     "aria-haspopup": true as const,
-    disabled: disabled || (trigger.props as any).disabled,
+    disabled: disabled || (trigger.props as TriggerProps).disabled,
   } as Partial<React.HTMLAttributes<HTMLElement>>);
 
   // ---------------------------------------------------------------------------
