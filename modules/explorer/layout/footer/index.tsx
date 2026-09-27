@@ -1,5 +1,6 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const exploreLinks = [
   { label: "Places", href: "/places" },
@@ -95,7 +96,7 @@ const Footer = () => {
       <div className="section relative z-10 ">
         <div className="box">
           {/* top statement */}
-          <div className="border-b border-brand-night/10 pb-12 md:pb-16">
+          <div className="pb-6 md:pb-16">
             <div className="max-w-5xl">
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
                 📍 Nigeria
@@ -113,7 +114,7 @@ const Footer = () => {
             {/* brand */}
             <div className="flex flex-col justify-between">
               <div>
-                <a href="/" className="inline-flex items-center gap-2">
+                <Link href="/" className="inline-flex items-center gap-2">
                   <Image
                     src="/logo.png"
                     alt="Outsyde Logo"
@@ -122,10 +123,10 @@ const Footer = () => {
                     className="w-11 md:w-14"
                   />
 
-                  <span className="font-display text-xl font-black tracking-tight md:text-2xl">
+                  <span className="font-display text-2xl font-black tracking-tight md:text-2xl">
                     <span className="text-brand-orange">ut</span>syde
                   </span>
-                </a>
+                </Link>
 
                 <p className="mt-5 max-w-xs text-sm leading-relaxed text-brand-night/60">
                   Your guide to Nigeria after dark, under the sun, and

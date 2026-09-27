@@ -346,6 +346,7 @@ export type EventWhereInput = {
   placeId?: Prisma.StringNullableFilter<"Event"> | string | null
   place?: Prisma.XOR<Prisma.PlaceNullableScalarRelationFilter, Prisma.PlaceWhereInput> | null
   comments?: Prisma.CommentListRelationFilter
+  linkUps?: Prisma.LinkUpListRelationFilter
 }
 
 export type EventOrderByWithRelationInput = {
@@ -371,6 +372,7 @@ export type EventOrderByWithRelationInput = {
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   place?: Prisma.PlaceOrderByWithRelationInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
+  linkUps?: Prisma.LinkUpOrderByRelationAggregateInput
 }
 
 export type EventWhereUniqueInput = Prisma.AtLeast<{
@@ -399,6 +401,7 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   placeId?: Prisma.StringNullableFilter<"Event"> | string | null
   place?: Prisma.XOR<Prisma.PlaceNullableScalarRelationFilter, Prisma.PlaceWhereInput> | null
   comments?: Prisma.CommentListRelationFilter
+  linkUps?: Prisma.LinkUpListRelationFilter
 }, "id" | "slug">
 
 export type EventOrderByWithAggregationInput = {
@@ -477,6 +480,7 @@ export type EventCreateInput = {
   updatedAt?: Date | string
   place?: Prisma.PlaceCreateNestedOneWithoutEventsInput
   comments?: Prisma.CommentCreateNestedManyWithoutEventInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateInput = {
@@ -501,6 +505,7 @@ export type EventUncheckedCreateInput = {
   updatedAt?: Date | string
   placeId?: string | null
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventUpdateInput = {
@@ -525,6 +530,7 @@ export type EventUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   place?: Prisma.PlaceUpdateOneWithoutEventsNestedInput
   comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateInput = {
@@ -549,6 +555,7 @@ export type EventUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventCreateManyInput = {
@@ -789,6 +796,22 @@ export type EventUpdateOneWithoutCommentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutCommentsInput, Prisma.EventUpdateWithoutCommentsInput>, Prisma.EventUncheckedUpdateWithoutCommentsInput>
 }
 
+export type EventCreateNestedOneWithoutLinkUpsInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutLinkUpsInput, Prisma.EventUncheckedCreateWithoutLinkUpsInput>
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutLinkUpsInput
+  connect?: Prisma.EventWhereUniqueInput
+}
+
+export type EventUpdateOneWithoutLinkUpsNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutLinkUpsInput, Prisma.EventUncheckedCreateWithoutLinkUpsInput>
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutLinkUpsInput
+  upsert?: Prisma.EventUpsertWithoutLinkUpsInput
+  disconnect?: Prisma.EventWhereInput | boolean
+  delete?: Prisma.EventWhereInput | boolean
+  connect?: Prisma.EventWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutLinkUpsInput, Prisma.EventUpdateWithoutLinkUpsInput>, Prisma.EventUncheckedUpdateWithoutLinkUpsInput>
+}
+
 export type EventCreateWithoutPlaceInput = {
   id?: string
   title: string
@@ -810,6 +833,7 @@ export type EventCreateWithoutPlaceInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentCreateNestedManyWithoutEventInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateWithoutPlaceInput = {
@@ -833,6 +857,7 @@ export type EventUncheckedCreateWithoutPlaceInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventCreateOrConnectWithoutPlaceInput = {
@@ -908,6 +933,7 @@ export type EventCreateWithoutCommentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   place?: Prisma.PlaceCreateNestedOneWithoutEventsInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateWithoutCommentsInput = {
@@ -931,6 +957,7 @@ export type EventUncheckedCreateWithoutCommentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   placeId?: string | null
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventCreateOrConnectWithoutCommentsInput = {
@@ -970,6 +997,7 @@ export type EventUpdateWithoutCommentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   place?: Prisma.PlaceUpdateOneWithoutEventsNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateWithoutCommentsInput = {
@@ -993,6 +1021,119 @@ export type EventUncheckedUpdateWithoutCommentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutEventNestedInput
+}
+
+export type EventCreateWithoutLinkUpsInput = {
+  id?: string
+  title: string
+  slug: string
+  description: string
+  category: $Enums.EventCategory
+  imageUrl?: string | null
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
+  startTime: Date | string
+  endTime?: Date | string | null
+  address?: string | null
+  city?: string
+  lat?: number | null
+  lng?: number | null
+  isPublished?: boolean
+  isFeatured?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  place?: Prisma.PlaceCreateNestedOneWithoutEventsInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
+}
+
+export type EventUncheckedCreateWithoutLinkUpsInput = {
+  id?: string
+  title: string
+  slug: string
+  description: string
+  category: $Enums.EventCategory
+  imageUrl?: string | null
+  ticketType?: $Enums.TicketType
+  ticketPrice?: number | null
+  ticketUrl?: string | null
+  startTime: Date | string
+  endTime?: Date | string | null
+  address?: string | null
+  city?: string
+  lat?: number | null
+  lng?: number | null
+  isPublished?: boolean
+  isFeatured?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  placeId?: string | null
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+}
+
+export type EventCreateOrConnectWithoutLinkUpsInput = {
+  where: Prisma.EventWhereUniqueInput
+  create: Prisma.XOR<Prisma.EventCreateWithoutLinkUpsInput, Prisma.EventUncheckedCreateWithoutLinkUpsInput>
+}
+
+export type EventUpsertWithoutLinkUpsInput = {
+  update: Prisma.XOR<Prisma.EventUpdateWithoutLinkUpsInput, Prisma.EventUncheckedUpdateWithoutLinkUpsInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutLinkUpsInput, Prisma.EventUncheckedCreateWithoutLinkUpsInput>
+  where?: Prisma.EventWhereInput
+}
+
+export type EventUpdateToOneWithWhereWithoutLinkUpsInput = {
+  where?: Prisma.EventWhereInput
+  data: Prisma.XOR<Prisma.EventUpdateWithoutLinkUpsInput, Prisma.EventUncheckedUpdateWithoutLinkUpsInput>
+}
+
+export type EventUpdateWithoutLinkUpsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  place?: Prisma.PlaceUpdateOneWithoutEventsNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
+}
+
+export type EventUncheckedUpdateWithoutLinkUpsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumEventCategoryFieldUpdateOperationsInput | $Enums.EventCategory
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ticketType?: Prisma.EnumTicketTypeFieldUpdateOperationsInput | $Enums.TicketType
+  ticketPrice?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ticketUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventCreateManyPlaceInput = {
@@ -1038,6 +1179,7 @@ export type EventUpdateWithoutPlaceInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateWithoutPlaceInput = {
@@ -1061,6 +1203,7 @@ export type EventUncheckedUpdateWithoutPlaceInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateManyWithoutPlaceInput = {
@@ -1092,10 +1235,12 @@ export type EventUncheckedUpdateManyWithoutPlaceInput = {
 
 export type EventCountOutputType = {
   comments: number
+  linkUps: number
 }
 
 export type EventCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comments?: boolean | EventCountOutputTypeCountCommentsArgs
+  linkUps?: boolean | EventCountOutputTypeCountLinkUpsArgs
 }
 
 /**
@@ -1113,6 +1258,13 @@ export type EventCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
  */
 export type EventCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CommentWhereInput
+}
+
+/**
+ * EventCountOutputType without action
+ */
+export type EventCountOutputTypeCountLinkUpsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LinkUpWhereInput
 }
 
 
@@ -1139,6 +1291,7 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   placeId?: boolean
   place?: boolean | Prisma.Event$placeArgs<ExtArgs>
   comments?: boolean | Prisma.Event$commentsArgs<ExtArgs>
+  linkUps?: boolean | Prisma.Event$linkUpsArgs<ExtArgs>
   _count?: boolean | Prisma.EventCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["event"]>
 
@@ -1217,6 +1370,7 @@ export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   place?: boolean | Prisma.Event$placeArgs<ExtArgs>
   comments?: boolean | Prisma.Event$commentsArgs<ExtArgs>
+  linkUps?: boolean | Prisma.Event$linkUpsArgs<ExtArgs>
   _count?: boolean | Prisma.EventCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EventIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1231,6 +1385,7 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     place: Prisma.$PlacePayload<ExtArgs> | null
     comments: Prisma.$CommentPayload<ExtArgs>[]
+    linkUps: Prisma.$LinkUpPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1649,6 +1804,7 @@ export interface Prisma__EventClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   place<T extends Prisma.Event$placeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$placeArgs<ExtArgs>>): Prisma.Prisma__PlaceClient<runtime.Types.Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   comments<T extends Prisma.Event$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkUps<T extends Prisma.Event$linkUpsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$linkUpsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2139,6 +2295,30 @@ export type Event$commentsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
+}
+
+/**
+ * Event.linkUps
+ */
+export type Event$linkUpsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LinkUp
+   */
+  select?: Prisma.LinkUpSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LinkUp
+   */
+  omit?: Prisma.LinkUpOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkUpInclude<ExtArgs> | null
+  where?: Prisma.LinkUpWhereInput
+  orderBy?: Prisma.LinkUpOrderByWithRelationInput | Prisma.LinkUpOrderByWithRelationInput[]
+  cursor?: Prisma.LinkUpWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkUpScalarFieldEnum | Prisma.LinkUpScalarFieldEnum[]
 }
 
 /**

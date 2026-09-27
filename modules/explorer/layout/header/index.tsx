@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui";
 import { navRoutes } from "./nav-routes";
+import AuthUserDropdown from "./auth-user-drop";
 
 const LayoutHeader = () => {
 
@@ -63,19 +64,7 @@ const LayoutHeader = () => {
                 <path d="M21 21l-4.35-4.35" />
               </svg>
             </Button>
-            <Button
-              className="hidden! md:flex!"
-              onClick={() => router.push("/login")}
-            >
-              Get Started
-            </Button>
-            {/* Mobile hamburger */}
-            <Button
-              onClick={() => setDrawerOpen(true)}
-              className="aspect-square p-2.5! w-8! h-8! md:hidden!"
-            >
-              ☰
-            </Button>
+            <AuthUserDropdown open={() => setDrawerOpen(true)} />
           </div>
         </div>
       </header>

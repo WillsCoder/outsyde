@@ -14,21 +14,25 @@ datasource db {
 // ─────────────────────────────────────────────
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  firstName     String?
-  lastName      String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?   // credentials users only — null for Google users
-  role          Role      @default(USER)
-  accounts      Account[]
-  sessions      Session[]
-  ratings       Rating[]
-  comments      Comment[]
-  createdAt     DateTime  @default(now())
-  posts         Post[]
+  id                 String    @id @default(cuid())
+  name               String?
+  firstName          String?
+  lastName           String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  verificationToken  String?
+  verificationExpiry DateTime?
+  image              String?
+  password           String?   // credentials users only — null for Google users
+  role               Role      @default(USER)
+  accounts           Account[]
+  sessions           Session[]
+  ratings            Rating[]
+  comments           Comment[]
+  createdAt          DateTime  @default(now())
+  posts              Post[]
+  linkUpsCreated     LinkUp[]        @relation("LinkUpCreator")
+  linkUpRequests     LinkUpRequest[] @relation("LinkUpRequestSender")
 }
 
 enum Role {
@@ -64,12 +68,16 @@ model Session {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// Add a dedicated token model for cleaner tracking
 model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+  id        String   @id @default(cuid())
+  otp       String   // 6-digit code
+  email     String
+  expiresAt DateTime
+  attempts  Int      @default(0) // track wrong attempts
+  createdAt DateTime @default(now())
 
-  @@unique([identifier, token])
+  @@index([email])
 }
 
 // ─────────────────────────────────────────────
@@ -99,6 +107,7 @@ model Place {
   ratings     Rating[]
   comments    Comment[]
   events      Event[]
+  linkUps      LinkUp[]
 }
 
 model Category {
@@ -176,6 +185,7 @@ model Event {
   placeId       String?
   place         Place?        @relation(fields: [placeId], references: [id])
   comments      Comment[]
+  linkUps       LinkUp[]
 }
 
 // ─────────────────────────────────────────────
@@ -258,4 +268,56 @@ model PostTag {
   name   String
   slug   String @unique
   posts  Post[]
+}
+
+enum LinkUpStatus {
+  OPEN      // accepting requests
+  CLOSED    // creator closed it
+  FULL      // max capacity reached
+}
+
+enum LinkUpRequestStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
+// ─────────────────────────────────────────────
+// BLOG POST
+// ─────────────────────────────────────────────
+
+model LinkUp {
+  id          String        @id @default(cuid())
+  title       String        // e.g. "Looking for people to vibe with"
+  description String?       // optional note
+  date        DateTime      // when they're going
+  maxSize     Int           @default(5) // max group size including creator
+  status      LinkUpStatus  @default(OPEN)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  creatorId   String
+  creator     User          @relation("LinkUpCreator", fields: [creatorId], references: [id])
+
+  placeId     String?
+  place       Place?        @relation(fields: [placeId], references: [id])
+
+  eventId     String?
+  event       Event?        @relation(fields: [eventId], references: [id])
+
+  requests    LinkUpRequest[]
+}
+
+model LinkUpRequest {
+  id        String               @id @default(cuid())
+  message   String?              // optional message from requester
+  status    LinkUpRequestStatus  @default(PENDING)
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+
+  linkUpId  String
+  linkUp    LinkUp  @relation(fields: [linkUpId], references: [id], onDelete: Cascade)
+
+  senderId  String
+  sender    User    @relation("LinkUpRequestSender", fields: [senderId], references: [id])
 }

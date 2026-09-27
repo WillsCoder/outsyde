@@ -64,7 +64,9 @@ export const ModelName = {
   Comment: 'Comment',
   WaitlistEntry: 'WaitlistEntry',
   Post: 'Post',
-  PostTag: 'PostTag'
+  PostTag: 'PostTag',
+  LinkUp: 'LinkUp',
+  LinkUpRequest: 'LinkUpRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,6 +92,8 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   email: 'email',
   emailVerified: 'emailVerified',
+  verificationToken: 'verificationToken',
+  verificationExpiry: 'verificationExpiry',
   image: 'image',
   password: 'password',
   role: 'role',
@@ -128,9 +132,12 @@ export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeo
 
 
 export const VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
+  id: 'id',
+  otp: 'otp',
+  email: 'email',
+  expiresAt: 'expiresAt',
+  attempts: 'attempts',
+  createdAt: 'createdAt'
 } as const
 
 export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
@@ -276,6 +283,36 @@ export const PostTagScalarFieldEnum = {
 } as const
 
 export type PostTagScalarFieldEnum = (typeof PostTagScalarFieldEnum)[keyof typeof PostTagScalarFieldEnum]
+
+
+export const LinkUpScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  date: 'date',
+  maxSize: 'maxSize',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  creatorId: 'creatorId',
+  placeId: 'placeId',
+  eventId: 'eventId'
+} as const
+
+export type LinkUpScalarFieldEnum = (typeof LinkUpScalarFieldEnum)[keyof typeof LinkUpScalarFieldEnum]
+
+
+export const LinkUpRequestScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  linkUpId: 'linkUpId',
+  senderId: 'senderId'
+} as const
+
+export type LinkUpRequestScalarFieldEnum = (typeof LinkUpRequestScalarFieldEnum)[keyof typeof LinkUpRequestScalarFieldEnum]
 
 
 export const SortOrder = {

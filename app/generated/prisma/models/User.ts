@@ -31,6 +31,8 @@ export type UserMinAggregateOutputType = {
   lastName: string | null
   email: string | null
   emailVerified: Date | null
+  verificationToken: string | null
+  verificationExpiry: Date | null
   image: string | null
   password: string | null
   role: $Enums.Role | null
@@ -44,6 +46,8 @@ export type UserMaxAggregateOutputType = {
   lastName: string | null
   email: string | null
   emailVerified: Date | null
+  verificationToken: string | null
+  verificationExpiry: Date | null
   image: string | null
   password: string | null
   role: $Enums.Role | null
@@ -57,6 +61,8 @@ export type UserCountAggregateOutputType = {
   lastName: number
   email: number
   emailVerified: number
+  verificationToken: number
+  verificationExpiry: number
   image: number
   password: number
   role: number
@@ -72,6 +78,8 @@ export type UserMinAggregateInputType = {
   lastName?: true
   email?: true
   emailVerified?: true
+  verificationToken?: true
+  verificationExpiry?: true
   image?: true
   password?: true
   role?: true
@@ -85,6 +93,8 @@ export type UserMaxAggregateInputType = {
   lastName?: true
   email?: true
   emailVerified?: true
+  verificationToken?: true
+  verificationExpiry?: true
   image?: true
   password?: true
   role?: true
@@ -98,6 +108,8 @@ export type UserCountAggregateInputType = {
   lastName?: true
   email?: true
   emailVerified?: true
+  verificationToken?: true
+  verificationExpiry?: true
   image?: true
   password?: true
   role?: true
@@ -184,6 +196,8 @@ export type UserGroupByOutputType = {
   lastName: string | null
   email: string | null
   emailVerified: Date | null
+  verificationToken: string | null
+  verificationExpiry: Date | null
   image: string | null
   password: string | null
   role: $Enums.Role
@@ -218,6 +232,8 @@ export type UserWhereInput = {
   lastName?: Prisma.StringNullableFilter<"User"> | string | null
   email?: Prisma.StringNullableFilter<"User"> | string | null
   emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  verificationToken?: Prisma.StringNullableFilter<"User"> | string | null
+  verificationExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
@@ -227,6 +243,8 @@ export type UserWhereInput = {
   ratings?: Prisma.RatingListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   posts?: Prisma.PostListRelationFilter
+  linkUpsCreated?: Prisma.LinkUpListRelationFilter
+  linkUpRequests?: Prisma.LinkUpRequestListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -236,6 +254,8 @@ export type UserOrderByWithRelationInput = {
   lastName?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
+  verificationToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  verificationExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -245,6 +265,8 @@ export type UserOrderByWithRelationInput = {
   ratings?: Prisma.RatingOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   posts?: Prisma.PostOrderByRelationAggregateInput
+  linkUpsCreated?: Prisma.LinkUpOrderByRelationAggregateInput
+  linkUpRequests?: Prisma.LinkUpRequestOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -257,6 +279,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   firstName?: Prisma.StringNullableFilter<"User"> | string | null
   lastName?: Prisma.StringNullableFilter<"User"> | string | null
   emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  verificationToken?: Prisma.StringNullableFilter<"User"> | string | null
+  verificationExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
@@ -266,6 +290,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   ratings?: Prisma.RatingListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   posts?: Prisma.PostListRelationFilter
+  linkUpsCreated?: Prisma.LinkUpListRelationFilter
+  linkUpRequests?: Prisma.LinkUpRequestListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -275,6 +301,8 @@ export type UserOrderByWithAggregationInput = {
   lastName?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
+  verificationToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  verificationExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -294,6 +322,8 @@ export type UserScalarWhereWithAggregatesInput = {
   lastName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   emailVerified?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  verificationToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  verificationExpiry?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
@@ -307,6 +337,8 @@ export type UserCreateInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -316,6 +348,8 @@ export type UserCreateInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -325,6 +359,8 @@ export type UserUncheckedCreateInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -334,6 +370,8 @@ export type UserUncheckedCreateInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserUpdateInput = {
@@ -343,6 +381,8 @@ export type UserUpdateInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -352,6 +392,8 @@ export type UserUpdateInput = {
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -361,6 +403,8 @@ export type UserUncheckedUpdateInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -370,6 +414,8 @@ export type UserUncheckedUpdateInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -379,6 +425,8 @@ export type UserCreateManyInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -392,6 +440,8 @@ export type UserUpdateManyMutationInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -405,6 +455,8 @@ export type UserUncheckedUpdateManyInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -418,6 +470,8 @@ export type UserCountOrderByAggregateInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
+  verificationToken?: Prisma.SortOrder
+  verificationExpiry?: Prisma.SortOrder
   image?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -431,6 +485,8 @@ export type UserMaxOrderByAggregateInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
+  verificationToken?: Prisma.SortOrder
+  verificationExpiry?: Prisma.SortOrder
   image?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -444,6 +500,8 @@ export type UserMinOrderByAggregateInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
+  verificationToken?: Prisma.SortOrder
+  verificationExpiry?: Prisma.SortOrder
   image?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
@@ -545,6 +603,34 @@ export type UserUpdateOneRequiredWithoutPostsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostsInput, Prisma.UserUpdateWithoutPostsInput>, Prisma.UserUncheckedUpdateWithoutPostsInput>
 }
 
+export type UserCreateNestedOneWithoutLinkUpsCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLinkUpsCreatedInput, Prisma.UserUncheckedCreateWithoutLinkUpsCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLinkUpsCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLinkUpsCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLinkUpsCreatedInput, Prisma.UserUncheckedCreateWithoutLinkUpsCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLinkUpsCreatedInput
+  upsert?: Prisma.UserUpsertWithoutLinkUpsCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLinkUpsCreatedInput, Prisma.UserUpdateWithoutLinkUpsCreatedInput>, Prisma.UserUncheckedUpdateWithoutLinkUpsCreatedInput>
+}
+
+export type UserCreateNestedOneWithoutLinkUpRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLinkUpRequestsInput, Prisma.UserUncheckedCreateWithoutLinkUpRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLinkUpRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLinkUpRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLinkUpRequestsInput, Prisma.UserUncheckedCreateWithoutLinkUpRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLinkUpRequestsInput
+  upsert?: Prisma.UserUpsertWithoutLinkUpRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLinkUpRequestsInput, Prisma.UserUpdateWithoutLinkUpRequestsInput>, Prisma.UserUncheckedUpdateWithoutLinkUpRequestsInput>
+}
+
 export type UserCreateWithoutAccountsInput = {
   id?: string
   name?: string | null
@@ -552,6 +638,8 @@ export type UserCreateWithoutAccountsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -560,6 +648,8 @@ export type UserCreateWithoutAccountsInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -569,6 +659,8 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -577,6 +669,8 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -602,6 +696,8 @@ export type UserUpdateWithoutAccountsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -610,6 +706,8 @@ export type UserUpdateWithoutAccountsInput = {
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -619,6 +717,8 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -627,6 +727,8 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -636,6 +738,8 @@ export type UserCreateWithoutSessionsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -644,6 +748,8 @@ export type UserCreateWithoutSessionsInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -653,6 +759,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -661,6 +769,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -686,6 +796,8 @@ export type UserUpdateWithoutSessionsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -694,6 +806,8 @@ export type UserUpdateWithoutSessionsInput = {
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -703,6 +817,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -711,6 +827,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutRatingsInput = {
@@ -720,6 +838,8 @@ export type UserCreateWithoutRatingsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -728,6 +848,8 @@ export type UserCreateWithoutRatingsInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutRatingsInput = {
@@ -737,6 +859,8 @@ export type UserUncheckedCreateWithoutRatingsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -745,6 +869,8 @@ export type UserUncheckedCreateWithoutRatingsInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutRatingsInput = {
@@ -770,6 +896,8 @@ export type UserUpdateWithoutRatingsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -778,6 +906,8 @@ export type UserUpdateWithoutRatingsInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRatingsInput = {
@@ -787,6 +917,8 @@ export type UserUncheckedUpdateWithoutRatingsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -795,6 +927,8 @@ export type UserUncheckedUpdateWithoutRatingsInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -804,6 +938,8 @@ export type UserCreateWithoutCommentsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -812,6 +948,8 @@ export type UserCreateWithoutCommentsInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -821,6 +959,8 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -829,6 +969,8 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -854,6 +996,8 @@ export type UserUpdateWithoutCommentsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -862,6 +1006,8 @@ export type UserUpdateWithoutCommentsInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -871,6 +1017,8 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -879,6 +1027,8 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -888,6 +1038,8 @@ export type UserCreateWithoutPostsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -896,6 +1048,8 @@ export type UserCreateWithoutPostsInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -905,6 +1059,8 @@ export type UserUncheckedCreateWithoutPostsInput = {
   lastName?: string | null
   email?: string | null
   emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
@@ -913,6 +1069,8 @@ export type UserUncheckedCreateWithoutPostsInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -938,6 +1096,8 @@ export type UserUpdateWithoutPostsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -946,6 +1106,8 @@ export type UserUpdateWithoutPostsInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -955,6 +1117,8 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -963,6 +1127,208 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+}
+
+export type UserCreateWithoutLinkUpsCreatedInput = {
+  id?: string
+  name?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  email?: string | null
+  emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  createdAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+}
+
+export type UserUncheckedCreateWithoutLinkUpsCreatedInput = {
+  id?: string
+  name?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  email?: string | null
+  emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  createdAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+}
+
+export type UserCreateOrConnectWithoutLinkUpsCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLinkUpsCreatedInput, Prisma.UserUncheckedCreateWithoutLinkUpsCreatedInput>
+}
+
+export type UserUpsertWithoutLinkUpsCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLinkUpsCreatedInput, Prisma.UserUncheckedUpdateWithoutLinkUpsCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLinkUpsCreatedInput, Prisma.UserUncheckedCreateWithoutLinkUpsCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLinkUpsCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLinkUpsCreatedInput, Prisma.UserUncheckedUpdateWithoutLinkUpsCreatedInput>
+}
+
+export type UserUpdateWithoutLinkUpsCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLinkUpsCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+}
+
+export type UserCreateWithoutLinkUpRequestsInput = {
+  id?: string
+  name?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  email?: string | null
+  emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  createdAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+}
+
+export type UserUncheckedCreateWithoutLinkUpRequestsInput = {
+  id?: string
+  name?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  email?: string | null
+  emailVerified?: Date | string | null
+  verificationToken?: string | null
+  verificationExpiry?: Date | string | null
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  createdAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+}
+
+export type UserCreateOrConnectWithoutLinkUpRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLinkUpRequestsInput, Prisma.UserUncheckedCreateWithoutLinkUpRequestsInput>
+}
+
+export type UserUpsertWithoutLinkUpRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLinkUpRequestsInput, Prisma.UserUncheckedUpdateWithoutLinkUpRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLinkUpRequestsInput, Prisma.UserUncheckedCreateWithoutLinkUpRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLinkUpRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLinkUpRequestsInput, Prisma.UserUncheckedUpdateWithoutLinkUpRequestsInput>
+}
+
+export type UserUpdateWithoutLinkUpRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLinkUpRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
 }
 
 
@@ -976,6 +1342,8 @@ export type UserCountOutputType = {
   ratings: number
   comments: number
   posts: number
+  linkUpsCreated: number
+  linkUpRequests: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -984,6 +1352,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   ratings?: boolean | UserCountOutputTypeCountRatingsArgs
   comments?: boolean | UserCountOutputTypeCountCommentsArgs
   posts?: boolean | UserCountOutputTypeCountPostsArgs
+  linkUpsCreated?: boolean | UserCountOutputTypeCountLinkUpsCreatedArgs
+  linkUpRequests?: boolean | UserCountOutputTypeCountLinkUpRequestsArgs
 }
 
 /**
@@ -1031,6 +1401,20 @@ export type UserCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.PostWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLinkUpsCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LinkUpWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLinkUpRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LinkUpRequestWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1039,6 +1423,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
+  verificationToken?: boolean
+  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
@@ -1048,6 +1434,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   ratings?: boolean | Prisma.User$ratingsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  linkUpsCreated?: boolean | Prisma.User$linkUpsCreatedArgs<ExtArgs>
+  linkUpRequests?: boolean | Prisma.User$linkUpRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1058,6 +1446,8 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
+  verificationToken?: boolean
+  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
@@ -1071,6 +1461,8 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
+  verificationToken?: boolean
+  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
@@ -1084,19 +1476,23 @@ export type UserSelectScalar = {
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
+  verificationToken?: boolean
+  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
   createdAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "email" | "emailVerified" | "image" | "password" | "role" | "createdAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "email" | "emailVerified" | "verificationToken" | "verificationExpiry" | "image" | "password" | "role" | "createdAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   ratings?: boolean | Prisma.User$ratingsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  linkUpsCreated?: boolean | Prisma.User$linkUpsCreatedArgs<ExtArgs>
+  linkUpRequests?: boolean | Prisma.User$linkUpRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1110,6 +1506,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     ratings: Prisma.$RatingPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
     posts: Prisma.$PostPayload<ExtArgs>[]
+    linkUpsCreated: Prisma.$LinkUpPayload<ExtArgs>[]
+    linkUpRequests: Prisma.$LinkUpRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1118,6 +1516,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lastName: string | null
     email: string | null
     emailVerified: Date | null
+    verificationToken: string | null
+    verificationExpiry: Date | null
     image: string | null
     password: string | null
     role: $Enums.Role
@@ -1521,6 +1921,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   ratings<T extends Prisma.User$ratingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkUpsCreated<T extends Prisma.User$linkUpsCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$linkUpsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkUpRequests<T extends Prisma.User$linkUpRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$linkUpRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkUpRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1556,6 +1958,8 @@ export interface UserFieldRefs {
   readonly lastName: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly emailVerified: Prisma.FieldRef<"User", 'DateTime'>
+  readonly verificationToken: Prisma.FieldRef<"User", 'String'>
+  readonly verificationExpiry: Prisma.FieldRef<"User", 'DateTime'>
   readonly image: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
@@ -2070,6 +2474,54 @@ export type User$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.linkUpsCreated
+ */
+export type User$linkUpsCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LinkUp
+   */
+  select?: Prisma.LinkUpSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LinkUp
+   */
+  omit?: Prisma.LinkUpOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkUpInclude<ExtArgs> | null
+  where?: Prisma.LinkUpWhereInput
+  orderBy?: Prisma.LinkUpOrderByWithRelationInput | Prisma.LinkUpOrderByWithRelationInput[]
+  cursor?: Prisma.LinkUpWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkUpScalarFieldEnum | Prisma.LinkUpScalarFieldEnum[]
+}
+
+/**
+ * User.linkUpRequests
+ */
+export type User$linkUpRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LinkUpRequest
+   */
+  select?: Prisma.LinkUpRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LinkUpRequest
+   */
+  omit?: Prisma.LinkUpRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkUpRequestInclude<ExtArgs> | null
+  where?: Prisma.LinkUpRequestWhereInput
+  orderBy?: Prisma.LinkUpRequestOrderByWithRelationInput | Prisma.LinkUpRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LinkUpRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkUpRequestScalarFieldEnum | Prisma.LinkUpRequestScalarFieldEnum[]
 }
 
 /**

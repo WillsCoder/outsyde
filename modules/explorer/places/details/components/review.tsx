@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react'
 import { IconThumbUp, IconFlag } from '@tabler/icons-react'
 import { formatDistanceToNow } from 'date-fns'
 import { Avatar, ratingBars, StarRating, StarSelector } from '@/components/ui'
+import { containsUnsafeInput } from '@/lib/utils/text-validation'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -65,53 +66,59 @@ const ReviewSection = ({
 
   const handleSubmit = async () => {
     if (isEvent && body.trim().length < 10) {
-      setError('Comment must be at least 10 characters.')
-      return
+      setError("Comment must be at least 10 characters.");
+      return;
     }
     if (!isEvent && score === 0) {
-      setError('Please select a star rating.')
-      return
+      setError("Please select a star rating.");
+      return;
     }
     if (body.trim().length < 10) {
-      setError(`${isEvent ? 'Comment' : 'Review'} must be at least 10 characters.`)
-      return
+      setError(
+        `${isEvent ? "Comment" : "Review"} must be at least 10 characters.`,
+      );
+      return;
     }
 
-    setError('')
+    // Validate title
+    if (containsUnsafeInput(body)) {
+      setError("Comment contains invalid characters or HTML.");
+      return;
+    }
+
+    setError("");
     startTransition(async () => {
-      const res = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
-          isEvent
-            ? { eventId, body }
-            : { placeId, score, body }
+          isEvent ? { eventId, body } : { placeId, score, body },
         ),
-      })
+      });
 
       if (res.ok) {
-        setSuccess(true)
-        setScore(0)
-        setBody('')
+        setSuccess(true);
+        setScore(0);
+        setBody("");
       } else {
-        const data = await res.json()
-        setError(data.error ?? 'Something went wrong.')
+        const data = await res.json();
+        setError(data.error ?? "Something went wrong.");
       }
-    })
-  }
+    });
+  };
 
   return (
-    <div className="bg-white rounded-2xl p-6 flex flex-col gap-6">
+    <div className="bg-white rounded-2xl p-3 md:p-6 flex flex-col gap-6">
 
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="md:flex items-center justify-between">
         <h2 className="text-base font-semibold text-brand-night">
           {isEvent ? 'Comments' : 'Ratings & reviews'}
           <span className="ml-2 text-sm font-normal text-brand-night/40">
             ({isEvent ? comments.length : ratings.length})
           </span>
         </h2>
-        <div className="flex items-center gap-1 bg-brand-sand rounded-full p-1">
+        <div className="w-fit mt-1.5 md:mt-0 flex items-center gap-1 bg-brand-sand rounded-full p-1">
           {(['recent', 'top'] as SortKey[]).map(key => (
             <button
               key={key}

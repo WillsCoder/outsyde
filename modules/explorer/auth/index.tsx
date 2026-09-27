@@ -1,28 +1,90 @@
 "use client";
 
-import { useState, useActionState } from "react";
+import { useState, useActionState, useEffect, useTransition } from "react";
 import { signIn } from "next-auth/react";
-import { authenticate } from "@/app/(auth)/login/actions";
+import Link from "next/link";
+import Image from "next/image";
+import { authenticate, resendOTP, verifyOTP } from "@/app/(auth)/login/actions";
 import { AuthState } from "@/app/(auth)/login/actions";
+import OTPInput from "./components/otp-input";
 
 const LoginPageIndex = () => {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [showPassword, setShowPassword] = useState(false);
+  const [capturedPassword, setCapturedPassword] = useState("");
+
   const [state, formAction, isPending] = useActionState<AuthState, FormData>(
     authenticate,
     { error: null },
   );
 
+  const [otpState, otpAction, isOtpPending] = useActionState<
+    AuthState,
+    FormData
+  >(verifyOTP, { error: null, step: "otp" });
+
+  const [resendCooldown, setResendCooldown] = useState(0);
+  const [resendError, setResendError] = useState("");
+  const [resendSuccess, setResendSuccess] = useState("");
+  const [isResending, startResendTransition] = useTransition();
+
+  const email = state.email ?? otpState.email ?? "";
+  const password = state.password ?? capturedPassword;
+
+  // Cooldown timer
+  useEffect(() => {
+    if (resendCooldown <= 0) return;
+    const t = setTimeout(() => setResendCooldown((c) => c - 1), 1000);
+    return () => clearTimeout(t);
+  }, [resendCooldown]);
+
+  // Start cooldown immediately when OTP step is shown
+  useEffect(() => {
+    if (state.step === "otp") {
+      setResendCooldown(60);
+    }
+  }, [state.step]);
+
+  const handleResend = () => {
+    if (resendCooldown > 0 || isResending) return;
+    setResendError("");
+    setResendSuccess("");
+
+    startResendTransition(async () => {
+      const result = await resendOTP(email);
+      if (result.error) {
+        setResendError(result.error);
+      } else {
+        setResendSuccess("New code sent!");
+        setResendCooldown(60);
+        setTimeout(() => setResendSuccess(""), 3000);
+      }
+    });
+  };
+
+  const handleAuthSubmit = (formData: FormData) => {
+    setCapturedPassword(String(formData.get("password") || ""));
+    return formAction(formData);
+  };
+
+  const isOTPStep = state.step === "otp" || otpState.step === "otp";
+
   return (
     <div className="w-full max-w-md">
       {/* brand */}
       <div className="mb-8 text-center">
-        <a
-          href="/"
-          className="font-display text-3xl font-extrabold tracking-tight text-brand-night"
-        >
-          out<span className="text-brand-orange">syde</span>
-        </a>
+        <Link href="/" className="inline-flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="Outsyde Logo"
+            width={500}
+            height={500}
+            className="w-11 md:w-14"
+          />
+          <span className="font-display text-2xl font-black tracking-tight md:text-2xl">
+            <span className="text-brand-orange">ut</span>syde
+          </span>
+        </Link>
         <p className="mt-2 text-sm text-brand-night/60">
           {mode === "signin"
             ? "Welcome back. Let's go out."
@@ -67,88 +129,167 @@ const LoginPageIndex = () => {
           <span className="h-px flex-1 bg-brand-night/10" />
         </div>
 
-        {/* mode toggle */}
-        <div className="mb-6 grid grid-cols-2 rounded-full bg-brand-sand p-1">
-          {(["signin", "signup"] as const).map((m) => (
-            <button
-              key={m}
-              type="button"
-              onClick={() => setMode(m)}
-              className={`h-9 rounded-full text-sm font-semibold transition-colors ${
-                mode === m
-                  ? "bg-brand-night text-brand-sand"
-                  : "text-brand-night/60 hover:text-brand-night"
-              }`}
-            >
-              {m === "signin" ? "Sign in" : "Sign up"}
-            </button>
-          ))}
-        </div>
-
-        <form action={formAction} className="space-y-4">
-          <input type="hidden" name="mode" value={mode} />
-
-          {mode === "signup" && (
-            <div className="grid grid-cols-2 gap-3">
-              <input
-                name="firstName"
-                placeholder="First name"
-                required
-                className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
-              />
-              <input
-                name="lastName"
-                placeholder="Last name"
-                required
-                className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
-              />
+        {/* ── OTP step ── */}
+        {state.success ? (
+          <div className="flex flex-col gap-6">
+            <div className="text-center">
+              <div className="text-4xl mb-3">📬</div>
+              <h2 className="text-lg font-bold text-brand-night">
+                Check your inbox
+              </h2>
+              <p className="text-sm text-brand-night/60 mt-1">
+                We sent a 6-digit code to <strong>{email}</strong>
+              </p>
             </div>
-          )}
 
-          <input
-            name="email"
-            type="email"
-            placeholder="Email address"
-            required
-            className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
-          />
+            <form action={otpAction} className="flex flex-col gap-4">
+              <input type="hidden" name="email" value={email} />
+              <input type="hidden" name="password" value={password} />
 
-          <div className="relative">
-            <input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Password (min. 8 characters)"
-              required
-              minLength={8}
-              className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 pr-14 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
-            />
+              <OTPInput name="otp" />
+
+              {otpState.error && (
+                <p className="text-xs text-red-500 font-medium text-center">
+                  {otpState.error}
+                </p>
+              )}
+
+              {otpState.success && (
+                <p className="text-xs text-brand-lagoon font-medium text-center">
+                  {otpState.success}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isOtpPending}
+                className="h-12 w-full rounded-full bg-brand-orange text-sm font-bold text-brand-night transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {isOtpPending ? "Verifying…" : "Verify code"}
+              </button>
+            </form>
+
+            {/* Resend */}
+            <div className="text-center">
+              <p className="text-xs text-brand-night/40 mb-2">
+                Didn't get the code?
+              </p>
+              {resendError && (
+                <p className="text-xs text-red-500 mb-2">{resendError}</p>
+              )}
+              {resendSuccess && (
+                <p className="text-xs text-brand-lagoon mb-2">
+                  {resendSuccess}
+                </p>
+              )}
+              <button
+                onClick={handleResend}
+                disabled={resendCooldown > 0 || isResending}
+                className="text-sm font-medium text-brand-orange disabled:text-brand-night/30 transition-colors"
+              >
+                {isResending
+                  ? "Sending…"
+                  : resendCooldown > 0
+                    ? `Resend in ${resendCooldown}s`
+                    : "Resend code"}
+              </button>
+            </div>
+
+            {/* Back */}
             <button
               type="button"
-              onClick={() => setShowPassword((s) => !s)}
-              className="absolute right-5 top-1/2 -translate-y-1/2 text-xs font-semibold text-brand-night/50 hover:text-brand-orange"
+              onClick={() => window.location.reload()}
+              className="text-xs text-center text-brand-night/40 hover:text-brand-night transition-colors"
             >
-              {showPassword ? "Hide" : "Show"}
+              ← Back to sign in
             </button>
           </div>
+        ) : (
+          <>
+            {/* mode toggle */}
+            <div className="mb-6 grid grid-cols-2 rounded-full bg-brand-sand p-1">
+              {(["signin", "signup"] as const).map((m) => (
+                <button
+                  key={m}
+                  type="button"
+                  onClick={() => setMode(m)}
+                  className={`h-9 rounded-full text-sm font-semibold transition-colors ${
+                    mode === m
+                      ? "bg-brand-night text-brand-sand"
+                      : "text-brand-night/60 hover:text-brand-night"
+                  }`}
+                >
+                  {m === "signin" ? "Sign in" : "Sign up"}
+                </button>
+              ))}
+            </div>
 
-          {state.error && (
-            <p className="rounded-xl bg-brand-orange/10 px-4 py-3 text-center text-sm font-medium text-brand-orange">
-              {state.error}
-            </p>
-          )}
+            <form action={handleAuthSubmit} className="space-y-4">
+              <input type="hidden" name="mode" value={mode} />
 
-          <button
-            type="submit"
-            disabled={isPending}
-            className="h-12 w-full rounded-full bg-brand-orange text-sm font-bold text-brand-night transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
-          >
-            {isPending
-              ? "Loading..."
-              : mode === "signin"
-                ? "Sign in"
-                : "Create account"}
-          </button>
-        </form>
+              {mode === "signup" && (
+                <div className="grid grid-cols-2 gap-3">
+                  <input
+                    name="firstName"
+                    placeholder="First name"
+                    required
+                    className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+                  />
+                  <input
+                    name="lastName"
+                    placeholder="Last name"
+                    required
+                    className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+                  />
+                </div>
+              )}
+
+              <input
+                name="email"
+                type="email"
+                placeholder="Email address"
+                required
+                className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+              />
+
+              <div className="relative">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password (min. 8 characters)"
+                  required
+                  minLength={8}
+                  className="h-12 w-full rounded-full border border-brand-night/15 bg-white px-5 pr-14 text-sm text-brand-night outline-none transition placeholder:text-brand-night/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((s) => !s)}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-xs font-semibold text-brand-night/50 hover:text-brand-orange"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+
+              {state.error && (
+                <p className="rounded-xl bg-brand-orange/10 px-4 py-3 text-center text-sm font-medium text-brand-orange">
+                  {state.error}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isPending}
+                className="h-12 w-full rounded-full bg-brand-orange text-sm font-bold text-brand-night transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {isPending
+                  ? "Loading..."
+                  : mode === "signin"
+                    ? "Sign in"
+                    : "Create account"}
+              </button>
+            </form>
+          </>
+        )}
 
         <p className="mt-6 text-center text-xs text-brand-night/50">
           By continuing you agree to our{" "}
@@ -164,6 +305,6 @@ const LoginPageIndex = () => {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPageIndex;

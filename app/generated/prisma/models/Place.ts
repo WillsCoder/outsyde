@@ -310,6 +310,7 @@ export type PlaceWhereInput = {
   ratings?: Prisma.RatingListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   events?: Prisma.EventListRelationFilter
+  linkUps?: Prisma.LinkUpListRelationFilter
 }
 
 export type PlaceOrderByWithRelationInput = {
@@ -334,6 +335,7 @@ export type PlaceOrderByWithRelationInput = {
   ratings?: Prisma.RatingOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   events?: Prisma.EventOrderByRelationAggregateInput
+  linkUps?: Prisma.LinkUpOrderByRelationAggregateInput
 }
 
 export type PlaceWhereUniqueInput = Prisma.AtLeast<{
@@ -361,6 +363,7 @@ export type PlaceWhereUniqueInput = Prisma.AtLeast<{
   ratings?: Prisma.RatingListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   events?: Prisma.EventListRelationFilter
+  linkUps?: Prisma.LinkUpListRelationFilter
 }, "id" | "slug">
 
 export type PlaceOrderByWithAggregationInput = {
@@ -428,6 +431,7 @@ export type PlaceCreateInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateInput = {
@@ -451,6 +455,7 @@ export type PlaceUncheckedCreateInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUpdateInput = {
@@ -474,6 +479,7 @@ export type PlaceUpdateInput = {
   ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateInput = {
@@ -497,6 +503,7 @@ export type PlaceUncheckedUpdateInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceCreateManyInput = {
@@ -646,14 +653,6 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
@@ -774,6 +773,22 @@ export type PlaceUpdateOneWithoutCommentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PlaceUpdateToOneWithWhereWithoutCommentsInput, Prisma.PlaceUpdateWithoutCommentsInput>, Prisma.PlaceUncheckedUpdateWithoutCommentsInput>
 }
 
+export type PlaceCreateNestedOneWithoutLinkUpsInput = {
+  create?: Prisma.XOR<Prisma.PlaceCreateWithoutLinkUpsInput, Prisma.PlaceUncheckedCreateWithoutLinkUpsInput>
+  connectOrCreate?: Prisma.PlaceCreateOrConnectWithoutLinkUpsInput
+  connect?: Prisma.PlaceWhereUniqueInput
+}
+
+export type PlaceUpdateOneWithoutLinkUpsNestedInput = {
+  create?: Prisma.XOR<Prisma.PlaceCreateWithoutLinkUpsInput, Prisma.PlaceUncheckedCreateWithoutLinkUpsInput>
+  connectOrCreate?: Prisma.PlaceCreateOrConnectWithoutLinkUpsInput
+  upsert?: Prisma.PlaceUpsertWithoutLinkUpsInput
+  disconnect?: Prisma.PlaceWhereInput | boolean
+  delete?: Prisma.PlaceWhereInput | boolean
+  connect?: Prisma.PlaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PlaceUpdateToOneWithWhereWithoutLinkUpsInput, Prisma.PlaceUpdateWithoutLinkUpsInput>, Prisma.PlaceUncheckedUpdateWithoutLinkUpsInput>
+}
+
 export type PlaceCreateWithoutCategoryInput = {
   id?: string
   name: string
@@ -794,6 +809,7 @@ export type PlaceCreateWithoutCategoryInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateWithoutCategoryInput = {
@@ -816,6 +832,7 @@ export type PlaceUncheckedCreateWithoutCategoryInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceCreateOrConnectWithoutCategoryInput = {
@@ -885,6 +902,7 @@ export type PlaceCreateWithoutImagesInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateWithoutImagesInput = {
@@ -907,6 +925,7 @@ export type PlaceUncheckedCreateWithoutImagesInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceCreateOrConnectWithoutImagesInput = {
@@ -945,6 +964,7 @@ export type PlaceUpdateWithoutImagesInput = {
   ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateWithoutImagesInput = {
@@ -967,6 +987,7 @@ export type PlaceUncheckedUpdateWithoutImagesInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceCreateWithoutMenuItemsInput = {
@@ -989,6 +1010,7 @@ export type PlaceCreateWithoutMenuItemsInput = {
   ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateWithoutMenuItemsInput = {
@@ -1011,6 +1033,7 @@ export type PlaceUncheckedCreateWithoutMenuItemsInput = {
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceCreateOrConnectWithoutMenuItemsInput = {
@@ -1049,6 +1072,7 @@ export type PlaceUpdateWithoutMenuItemsInput = {
   ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateWithoutMenuItemsInput = {
@@ -1071,6 +1095,7 @@ export type PlaceUncheckedUpdateWithoutMenuItemsInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceCreateWithoutEventsInput = {
@@ -1093,6 +1118,7 @@ export type PlaceCreateWithoutEventsInput = {
   menuItems?: Prisma.MenuItemCreateNestedManyWithoutPlaceInput
   ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateWithoutEventsInput = {
@@ -1115,6 +1141,7 @@ export type PlaceUncheckedCreateWithoutEventsInput = {
   menuItems?: Prisma.MenuItemUncheckedCreateNestedManyWithoutPlaceInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceCreateOrConnectWithoutEventsInput = {
@@ -1153,6 +1180,7 @@ export type PlaceUpdateWithoutEventsInput = {
   menuItems?: Prisma.MenuItemUpdateManyWithoutPlaceNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateWithoutEventsInput = {
@@ -1175,6 +1203,7 @@ export type PlaceUncheckedUpdateWithoutEventsInput = {
   menuItems?: Prisma.MenuItemUncheckedUpdateManyWithoutPlaceNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceCreateWithoutRatingsInput = {
@@ -1197,6 +1226,7 @@ export type PlaceCreateWithoutRatingsInput = {
   menuItems?: Prisma.MenuItemCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateWithoutRatingsInput = {
@@ -1219,6 +1249,7 @@ export type PlaceUncheckedCreateWithoutRatingsInput = {
   menuItems?: Prisma.MenuItemUncheckedCreateNestedManyWithoutPlaceInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceCreateOrConnectWithoutRatingsInput = {
@@ -1257,6 +1288,7 @@ export type PlaceUpdateWithoutRatingsInput = {
   menuItems?: Prisma.MenuItemUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateWithoutRatingsInput = {
@@ -1279,6 +1311,7 @@ export type PlaceUncheckedUpdateWithoutRatingsInput = {
   menuItems?: Prisma.MenuItemUncheckedUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceCreateWithoutCommentsInput = {
@@ -1301,6 +1334,7 @@ export type PlaceCreateWithoutCommentsInput = {
   menuItems?: Prisma.MenuItemCreateNestedManyWithoutPlaceInput
   ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceUncheckedCreateWithoutCommentsInput = {
@@ -1323,6 +1357,7 @@ export type PlaceUncheckedCreateWithoutCommentsInput = {
   menuItems?: Prisma.MenuItemUncheckedCreateNestedManyWithoutPlaceInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
   events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+  linkUps?: Prisma.LinkUpUncheckedCreateNestedManyWithoutPlaceInput
 }
 
 export type PlaceCreateOrConnectWithoutCommentsInput = {
@@ -1361,6 +1396,7 @@ export type PlaceUpdateWithoutCommentsInput = {
   menuItems?: Prisma.MenuItemUpdateManyWithoutPlaceNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateWithoutCommentsInput = {
@@ -1382,6 +1418,115 @@ export type PlaceUncheckedUpdateWithoutCommentsInput = {
   images?: Prisma.PlaceImageUncheckedUpdateManyWithoutPlaceNestedInput
   menuItems?: Prisma.MenuItemUncheckedUpdateManyWithoutPlaceNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
+}
+
+export type PlaceCreateWithoutLinkUpsInput = {
+  id?: string
+  name: string
+  slug: string
+  description: string
+  address: string
+  city?: string
+  lat: number
+  lng: number
+  costLevel?: number
+  view360Url?: string | null
+  isPublished?: boolean
+  isFeatured?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  category: Prisma.CategoryCreateNestedOneWithoutPlacesInput
+  images?: Prisma.PlaceImageCreateNestedManyWithoutPlaceInput
+  menuItems?: Prisma.MenuItemCreateNestedManyWithoutPlaceInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutPlaceInput
+  comments?: Prisma.CommentCreateNestedManyWithoutPlaceInput
+  events?: Prisma.EventCreateNestedManyWithoutPlaceInput
+}
+
+export type PlaceUncheckedCreateWithoutLinkUpsInput = {
+  id?: string
+  name: string
+  slug: string
+  description: string
+  categoryId: string
+  address: string
+  city?: string
+  lat: number
+  lng: number
+  costLevel?: number
+  view360Url?: string | null
+  isPublished?: boolean
+  isFeatured?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  images?: Prisma.PlaceImageUncheckedCreateNestedManyWithoutPlaceInput
+  menuItems?: Prisma.MenuItemUncheckedCreateNestedManyWithoutPlaceInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutPlaceInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPlaceInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutPlaceInput
+}
+
+export type PlaceCreateOrConnectWithoutLinkUpsInput = {
+  where: Prisma.PlaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.PlaceCreateWithoutLinkUpsInput, Prisma.PlaceUncheckedCreateWithoutLinkUpsInput>
+}
+
+export type PlaceUpsertWithoutLinkUpsInput = {
+  update: Prisma.XOR<Prisma.PlaceUpdateWithoutLinkUpsInput, Prisma.PlaceUncheckedUpdateWithoutLinkUpsInput>
+  create: Prisma.XOR<Prisma.PlaceCreateWithoutLinkUpsInput, Prisma.PlaceUncheckedCreateWithoutLinkUpsInput>
+  where?: Prisma.PlaceWhereInput
+}
+
+export type PlaceUpdateToOneWithWhereWithoutLinkUpsInput = {
+  where?: Prisma.PlaceWhereInput
+  data: Prisma.XOR<Prisma.PlaceUpdateWithoutLinkUpsInput, Prisma.PlaceUncheckedUpdateWithoutLinkUpsInput>
+}
+
+export type PlaceUpdateWithoutLinkUpsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.FloatFieldUpdateOperationsInput | number
+  lng?: Prisma.FloatFieldUpdateOperationsInput | number
+  costLevel?: Prisma.IntFieldUpdateOperationsInput | number
+  view360Url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneRequiredWithoutPlacesNestedInput
+  images?: Prisma.PlaceImageUpdateManyWithoutPlaceNestedInput
+  menuItems?: Prisma.MenuItemUpdateManyWithoutPlaceNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
+  events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+}
+
+export type PlaceUncheckedUpdateWithoutLinkUpsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  lat?: Prisma.FloatFieldUpdateOperationsInput | number
+  lng?: Prisma.FloatFieldUpdateOperationsInput | number
+  costLevel?: Prisma.IntFieldUpdateOperationsInput | number
+  view360Url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  images?: Prisma.PlaceImageUncheckedUpdateManyWithoutPlaceNestedInput
+  menuItems?: Prisma.MenuItemUncheckedUpdateManyWithoutPlaceNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
@@ -1422,6 +1567,7 @@ export type PlaceUpdateWithoutCategoryInput = {
   ratings?: Prisma.RatingUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateWithoutCategoryInput = {
@@ -1444,6 +1590,7 @@ export type PlaceUncheckedUpdateWithoutCategoryInput = {
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutPlaceNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPlaceNestedInput
   events?: Prisma.EventUncheckedUpdateManyWithoutPlaceNestedInput
+  linkUps?: Prisma.LinkUpUncheckedUpdateManyWithoutPlaceNestedInput
 }
 
 export type PlaceUncheckedUpdateManyWithoutCategoryInput = {
@@ -1474,6 +1621,7 @@ export type PlaceCountOutputType = {
   ratings: number
   comments: number
   events: number
+  linkUps: number
 }
 
 export type PlaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1482,6 +1630,7 @@ export type PlaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   ratings?: boolean | PlaceCountOutputTypeCountRatingsArgs
   comments?: boolean | PlaceCountOutputTypeCountCommentsArgs
   events?: boolean | PlaceCountOutputTypeCountEventsArgs
+  linkUps?: boolean | PlaceCountOutputTypeCountLinkUpsArgs
 }
 
 /**
@@ -1529,6 +1678,13 @@ export type PlaceCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.EventWhereInput
 }
 
+/**
+ * PlaceCountOutputType without action
+ */
+export type PlaceCountOutputTypeCountLinkUpsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LinkUpWhereInput
+}
+
 
 export type PlaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1552,6 +1708,7 @@ export type PlaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   ratings?: boolean | Prisma.Place$ratingsArgs<ExtArgs>
   comments?: boolean | Prisma.Place$commentsArgs<ExtArgs>
   events?: boolean | Prisma.Place$eventsArgs<ExtArgs>
+  linkUps?: boolean | Prisma.Place$linkUpsArgs<ExtArgs>
   _count?: boolean | Prisma.PlaceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["place"]>
 
@@ -1619,6 +1776,7 @@ export type PlaceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   ratings?: boolean | Prisma.Place$ratingsArgs<ExtArgs>
   comments?: boolean | Prisma.Place$commentsArgs<ExtArgs>
   events?: boolean | Prisma.Place$eventsArgs<ExtArgs>
+  linkUps?: boolean | Prisma.Place$linkUpsArgs<ExtArgs>
   _count?: boolean | Prisma.PlaceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PlaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1637,6 +1795,7 @@ export type $PlacePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     ratings: Prisma.$RatingPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
     events: Prisma.$EventPayload<ExtArgs>[]
+    linkUps: Prisma.$LinkUpPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2054,6 +2213,7 @@ export interface Prisma__PlaceClient<T, Null = never, ExtArgs extends runtime.Ty
   ratings<T extends Prisma.Place$ratingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Place$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Place$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Place$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   events<T extends Prisma.Place$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Place$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkUps<T extends Prisma.Place$linkUpsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Place$linkUpsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2616,6 +2776,30 @@ export type Place$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
+}
+
+/**
+ * Place.linkUps
+ */
+export type Place$linkUpsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LinkUp
+   */
+  select?: Prisma.LinkUpSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LinkUp
+   */
+  omit?: Prisma.LinkUpOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkUpInclude<ExtArgs> | null
+  where?: Prisma.LinkUpWhereInput
+  orderBy?: Prisma.LinkUpOrderByWithRelationInput | Prisma.LinkUpOrderByWithRelationInput[]
+  cursor?: Prisma.LinkUpWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkUpScalarFieldEnum | Prisma.LinkUpScalarFieldEnum[]
 }
 
 /**

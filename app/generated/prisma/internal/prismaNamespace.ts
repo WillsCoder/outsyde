@@ -410,7 +410,9 @@ export const ModelName = {
   Comment: 'Comment',
   WaitlistEntry: 'WaitlistEntry',
   Post: 'Post',
-  PostTag: 'PostTag'
+  PostTag: 'PostTag',
+  LinkUp: 'LinkUp',
+  LinkUpRequest: 'LinkUpRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +428,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "place" | "category" | "placeImage" | "menuItem" | "event" | "rating" | "comment" | "waitlistEntry" | "post" | "postTag"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "place" | "category" | "placeImage" | "menuItem" | "event" | "rating" | "comment" | "waitlistEntry" | "post" | "postTag" | "linkUp" | "linkUpRequest"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1466,6 +1468,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    LinkUp: {
+      payload: Prisma.$LinkUpPayload<ExtArgs>
+      fields: Prisma.LinkUpFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LinkUpFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LinkUpFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>
+        }
+        findFirst: {
+          args: Prisma.LinkUpFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LinkUpFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>
+        }
+        findMany: {
+          args: Prisma.LinkUpFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>[]
+        }
+        create: {
+          args: Prisma.LinkUpCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>
+        }
+        createMany: {
+          args: Prisma.LinkUpCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LinkUpCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>[]
+        }
+        delete: {
+          args: Prisma.LinkUpDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>
+        }
+        update: {
+          args: Prisma.LinkUpUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>
+        }
+        deleteMany: {
+          args: Prisma.LinkUpDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LinkUpUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LinkUpUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>[]
+        }
+        upsert: {
+          args: Prisma.LinkUpUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkUpAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkUp>
+        }
+        groupBy: {
+          args: Prisma.LinkUpGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkUpGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LinkUpCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkUpCountAggregateOutputType> | number
+        }
+      }
+    }
+    LinkUpRequest: {
+      payload: Prisma.$LinkUpRequestPayload<ExtArgs>
+      fields: Prisma.LinkUpRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LinkUpRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LinkUpRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.LinkUpRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LinkUpRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>
+        }
+        findMany: {
+          args: Prisma.LinkUpRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>[]
+        }
+        create: {
+          args: Prisma.LinkUpRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>
+        }
+        createMany: {
+          args: Prisma.LinkUpRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LinkUpRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.LinkUpRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>
+        }
+        update: {
+          args: Prisma.LinkUpRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.LinkUpRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LinkUpRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LinkUpRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.LinkUpRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LinkUpRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkUpRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkUpRequest>
+        }
+        groupBy: {
+          args: Prisma.LinkUpRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkUpRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LinkUpRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkUpRequestCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1512,6 +1662,8 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   email: 'email',
   emailVerified: 'emailVerified',
+  verificationToken: 'verificationToken',
+  verificationExpiry: 'verificationExpiry',
   image: 'image',
   password: 'password',
   role: 'role',
@@ -1550,9 +1702,12 @@ export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeo
 
 
 export const VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
+  id: 'id',
+  otp: 'otp',
+  email: 'email',
+  expiresAt: 'expiresAt',
+  attempts: 'attempts',
+  createdAt: 'createdAt'
 } as const
 
 export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
@@ -1698,6 +1853,36 @@ export const PostTagScalarFieldEnum = {
 } as const
 
 export type PostTagScalarFieldEnum = (typeof PostTagScalarFieldEnum)[keyof typeof PostTagScalarFieldEnum]
+
+
+export const LinkUpScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  date: 'date',
+  maxSize: 'maxSize',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  creatorId: 'creatorId',
+  placeId: 'placeId',
+  eventId: 'eventId'
+} as const
+
+export type LinkUpScalarFieldEnum = (typeof LinkUpScalarFieldEnum)[keyof typeof LinkUpScalarFieldEnum]
+
+
+export const LinkUpRequestScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  linkUpId: 'linkUpId',
+  senderId: 'senderId'
+} as const
+
+export type LinkUpRequestScalarFieldEnum = (typeof LinkUpRequestScalarFieldEnum)[keyof typeof LinkUpRequestScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1846,6 +2031,34 @@ export type EnumPostCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
  * Reference to a field of type 'PostCategory[]'
  */
 export type ListEnumPostCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LinkUpStatus'
+ */
+export type EnumLinkUpStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkUpStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'LinkUpStatus[]'
+ */
+export type ListEnumLinkUpStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkUpStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LinkUpRequestStatus'
+ */
+export type EnumLinkUpRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkUpRequestStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'LinkUpRequestStatus[]'
+ */
+export type ListEnumLinkUpRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkUpRequestStatus[]'>
     
 
 /**
@@ -2013,6 +2226,8 @@ export type GlobalOmitConfig = {
   waitlistEntry?: Prisma.WaitlistEntryOmit
   post?: Prisma.PostOmit
   postTag?: Prisma.PostTagOmit
+  linkUp?: Prisma.LinkUpOmit
+  linkUpRequest?: Prisma.LinkUpRequestOmit
 }
 
 /* Types for Logging */

@@ -14,7 +14,7 @@ export default function PlaceMap({
   const src = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${lat},${lng}&zoom=16`;
 
   return (
-    <div className="bg-white rounded-2xl p-5">
+    <div className="bg-white rounded-2xl p-3 md:p-5">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-base font-semibold text-brand-night">Location</h2>
         <a
@@ -38,7 +38,7 @@ export default function PlaceMap({
       <p className="text-sm text-brand-night/60 mt-3 flex items-start gap-1.5">
         <IconMapPin
           size={14}
-          className="text-brand-orange flex-shrink-0 mt-0.5"
+          className="text-brand-orange shrink-0 mt-0.5"
         />
         <span>
           {address} · {name}

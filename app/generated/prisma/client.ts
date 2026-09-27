@@ -111,3 +111,13 @@ export type Post = Prisma.PostModel
  * 
  */
 export type PostTag = Prisma.PostTagModel
+/**
+ * Model LinkUp
+ * 
+ */
+export type LinkUp = Prisma.LinkUpModel
+/**
+ * Model LinkUpRequest
+ * 
+ */
+export type LinkUpRequest = Prisma.LinkUpRequestModel

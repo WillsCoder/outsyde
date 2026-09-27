@@ -1,5 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib/prisma";
+import { EventDetail } from "@/lib/const/types/event";
 import HeroSection from "./hero-section";
 import PlacesCategory from "./category";
 import TopEvents from "./top-events";
@@ -7,7 +8,7 @@ import HowItWork from "./how-it-works";
 import SocialProof from "./social-proof";
 import Waitlist from "./waitlist";
 import BlogPreview from "./blog-preview";
-import { EventDetail } from "@/lib/const/types/event";
+import LinkUpSection from "./link-up";
 
 const HomeComponents = async () => {
   const places = await prisma.place.findMany({
@@ -44,6 +45,7 @@ const HomeComponents = async () => {
       <PlacesCategory categories={categories} />
       <TopEvents />
       <HowItWork />
+      <LinkUpSection/>
       <SocialProof />
       <Waitlist />
       <BlogPreview />

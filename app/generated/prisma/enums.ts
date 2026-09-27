@@ -50,3 +50,21 @@ export const PostCategory = {
 } as const
 
 export type PostCategory = (typeof PostCategory)[keyof typeof PostCategory]
+
+
+export const LinkUpStatus = {
+  OPEN: 'OPEN',
+  CLOSED: 'CLOSED',
+  FULL: 'FULL'
+} as const
+
+export type LinkUpStatus = (typeof LinkUpStatus)[keyof typeof LinkUpStatus]
+
+
+export const LinkUpRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+} as const
+
+export type LinkUpRequestStatus = (typeof LinkUpRequestStatus)[keyof typeof LinkUpRequestStatus]
