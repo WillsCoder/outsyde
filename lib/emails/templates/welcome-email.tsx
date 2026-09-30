@@ -61,7 +61,7 @@ export const WelcomeEmail = ({ name }: Props) => (
               Lagos
             </Text>
             <Text style={listItem}>
-              🎵 <strong>Events</strong> — Find what'&apos;s happening this
+              🎵 <strong>Events</strong> — Find what&apos;s happening this
               weekend
             </Text>
             <Text style={listItem}>

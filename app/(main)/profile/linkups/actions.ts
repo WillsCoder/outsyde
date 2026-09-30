@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
+import { LinkUpStatus } from "@/app/generated/prisma/enums";
 
 export type LinkUpActionState = {
   error: string | null;
@@ -54,7 +55,7 @@ export async function updateLinkUp(
       date: new Date(date),
       maxSize,
       shareSocials,
-      status: status as any,
+      status: status as LinkUpStatus,
     },
   });
 

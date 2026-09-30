@@ -59,7 +59,7 @@ export const LinkUpDeclinedEmail = ({
           <Text style={text}>
             Unfortunately your request to join{" "}
             <strong>&rdquo;{linkUpTitle}&rdquo;</strong> at {locationName}{" "}
-            wasn't accepted this time.
+            wasn&apos;t accepted this time.
           </Text>
           <Text style={text}>
             Don&apos;t worry — there are plenty more Link Ups to join in Lagos.
