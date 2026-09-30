@@ -14,25 +14,56 @@ datasource db {
 // ─────────────────────────────────────────────
 
 model User {
-  id                 String    @id @default(cuid())
-  name               String?
-  firstName          String?
-  lastName           String?
-  email              String?   @unique
-  emailVerified      DateTime?
-  verificationToken  String?
-  verificationExpiry DateTime?
-  image              String?
-  password           String?   // credentials users only — null for Google users
-  role               Role      @default(USER)
-  accounts           Account[]
-  sessions           Session[]
-  ratings            Rating[]
-  comments           Comment[]
-  createdAt          DateTime  @default(now())
-  posts              Post[]
-  linkUpsCreated     LinkUp[]        @relation("LinkUpCreator")
-  linkUpRequests     LinkUpRequest[] @relation("LinkUpRequestSender")
+  id              String    @id @default(cuid())
+  name            String?
+  firstName       String?
+  lastName        String?
+  email           String    @unique
+  emailVerified   DateTime?
+  image           String?
+  password        String?
+  role            Role      @default(USER)
+
+  // Profile
+  bio             String?
+  username        String?   @unique
+  phone           String?
+  dateOfBirth     DateTime?
+  gender          Gender?
+  city            String?
+  neighborhood    String?   // e.g. "Lekki Phase 1"
+
+  // Socials
+  instagramUrl    String?
+  tiktokUrl       String?
+  xUrl            String?
+  snapchatUrl     String?
+
+  // Preferences
+  isProfilePublic Boolean   @default(true)
+  notifyLinkUps   Boolean   @default(true)
+  notifyEvents    Boolean   @default(true)
+  notifyReviews   Boolean   @default(false)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now()) @updatedAt
+
+  // Relations
+  accounts        Account[]
+  sessions        Session[]
+  ratings         Rating[]
+  comments        Comment[]
+  posts           Post[]
+  linkUpsCreated  LinkUp[]        @relation("LinkUpCreator")
+  linkUpRequests  LinkUpRequest[] @relation("LinkUpRequestSender")
+  savedPlaces     SavedPlace[]
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  NON_BINARY
+  PREFER_NOT_TO_SAY
 }
 
 enum Role {
@@ -107,7 +138,8 @@ model Place {
   ratings     Rating[]
   comments    Comment[]
   events      Event[]
-  linkUps      LinkUp[]
+  linkUps     LinkUp[]
+  savedBy     SavedPlace[]
 }
 
 model Category {
@@ -287,37 +319,55 @@ enum LinkUpRequestStatus {
 // ─────────────────────────────────────────────
 
 model LinkUp {
-  id          String        @id @default(cuid())
-  title       String        // e.g. "Looking for people to vibe with"
-  description String?       // optional note
-  date        DateTime      // when they're going
-  maxSize     Int           @default(5) // max group size including creator
-  status      LinkUpStatus  @default(OPEN)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id           String        @id @default(cuid())
+  title        String        // e.g. "Looking for people to vibe with"
+  description  String?       // optional note
+  date         DateTime      // when they're going
+  maxSize      Int           @default(5) // max group size including creator
+  status       LinkUpStatus  @default(OPEN)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
-  creatorId   String
-  creator     User          @relation("LinkUpCreator", fields: [creatorId], references: [id])
+  creatorId    String
+  creator      User          @relation("LinkUpCreator", fields: [creatorId], references: [id])
 
-  placeId     String?
-  place       Place?        @relation(fields: [placeId], references: [id])
+  placeId      String?
+  place        Place?        @relation(fields: [placeId], references: [id])
 
-  eventId     String?
-  event       Event?        @relation(fields: [eventId], references: [id])
+  eventId      String?
+  event        Event?        @relation(fields: [eventId], references: [id])
 
-  requests    LinkUpRequest[]
+  requests     LinkUpRequest[]
+  shareSocials Boolean  @default(false) // creator shares their socials
 }
 
 model LinkUpRequest {
-  id        String               @id @default(cuid())
-  message   String?              // optional message from requester
-  status    LinkUpRequestStatus  @default(PENDING)
-  createdAt DateTime             @default(now())
-  updatedAt DateTime             @updatedAt
+  id            String               @id @default(cuid())
+  message       String?              // optional message from requester
+  status        LinkUpRequestStatus  @default(PENDING)
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
 
-  linkUpId  String
-  linkUp    LinkUp  @relation(fields: [linkUpId], references: [id], onDelete: Cascade)
+  linkUpId      String
+  linkUp        LinkUp  @relation(fields: [linkUpId], references: [id], onDelete: Cascade)
 
-  senderId  String
-  sender    User    @relation("LinkUpRequestSender", fields: [senderId], references: [id])
+  senderId      String
+  sender        User    @relation("LinkUpRequestSender", fields: [senderId], references: [id])
+  shareSocials  Boolean  @default(false) // requester shares their socials
+}
+
+model SavedPlace {
+  id String @id @default(cuid())
+
+  userId  String
+  placeId String
+
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, placeId])
+  @@index([userId])
+  @@index([placeId])
 }

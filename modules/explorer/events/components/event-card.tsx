@@ -73,7 +73,7 @@ const EventCard = ({ event, pattern }: EventCardProps) => {
         </div>
       </div>
 
-      <div className="p-4">
+      <div className="p-2.5 md:p-4">
         <h3 className="line-clamp-1 font-display text-base font-bold text-brand-night">
           {event.title}
         </h3>

@@ -41,8 +41,8 @@ const LinkUpSection = ({ linkUps: initial, placeId, eventId }: Props) => {
     <div className="bg-white rounded-2xl p-3 md:p-6 flex flex-col gap-5">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
-          <div className="flex items-center justify-between">
+        <div className="w-full">
+          <div className="w-full flex items-center justify-between">
             <h2 className="text-base font-semibold text-brand-night flex items-center gap-2">
               <IconUsers size={16} className="text-brand-orange" />
               Link Ups

@@ -37,7 +37,7 @@ const AuthUserDropdown = ({ open }: Props) => {
       group: "My stuff",
       items: [
         { label: "My Profile", icon: IconUser, href: "/profile" },
-        { label: "Saved Places", icon: IconHeart, href: "/profile/saved" },
+        { label: "Saved Places", icon: IconHeart, href: "/profile/saved-places" },
         { label: "My Link Ups", icon: IconUsers, href: "/profile/linkups" },
         // { label: "My Reviews", icon: IconMapPin, href: "/profile/reviews" },
         // {

@@ -66,7 +66,8 @@ export const ModelName = {
   Post: 'Post',
   PostTag: 'PostTag',
   LinkUp: 'LinkUp',
-  LinkUpRequest: 'LinkUpRequest'
+  LinkUpRequest: 'LinkUpRequest',
+  SavedPlace: 'SavedPlace'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -92,12 +93,26 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   email: 'email',
   emailVerified: 'emailVerified',
-  verificationToken: 'verificationToken',
-  verificationExpiry: 'verificationExpiry',
   image: 'image',
   password: 'password',
   role: 'role',
-  createdAt: 'createdAt'
+  bio: 'bio',
+  username: 'username',
+  phone: 'phone',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  city: 'city',
+  neighborhood: 'neighborhood',
+  instagramUrl: 'instagramUrl',
+  tiktokUrl: 'tiktokUrl',
+  xUrl: 'xUrl',
+  snapchatUrl: 'snapchatUrl',
+  isProfilePublic: 'isProfilePublic',
+  notifyLinkUps: 'notifyLinkUps',
+  notifyEvents: 'notifyEvents',
+  notifyReviews: 'notifyReviews',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -296,7 +311,8 @@ export const LinkUpScalarFieldEnum = {
   updatedAt: 'updatedAt',
   creatorId: 'creatorId',
   placeId: 'placeId',
-  eventId: 'eventId'
+  eventId: 'eventId',
+  shareSocials: 'shareSocials'
 } as const
 
 export type LinkUpScalarFieldEnum = (typeof LinkUpScalarFieldEnum)[keyof typeof LinkUpScalarFieldEnum]
@@ -309,10 +325,21 @@ export const LinkUpRequestScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   linkUpId: 'linkUpId',
-  senderId: 'senderId'
+  senderId: 'senderId',
+  shareSocials: 'shareSocials'
 } as const
 
 export type LinkUpRequestScalarFieldEnum = (typeof LinkUpRequestScalarFieldEnum)[keyof typeof LinkUpRequestScalarFieldEnum]
+
+
+export const SavedPlaceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  placeId: 'placeId',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedPlaceScalarFieldEnum = (typeof SavedPlaceScalarFieldEnum)[keyof typeof SavedPlaceScalarFieldEnum]
 
 
 export const SortOrder = {

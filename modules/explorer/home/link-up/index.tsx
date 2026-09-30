@@ -3,7 +3,6 @@ import { formatDistanceToNow } from "date-fns";
 import { Tag } from "@/components/ui";
 import {
   IconMapPin,
-  IconUsers,
   IconArrowRight,
   IconPlus,
 } from "@tabler/icons-react";
@@ -16,7 +15,7 @@ const LinkUpSection = () => {
   const openCount = 12;
 
   return (
-    <section className="section relative">
+    <section className="section relative overflow-hidden">
       {/* Ambient blob */}
       <div className="absolute inset-0 z-0 bg-brand-orange/10 rounded-br-full lg:w-7/12 aspect-square" />
       <div className="absolute right-0 bottom-0 z-10 bg-brand-gold/10 rounded-tl-full lg:w-9/12 aspect-square" />

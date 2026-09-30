@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  NON_BINARY: 'NON_BINARY',
+  PREFER_NOT_TO_SAY: 'PREFER_NOT_TO_SAY'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
+
+
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN'

@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import { signIn } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { sendOTPEmail, generateOTP } from "@/lib/email";
+import { sendWelcomeEmail } from "@/lib/emails";
 
 export type AuthState = {
   error: string | null;
@@ -140,6 +141,7 @@ export async function verifyOTP(
     .trim();
   const otp = String(formData.get("otp") || "").trim();
   const password = String(formData.get("password") || "");
+   const firstName = String(formData.get("firstName") || "");
 
   if (!otp || otp.length !== 6 || !/^\d+$/.test(otp)) {
     return { error: "Enter a valid 6-digit code.", step: "otp", email };
@@ -195,6 +197,8 @@ export async function verifyOTP(
   });
 
   await prisma.verificationToken.delete({ where: { id: record.id } });
+
+  await sendWelcomeEmail(email, `${firstName}`);
 
   // Auto sign in after verification
   try {

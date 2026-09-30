@@ -1,9 +1,11 @@
 export const Avatar = ({
   name,
   image,
+  className
 }: {
   name: string | null;
   image: string | null;
+  className?: string
 }) => {
   const initials = name?.charAt(0).toUpperCase() ?? "?";
   const colors = [
@@ -19,13 +21,13 @@ export const Avatar = ({
       <img
         src={image}
         alt={name ?? ""}
-        className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+        className={`w-8 h-8 rounded-full object-cover shrink-0 ${className}`}
       />
     );
   }
   return (
     <div
-      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white flex-shrink-0 ${color}`}
+      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white shrink-0 ${color} ${className}`}
     >
       {initials}
     </div>

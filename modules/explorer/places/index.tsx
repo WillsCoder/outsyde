@@ -1,6 +1,9 @@
+import { useSession } from "next-auth/react";
 import { prisma } from "@/lib/prisma";
 import PlacesGrid from "./components/places-grid";
 import PlacesFilters from "./components/places-filter";
+import { Place } from "@/lib/const/types/places";
+import { auth } from "@/auth";
 
 type SearchParams = {
   category?: string;
@@ -15,6 +18,9 @@ type Props = {
 };
 
 const PlacesIndex = async ({ searchParams }: Props) => {
+
+  const session = await auth()
+
   const places = await prisma.place.findMany({
     where: {
       isPublished: true,
@@ -63,15 +69,31 @@ const PlacesIndex = async ({ searchParams }: Props) => {
     orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
   });
 
+ let placeIds: string[] = [];
+
+ if (session?.user?.id) {
+   const savedPlaces = await prisma.savedPlace.findMany({
+     where: {
+       userId: session.user.id,
+     },
+     select: {
+       placeId: true,
+     },
+   });
+
+   placeIds = savedPlaces.map(({ placeId }) => placeId);
+ }
+
+
   const categories = await prisma.category.findMany({
     orderBy: { order: "asc" },
   });
 
   return (
-    <main className="box py-8">
+    <main className="box py-5 md:py-8">
       <PlacesFilters categories={categories} total={places.length} />
 
-      <PlacesGrid places={places} />
+      <PlacesGrid places={places as Place[]} savedPlaces={placeIds}/>
     </main>
   );
 };

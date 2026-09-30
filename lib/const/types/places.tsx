@@ -8,6 +8,7 @@ export type Place ={
   description: string;
   images: { url: string; isPrimary: boolean }[];
 };
+
 export type PlaceDetail = PlaceDetailType & {
   category: { id: string; name: string } | null;
   images: { url: string; isPrimary: boolean }[];

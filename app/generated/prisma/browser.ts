@@ -97,3 +97,8 @@ export type LinkUp = Prisma.LinkUpModel
  * 
  */
 export type LinkUpRequest = Prisma.LinkUpRequestModel
+/**
+ * Model SavedPlace
+ * 
+ */
+export type SavedPlace = Prisma.SavedPlaceModel

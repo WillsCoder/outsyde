@@ -412,7 +412,8 @@ export const ModelName = {
   Post: 'Post',
   PostTag: 'PostTag',
   LinkUp: 'LinkUp',
-  LinkUpRequest: 'LinkUpRequest'
+  LinkUpRequest: 'LinkUpRequest',
+  SavedPlace: 'SavedPlace'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -428,7 +429,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "place" | "category" | "placeImage" | "menuItem" | "event" | "rating" | "comment" | "waitlistEntry" | "post" | "postTag" | "linkUp" | "linkUpRequest"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "place" | "category" | "placeImage" | "menuItem" | "event" | "rating" | "comment" | "waitlistEntry" | "post" | "postTag" | "linkUp" | "linkUpRequest" | "savedPlace"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1616,6 +1617,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SavedPlace: {
+      payload: Prisma.$SavedPlacePayload<ExtArgs>
+      fields: Prisma.SavedPlaceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SavedPlaceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SavedPlaceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>
+        }
+        findFirst: {
+          args: Prisma.SavedPlaceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SavedPlaceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>
+        }
+        findMany: {
+          args: Prisma.SavedPlaceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>[]
+        }
+        create: {
+          args: Prisma.SavedPlaceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>
+        }
+        createMany: {
+          args: Prisma.SavedPlaceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SavedPlaceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>[]
+        }
+        delete: {
+          args: Prisma.SavedPlaceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>
+        }
+        update: {
+          args: Prisma.SavedPlaceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>
+        }
+        deleteMany: {
+          args: Prisma.SavedPlaceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SavedPlaceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SavedPlaceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>[]
+        }
+        upsert: {
+          args: Prisma.SavedPlaceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedPlacePayload>
+        }
+        aggregate: {
+          args: Prisma.SavedPlaceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSavedPlace>
+        }
+        groupBy: {
+          args: Prisma.SavedPlaceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SavedPlaceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SavedPlaceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SavedPlaceCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1662,12 +1737,26 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   email: 'email',
   emailVerified: 'emailVerified',
-  verificationToken: 'verificationToken',
-  verificationExpiry: 'verificationExpiry',
   image: 'image',
   password: 'password',
   role: 'role',
-  createdAt: 'createdAt'
+  bio: 'bio',
+  username: 'username',
+  phone: 'phone',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  city: 'city',
+  neighborhood: 'neighborhood',
+  instagramUrl: 'instagramUrl',
+  tiktokUrl: 'tiktokUrl',
+  xUrl: 'xUrl',
+  snapchatUrl: 'snapchatUrl',
+  isProfilePublic: 'isProfilePublic',
+  notifyLinkUps: 'notifyLinkUps',
+  notifyEvents: 'notifyEvents',
+  notifyReviews: 'notifyReviews',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1866,7 +1955,8 @@ export const LinkUpScalarFieldEnum = {
   updatedAt: 'updatedAt',
   creatorId: 'creatorId',
   placeId: 'placeId',
-  eventId: 'eventId'
+  eventId: 'eventId',
+  shareSocials: 'shareSocials'
 } as const
 
 export type LinkUpScalarFieldEnum = (typeof LinkUpScalarFieldEnum)[keyof typeof LinkUpScalarFieldEnum]
@@ -1879,10 +1969,21 @@ export const LinkUpRequestScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   linkUpId: 'linkUpId',
-  senderId: 'senderId'
+  senderId: 'senderId',
+  shareSocials: 'shareSocials'
 } as const
 
 export type LinkUpRequestScalarFieldEnum = (typeof LinkUpRequestScalarFieldEnum)[keyof typeof LinkUpRequestScalarFieldEnum]
+
+
+export const SavedPlaceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  placeId: 'placeId',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedPlaceScalarFieldEnum = (typeof SavedPlaceScalarFieldEnum)[keyof typeof SavedPlaceScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1958,6 +2059,27 @@ export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+ * Reference to a field of type 'Gender'
+ */
+export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
+    
+
+
+/**
+ * Reference to a field of type 'Gender[]'
+ */
+export type ListEnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1982,13 +2104,6 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -2228,6 +2343,7 @@ export type GlobalOmitConfig = {
   postTag?: Prisma.PostTagOmit
   linkUp?: Prisma.LinkUpOmit
   linkUpRequest?: Prisma.LinkUpRequestOmit
+  savedPlace?: Prisma.SavedPlaceOmit
 }
 
 /* Types for Logging */

@@ -44,7 +44,7 @@ const PlacesSlide = ({ places }: PlacesSlideProps) => {
           {places.slice(0, 5).map((place, idx) => {
             return (
               <SwiperSlide
-                className="w-full h-full"
+                className="w-full h-full cursor-pointer"
                 key={idx}
                 onClick={() => router.push(`places/${place.slug}`)}
               >

@@ -17,16 +17,18 @@ const avgRating = (ratings: { score: number }[]) =>
 export default function PlaceCard({
   place,
   featured = false,
+  isSaved = false
 }: {
   place: any;
   featured?: boolean;
+  isSaved?: boolean
 }) {
   const rating = avgRating(place?.ratings);
 
   return (
     <Link
       href={`/places/${place?.slug}`}
-      className={`group bg-white rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-200 ${featured ? "col-span-2" : ""}`}
+      className={`group flex flex-col bg-white rounded md:rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-200 ${featured ? "col-span-2" : ""}`}
     >
       <div className={`relative overflow-hidden ${featured ? "h-56" : "h-48"}`}>
         {place?.images?.[0] ? (
@@ -52,11 +54,11 @@ export default function PlaceCard({
         </div>
         <button
           onClick={(e) => e.preventDefault()}
-          className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 flex items-center justify-center text-brand-night/50 hover:text-brand-orange transition-colors"
+          className={`absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 flex items-center justify-center ${isSaved ? "text-brand-orange" : "text-brand-night/50"} hover:text-brand-orange transition-colors`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill={isSaved ? "currentColor" : "none"}
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
@@ -71,29 +73,36 @@ export default function PlaceCard({
         </button>
       </div>
 
-      <div className="p-3.5">
-        <p className="text-[10px] font-medium tracking-wider uppercase text-brand-night/40 mb-1">
-          {place?.category?.name}
-        </p>
-        <h3 className="text-[15px] font-semibold text-brand-night tracking-tight mb-1.5">
-          {place.name}
-        </h3>
-        <div className="flex items-center gap-2">
-          {rating && (
-            <>
-              <span className="flex items-center gap-1 text-xs font-medium text-brand-night">
-                ⭐ {rating}
-              </span>
-              <span className="text-[11px] text-brand-night/40">
-                ({place?.ratings?.length} reviews)
-              </span>
-            </>
-          )}
-          <span className="ml-auto flex items-center gap-1 text-xs text-brand-night/50">
-            📍 {place.city}
-          </span>
+      <div className="p-3.5 flex flex-col flex-1 justify-between">
+        <div>
+          <div className="mb-1">
+            <p className="hidden md:flex text-[10px] font-medium tracking-wider uppercase text-brand-night/40">
+              {place?.category?.name}
+            </p>
+            <span className="flex md:hidden text-xs text-brand-night/50">
+              📍 {place.city}
+            </span>
+          </div>
+          <h3 className="text-[15px] font-semibold text-brand-night tracking-tight mb-1.5">
+            {place.name}
+          </h3>
+          <div className="md:flex items-center gap-2">
+            {rating && (
+              <div className="flex gap-2">
+                <span className="flex items-center gap-1 text-xs font-medium text-brand-night">
+                  ⭐ {rating}
+                </span>
+                <span className="text-[11px] text-brand-night/40">
+                  ({place?.ratings?.length} reviews)
+                </span>
+              </div>
+            )}
+            <span className="hidden md:flex ml-auto items-center gap-1 text-xs text-brand-night/50">
+              📍 {place.city}
+            </span>
+          </div>
         </div>
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-brand-night/7">
+        <div className="w-full flex items-center justify-between mt-3 pt-3 border-t border-brand-night/7">
           <div className="flex gap-0.5">{costDots(place.costLevel)}</div>
           <span
             className={`text-[10px] font-medium rounded-full px-2 py-0.5 ${place.isPublished ? "bg-brand-lagoon/10 text-brand-lagoon" : "bg-brand-night/7 text-brand-night/40"}`}

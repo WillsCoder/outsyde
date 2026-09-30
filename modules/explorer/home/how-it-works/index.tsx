@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Button, Tag } from "@/components/ui";
@@ -22,6 +23,7 @@ const steps = [
       "Browse curated bars, restaurants, beaches and events happening near you in Lagos.",
     badges: ["🍹 Bars", "🍽 Restaurants", "🏖 Beaches", "🎵 Events"],
     extra: null,
+    route: "/places",
   },
   {
     title: "📥 Save",
@@ -33,6 +35,7 @@ const steps = [
       { name: "Cactus Restaurant", rating: "4.6", color: "bg-brand-lagoon" },
       { name: "Afrobeat Live Night", rating: "4.9", color: "bg-brand-orange" },
     ],
+    route: "/profile/saved",
   },
   {
     title: "🌟 Go & Review",
@@ -40,6 +43,7 @@ const steps = [
       "Get directions, check the vibe with photos and ratings — then leave your review after.",
     badges: ["📍 Directions", "⭐ Reviews", "📸 Photos"],
     extra: null,
+    route: "/places",
   },
 ];
 
@@ -48,6 +52,7 @@ const steps = [
 const HowItWork = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const router = useRouter()
 
   useGSAP(
     () => {
@@ -177,6 +182,7 @@ const HowItWork = () => {
                     variant="ghost"
                     size="sm"
                     className="mt-4 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    onClick={() => router.push(`${item.route}`)}
                   >
                     {idx === 0
                       ? "Explore spots"

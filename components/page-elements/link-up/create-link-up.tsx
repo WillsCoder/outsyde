@@ -17,6 +17,7 @@ export const CreateLinkUp = ({
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [maxSize, setMaxSize] = useState(5);
+  const [shareSocials, setShareSocials] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -49,6 +50,7 @@ export const CreateLinkUp = ({
         maxSize,
         placeId,
         eventId,
+        shareSocials
       }),
     });
     setLoading(false);
@@ -86,7 +88,7 @@ export const CreateLinkUp = ({
           onChange={(e) => setDate(e.target.value)}
           className="flex-1 border border-brand-night/12 rounded-xl px-4 py-2.5 text-sm text-brand-night outline-none focus:border-brand-orange transition-colors"
         />
-        <div className="flex items-center gap-2 border border-brand-night/12 rounded-xl px-3 bg-white">
+        <div className="w-fit flex items-center gap-2 border border-brand-night/12 rounded-xl px-3 bg-white">
           <IconUsers size={14} className="text-brand-night/40" />
           <select
             value={maxSize}
@@ -99,6 +101,27 @@ export const CreateLinkUp = ({
               </option>
             ))}
           </select>
+        </div>
+
+        {/* Share socials toggle */}
+        <div className="flex items-center justify-between bg-brand-sand rounded-xl px-3 py-2.5">
+          <div>
+            <p className="text-xs font-medium text-brand-night">
+              Share my socials
+            </p>
+            <p className="text-[10px] text-brand-night/50">
+              Let the linkups see your Instagram, TikTok etc.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShareSocials((s) => !s)}
+            className={`relative w-9 h-5 rounded-full transition-colors ${shareSocials ? "bg-brand-orange" : "bg-brand-night/15"}`}
+          >
+            <span
+              className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${shareSocials ? "translate-x-4" : "translate-x-0"}`}
+            />
+          </button>
         </div>
       </div>
 

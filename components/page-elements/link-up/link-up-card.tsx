@@ -4,7 +4,11 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import { Avatar } from "@/components/ui";
-import { LINKUP_STATUS_COLORS, LINKUP_STATUS_LABELS, LinkUpCard as LinkUp } from "@/lib/const/types/link-up";
+import {
+  LINKUP_STATUS_COLORS,
+  LINKUP_STATUS_LABELS,
+  LinkUpCard as LinkUp,
+} from "@/lib/const/types/link-up";
 import { IconClock, IconUsers } from "@tabler/icons-react";
 import { RequestToJoin } from "./request-to-join";
 
@@ -20,15 +24,33 @@ export const LinkUpCard = ({ linkUp }: { linkUp: LinkUp }) => {
       <div className="flex items-start gap-3">
         <Avatar name={linkUp.creator.name} image={linkUp.creator.image} />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <p className="text-sm font-semibold text-brand-night">
-              {linkUp.creator.name}
-            </p>
-            <span
-              className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${LINKUP_STATUS_COLORS[linkUp.status]}`}
-            >
-              {LINKUP_STATUS_LABELS[linkUp.status]}
-            </span>
+          <div className="flex justify-between">
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="text-sm font-semibold text-brand-night">
+                {linkUp.creator.name}
+              </p>
+              <span
+                className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${LINKUP_STATUS_COLORS[linkUp.status]}`}
+              >
+                {LINKUP_STATUS_LABELS[linkUp.status]}
+              </span>
+            </div>
+            <div>
+              {/* Join button */}
+              {session && linkUp.status === "OPEN" && !requested && (
+                <button
+                  onClick={() => setExpanded((e) => !e)}
+                  className="shrink-0 text-xs font-medium bg-brand-orange/10 text-brand-orange rounded-full px-3 py-1.5 hover:bg-brand-orange hover:text-white transition-all"
+                >
+                  Join
+                </button>
+              )}
+              {requested && (
+                <span className="shrink-0 whitespace-nowrap text-xs font-medium bg-brand-lagoon/10 text-brand-lagoon rounded-full px-3 py-1.5">
+                  Requested ✓
+                </span>
+              )}
+            </div>
           </div>
           <p className="text-sm text-brand-night/80 mt-1">{linkUp.title}</p>
           {linkUp.description && (
@@ -49,21 +71,6 @@ export const LinkUpCard = ({ linkUp }: { linkUp: LinkUp }) => {
             </span>
           </div>
         </div>
-
-        {/* Join button */}
-        {session && linkUp.status === "OPEN" && !requested && (
-          <button
-            onClick={() => setExpanded((e) => !e)}
-            className="shrink-0 text-xs font-medium bg-brand-orange/10 text-brand-orange rounded-full px-3 py-1.5 hover:bg-brand-orange hover:text-white transition-all"
-          >
-            Join
-          </button>
-        )}
-        {requested && (
-          <span className="shrink-0 text-xs font-medium bg-brand-lagoon/10 text-brand-lagoon rounded-full px-3 py-1.5">
-            Requested ✓
-          </span>
-        )}
       </div>
 
       {expanded && !requested && (
@@ -72,6 +79,12 @@ export const LinkUpCard = ({ linkUp }: { linkUp: LinkUp }) => {
           onSent={() => {
             setRequested(true);
             setExpanded(false);
+          }}
+          creatorSocials={{
+            instagramUrl: "",
+            tiktokUrl: "",
+            xUrl: "",
+            snapchatUrl: "",
           }}
         />
       )}

@@ -34,7 +34,7 @@ export default async function PlaceDetailPage({
       ).toFixed(1)
     : null;
 
-  const costLabel = ["", "Budget", "Mid-range", "Premium"][place.costLevel];
+  const costLabel = ["", "Budget friendly", "Mid-range spend", "Premium"][place.costLevel];
 
   return (
     <>

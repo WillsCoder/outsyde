@@ -32,6 +32,7 @@ export type LinkUpRequestMinAggregateOutputType = {
   updatedAt: Date | null
   linkUpId: string | null
   senderId: string | null
+  shareSocials: boolean | null
 }
 
 export type LinkUpRequestMaxAggregateOutputType = {
@@ -42,6 +43,7 @@ export type LinkUpRequestMaxAggregateOutputType = {
   updatedAt: Date | null
   linkUpId: string | null
   senderId: string | null
+  shareSocials: boolean | null
 }
 
 export type LinkUpRequestCountAggregateOutputType = {
@@ -52,6 +54,7 @@ export type LinkUpRequestCountAggregateOutputType = {
   updatedAt: number
   linkUpId: number
   senderId: number
+  shareSocials: number
   _all: number
 }
 
@@ -64,6 +67,7 @@ export type LinkUpRequestMinAggregateInputType = {
   updatedAt?: true
   linkUpId?: true
   senderId?: true
+  shareSocials?: true
 }
 
 export type LinkUpRequestMaxAggregateInputType = {
@@ -74,6 +78,7 @@ export type LinkUpRequestMaxAggregateInputType = {
   updatedAt?: true
   linkUpId?: true
   senderId?: true
+  shareSocials?: true
 }
 
 export type LinkUpRequestCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type LinkUpRequestCountAggregateInputType = {
   updatedAt?: true
   linkUpId?: true
   senderId?: true
+  shareSocials?: true
   _all?: true
 }
 
@@ -167,6 +173,7 @@ export type LinkUpRequestGroupByOutputType = {
   updatedAt: Date
   linkUpId: string
   senderId: string
+  shareSocials: boolean
   _count: LinkUpRequestCountAggregateOutputType | null
   _min: LinkUpRequestMinAggregateOutputType | null
   _max: LinkUpRequestMaxAggregateOutputType | null
@@ -198,6 +205,7 @@ export type LinkUpRequestWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"LinkUpRequest"> | Date | string
   linkUpId?: Prisma.StringFilter<"LinkUpRequest"> | string
   senderId?: Prisma.StringFilter<"LinkUpRequest"> | string
+  shareSocials?: Prisma.BoolFilter<"LinkUpRequest"> | boolean
   linkUp?: Prisma.XOR<Prisma.LinkUpScalarRelationFilter, Prisma.LinkUpWhereInput>
   sender?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -210,6 +218,7 @@ export type LinkUpRequestOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   linkUpId?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
+  shareSocials?: Prisma.SortOrder
   linkUp?: Prisma.LinkUpOrderByWithRelationInput
   sender?: Prisma.UserOrderByWithRelationInput
 }
@@ -225,6 +234,7 @@ export type LinkUpRequestWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"LinkUpRequest"> | Date | string
   linkUpId?: Prisma.StringFilter<"LinkUpRequest"> | string
   senderId?: Prisma.StringFilter<"LinkUpRequest"> | string
+  shareSocials?: Prisma.BoolFilter<"LinkUpRequest"> | boolean
   linkUp?: Prisma.XOR<Prisma.LinkUpScalarRelationFilter, Prisma.LinkUpWhereInput>
   sender?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -237,6 +247,7 @@ export type LinkUpRequestOrderByWithAggregationInput = {
   updatedAt?: Prisma.SortOrder
   linkUpId?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
+  shareSocials?: Prisma.SortOrder
   _count?: Prisma.LinkUpRequestCountOrderByAggregateInput
   _max?: Prisma.LinkUpRequestMaxOrderByAggregateInput
   _min?: Prisma.LinkUpRequestMinOrderByAggregateInput
@@ -253,6 +264,7 @@ export type LinkUpRequestScalarWhereWithAggregatesInput = {
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"LinkUpRequest"> | Date | string
   linkUpId?: Prisma.StringWithAggregatesFilter<"LinkUpRequest"> | string
   senderId?: Prisma.StringWithAggregatesFilter<"LinkUpRequest"> | string
+  shareSocials?: Prisma.BoolWithAggregatesFilter<"LinkUpRequest"> | boolean
 }
 
 export type LinkUpRequestCreateInput = {
@@ -261,6 +273,7 @@ export type LinkUpRequestCreateInput = {
   status?: $Enums.LinkUpRequestStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  shareSocials?: boolean
   linkUp: Prisma.LinkUpCreateNestedOneWithoutRequestsInput
   sender: Prisma.UserCreateNestedOneWithoutLinkUpRequestsInput
 }
@@ -273,6 +286,7 @@ export type LinkUpRequestUncheckedCreateInput = {
   updatedAt?: Date | string
   linkUpId: string
   senderId: string
+  shareSocials?: boolean
 }
 
 export type LinkUpRequestUpdateInput = {
@@ -281,6 +295,7 @@ export type LinkUpRequestUpdateInput = {
   status?: Prisma.EnumLinkUpRequestStatusFieldUpdateOperationsInput | $Enums.LinkUpRequestStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
   linkUp?: Prisma.LinkUpUpdateOneRequiredWithoutRequestsNestedInput
   sender?: Prisma.UserUpdateOneRequiredWithoutLinkUpRequestsNestedInput
 }
@@ -293,6 +308,7 @@ export type LinkUpRequestUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   linkUpId?: Prisma.StringFieldUpdateOperationsInput | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type LinkUpRequestCreateManyInput = {
@@ -303,6 +319,7 @@ export type LinkUpRequestCreateManyInput = {
   updatedAt?: Date | string
   linkUpId: string
   senderId: string
+  shareSocials?: boolean
 }
 
 export type LinkUpRequestUpdateManyMutationInput = {
@@ -311,6 +328,7 @@ export type LinkUpRequestUpdateManyMutationInput = {
   status?: Prisma.EnumLinkUpRequestStatusFieldUpdateOperationsInput | $Enums.LinkUpRequestStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type LinkUpRequestUncheckedUpdateManyInput = {
@@ -321,6 +339,7 @@ export type LinkUpRequestUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   linkUpId?: Prisma.StringFieldUpdateOperationsInput | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type LinkUpRequestListRelationFilter = {
@@ -341,6 +360,7 @@ export type LinkUpRequestCountOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   linkUpId?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
+  shareSocials?: Prisma.SortOrder
 }
 
 export type LinkUpRequestMaxOrderByAggregateInput = {
@@ -351,6 +371,7 @@ export type LinkUpRequestMaxOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   linkUpId?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
+  shareSocials?: Prisma.SortOrder
 }
 
 export type LinkUpRequestMinOrderByAggregateInput = {
@@ -361,6 +382,7 @@ export type LinkUpRequestMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
   linkUpId?: Prisma.SortOrder
   senderId?: Prisma.SortOrder
+  shareSocials?: Prisma.SortOrder
 }
 
 export type LinkUpRequestCreateNestedManyWithoutSenderInput = {
@@ -457,6 +479,7 @@ export type LinkUpRequestCreateWithoutSenderInput = {
   status?: $Enums.LinkUpRequestStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  shareSocials?: boolean
   linkUp: Prisma.LinkUpCreateNestedOneWithoutRequestsInput
 }
 
@@ -467,6 +490,7 @@ export type LinkUpRequestUncheckedCreateWithoutSenderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   linkUpId: string
+  shareSocials?: boolean
 }
 
 export type LinkUpRequestCreateOrConnectWithoutSenderInput = {
@@ -506,6 +530,7 @@ export type LinkUpRequestScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"LinkUpRequest"> | Date | string
   linkUpId?: Prisma.StringFilter<"LinkUpRequest"> | string
   senderId?: Prisma.StringFilter<"LinkUpRequest"> | string
+  shareSocials?: Prisma.BoolFilter<"LinkUpRequest"> | boolean
 }
 
 export type LinkUpRequestCreateWithoutLinkUpInput = {
@@ -514,6 +539,7 @@ export type LinkUpRequestCreateWithoutLinkUpInput = {
   status?: $Enums.LinkUpRequestStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  shareSocials?: boolean
   sender: Prisma.UserCreateNestedOneWithoutLinkUpRequestsInput
 }
 
@@ -524,6 +550,7 @@ export type LinkUpRequestUncheckedCreateWithoutLinkUpInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   senderId: string
+  shareSocials?: boolean
 }
 
 export type LinkUpRequestCreateOrConnectWithoutLinkUpInput = {
@@ -559,6 +586,7 @@ export type LinkUpRequestCreateManySenderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   linkUpId: string
+  shareSocials?: boolean
 }
 
 export type LinkUpRequestUpdateWithoutSenderInput = {
@@ -567,6 +595,7 @@ export type LinkUpRequestUpdateWithoutSenderInput = {
   status?: Prisma.EnumLinkUpRequestStatusFieldUpdateOperationsInput | $Enums.LinkUpRequestStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
   linkUp?: Prisma.LinkUpUpdateOneRequiredWithoutRequestsNestedInput
 }
 
@@ -577,6 +606,7 @@ export type LinkUpRequestUncheckedUpdateWithoutSenderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   linkUpId?: Prisma.StringFieldUpdateOperationsInput | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type LinkUpRequestUncheckedUpdateManyWithoutSenderInput = {
@@ -586,6 +616,7 @@ export type LinkUpRequestUncheckedUpdateManyWithoutSenderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   linkUpId?: Prisma.StringFieldUpdateOperationsInput | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type LinkUpRequestCreateManyLinkUpInput = {
@@ -595,6 +626,7 @@ export type LinkUpRequestCreateManyLinkUpInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   senderId: string
+  shareSocials?: boolean
 }
 
 export type LinkUpRequestUpdateWithoutLinkUpInput = {
@@ -603,6 +635,7 @@ export type LinkUpRequestUpdateWithoutLinkUpInput = {
   status?: Prisma.EnumLinkUpRequestStatusFieldUpdateOperationsInput | $Enums.LinkUpRequestStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sender?: Prisma.UserUpdateOneRequiredWithoutLinkUpRequestsNestedInput
 }
 
@@ -613,6 +646,7 @@ export type LinkUpRequestUncheckedUpdateWithoutLinkUpInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type LinkUpRequestUncheckedUpdateManyWithoutLinkUpInput = {
@@ -622,6 +656,7 @@ export type LinkUpRequestUncheckedUpdateManyWithoutLinkUpInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   senderId?: Prisma.StringFieldUpdateOperationsInput | string
+  shareSocials?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -634,6 +669,7 @@ export type LinkUpRequestSelect<ExtArgs extends runtime.Types.Extensions.Interna
   updatedAt?: boolean
   linkUpId?: boolean
   senderId?: boolean
+  shareSocials?: boolean
   linkUp?: boolean | Prisma.LinkUpDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["linkUpRequest"]>
@@ -646,6 +682,7 @@ export type LinkUpRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   updatedAt?: boolean
   linkUpId?: boolean
   senderId?: boolean
+  shareSocials?: boolean
   linkUp?: boolean | Prisma.LinkUpDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["linkUpRequest"]>
@@ -658,6 +695,7 @@ export type LinkUpRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   updatedAt?: boolean
   linkUpId?: boolean
   senderId?: boolean
+  shareSocials?: boolean
   linkUp?: boolean | Prisma.LinkUpDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["linkUpRequest"]>
@@ -670,9 +708,10 @@ export type LinkUpRequestSelectScalar = {
   updatedAt?: boolean
   linkUpId?: boolean
   senderId?: boolean
+  shareSocials?: boolean
 }
 
-export type LinkUpRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "message" | "status" | "createdAt" | "updatedAt" | "linkUpId" | "senderId", ExtArgs["result"]["linkUpRequest"]>
+export type LinkUpRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "message" | "status" | "createdAt" | "updatedAt" | "linkUpId" | "senderId" | "shareSocials", ExtArgs["result"]["linkUpRequest"]>
 export type LinkUpRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   linkUp?: boolean | Prisma.LinkUpDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -700,6 +739,7 @@ export type $LinkUpRequestPayload<ExtArgs extends runtime.Types.Extensions.Inter
     updatedAt: Date
     linkUpId: string
     senderId: string
+    shareSocials: boolean
   }, ExtArgs["result"]["linkUpRequest"]>
   composites: {}
 }
@@ -1132,6 +1172,7 @@ export interface LinkUpRequestFieldRefs {
   readonly updatedAt: Prisma.FieldRef<"LinkUpRequest", 'DateTime'>
   readonly linkUpId: Prisma.FieldRef<"LinkUpRequest", 'String'>
   readonly senderId: Prisma.FieldRef<"LinkUpRequest", 'String'>
+  readonly shareSocials: Prisma.FieldRef<"LinkUpRequest", 'Boolean'>
 }
     
 

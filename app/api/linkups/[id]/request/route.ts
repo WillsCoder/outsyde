@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
+import { sendLinkUpRequestEmail } from "@/lib/emails";
 
 export async function POST(
   req: NextRequest,
@@ -13,7 +14,7 @@ export async function POST(
     return NextResponse.json({ error: "Unauthorised" }, { status: 401 });
   }
 
-  const { message } = await req.json();
+  const { message, shareSocials = false } = await req.json();
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
   });
@@ -64,8 +65,49 @@ export async function POST(
   }
 
   const request = await prisma.linkUpRequest.create({
-    data: { linkUpId: id, senderId: user.id, message },
+    data: { linkUpId: id, senderId: user.id, message, shareSocials },
   });
+
+  const linkUpWithCreator = await prisma.linkUp.findUnique({
+    where: { id },
+    include: {
+      creator: {
+        select: {
+          email: true,
+          name: true,
+          notifyLinkUps: true,
+        },
+      },
+      place: { select: { name: true } },
+      event: { select: { title: true } },
+    },
+  });
+
+  if (linkUpWithCreator) {
+    await sendLinkUpRequestEmail({
+      creatorEmail: linkUpWithCreator.creator.email!,
+      creatorName: linkUpWithCreator.creator.name ?? "there",
+      requesterName: user.name ?? "Someone",
+      requesterBio: user.bio,
+      linkUpId: id,
+      linkUpTitle: linkUpWithCreator.title,
+      linkUpDate: linkUpWithCreator.date,
+      locationName:
+        linkUpWithCreator.place?.name ??
+        linkUpWithCreator.event?.title ??
+        "Lagos",
+      message: message ?? null,
+      hasSocials:
+        shareSocials &&
+        !!(
+          user.instagramUrl ||
+          user.tiktokUrl ||
+          user.xUrl ||
+          user.snapchatUrl
+        ),
+      notifyLinkUps: linkUpWithCreator.creator.notifyLinkUps,
+    });
+  }
 
   return NextResponse.json({ ok: true, request });
 }

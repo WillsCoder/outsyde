@@ -1,16 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
+import { sendLinkUpAcceptedEmail, sendLinkUpDeclinedEmail } from "@/lib/emails";
 
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string; requestId: string }> },
 ) {
-    const { id, requestId } = await params;
+  const { id, requestId } = await params;
   const session = await auth();
 
   if (!session?.user?.email) {
     return NextResponse.json({ error: "Unauthorised" }, { status: 401 });
+  }
+
+  // Get request sender and creator
+  const request = await prisma.linkUpRequest.findUnique({
+    where: { id: requestId },
+    include: {
+      linkUp: {
+        include: {
+          creator: {
+            select: {
+              instagramUrl: true,
+              tiktokUrl: true,
+              xUrl: true,
+              snapchatUrl: true,
+            },
+          },
+          place: { select: { name: true, slug: true } },
+          event: { select: { title: true, slug: true } },
+        },
+      },
+      sender: {
+        select: {
+          email: true,
+          name: true,
+          notifyLinkUps: true,
+        },
+      },
+    },
+  });
+
+  if (!request) {
+    return NextResponse.json({ error: "Invalid reuest" }, { status: 400 });
   }
 
   const { status } = await req.json(); // 'ACCEPTED' | 'DECLINED'
@@ -50,6 +83,35 @@ export async function PATCH(
         data: { status: "FULL" },
       });
     }
+  }
+
+  const locationName =
+    request.linkUp.place?.name ?? request.linkUp.event?.title ?? "Lagos";
+
+  if (status === "ACCEPTED") {
+    await sendLinkUpAcceptedEmail({
+      requesterEmail: request.sender.email!,
+      requesterName: request.sender.name ?? "there",
+      creatorName: user.name ?? "your linkup",
+      linkUpTitle: request.linkUp.title,
+      linkUpDate: request.linkUp.date,
+      locationName,
+      locationSlug:
+        request.linkUp.place?.slug ?? request.linkUp.event?.slug ?? "",
+      isPlace: !!request.linkUp.place,
+      creatorSocials: request.linkUp.shareSocials
+        ? request.linkUp.creator
+        : null,
+      notifyLinkUps: request.sender.notifyLinkUps,
+    });
+  } else {
+    await sendLinkUpDeclinedEmail({
+      requesterEmail: request.sender.email!,
+      requesterName: request.sender.name ?? "there",
+      linkUpTitle: request.linkUp.title,
+      locationName,
+      notifyLinkUps: request.sender.notifyLinkUps,
+    });
   }
 
   return NextResponse.json({ ok: true, request: updated });

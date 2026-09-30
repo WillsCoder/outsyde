@@ -6,18 +6,19 @@ import {
   TicketType,
 } from "@/app/generated/prisma/browser";
 import {
-  CATEGORIES,
   CATEGORY_LABELS,
   TICKET_OPTIONS,
   WHEN_OPTIONS,
 } from "@/lib/const/types/event";
 import { prisma } from "@/lib/prisma";
 import EventCard from "./components/event-card";
+import FilterEvent from "./components/filter-event";
 
 type SearchParams = {
   category?: string;
   when?: string;
   ticket?: string;
+  q?: string;
 };
 interface Props {
   searchParams: SearchParams;
@@ -70,6 +71,22 @@ const EventsIndex = async ({ searchParams }: Props) => {
   if (ticket && Object.values(TicketType).includes(ticket as TicketType)) {
     where.ticketType = ticket as TicketType;
   }
+  if (searchParams?.q !== undefined) {
+    where.OR = [
+      {
+        title: {
+          contains: searchParams.q,
+          mode: "insensitive",
+        },
+      },
+      {
+        description: {
+          contains: searchParams.q,
+          mode: "insensitive",
+        },
+      },
+    ];
+  }
 
   const events = await prisma.event.findMany({
     where,
@@ -80,14 +97,17 @@ const EventsIndex = async ({ searchParams }: Props) => {
 
   const pill = (active: boolean) =>
     `text-xs font-medium px-3.5 py-1.5 rounded-full border transition-all whitespace-nowrap ${
-             active
-                ? "bg-brand-orange text-white border-brand-orange"
-                : "bg-white text-brand-night/60 border-brand-night/15 hover:border-brand-orange/40 hover:text-brand-orange"
-            }`;
+      active
+        ? "bg-brand-orange text-white border-brand-orange"
+        : "bg-white text-brand-night/60 border-brand-night/15 hover:border-brand-orange/40 hover:text-brand-orange"
+    }`;
 
   return (
     <main className="min-h-screen bg-brand-sand pb-20">
       {/* filters */}
+      <div className="box pb-1 md:pb-2">
+        <FilterEvent />
+      </div>
       <div className="sticky top-0 z-20 pb-2 border-b border-brand-night/10 bg-brand-sand/90 backdrop-blur">
         <div className="box scrollbar-none flex gap-6 overflow-x-auto py-2 md:py-4!">
           <div className="flex items-center gap-0.5 lg:gap-2">

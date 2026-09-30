@@ -31,12 +31,26 @@ export type UserMinAggregateOutputType = {
   lastName: string | null
   email: string | null
   emailVerified: Date | null
-  verificationToken: string | null
-  verificationExpiry: Date | null
   image: string | null
   password: string | null
   role: $Enums.Role | null
+  bio: string | null
+  username: string | null
+  phone: string | null
+  dateOfBirth: Date | null
+  gender: $Enums.Gender | null
+  city: string | null
+  neighborhood: string | null
+  instagramUrl: string | null
+  tiktokUrl: string | null
+  xUrl: string | null
+  snapchatUrl: string | null
+  isProfilePublic: boolean | null
+  notifyLinkUps: boolean | null
+  notifyEvents: boolean | null
+  notifyReviews: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -46,12 +60,26 @@ export type UserMaxAggregateOutputType = {
   lastName: string | null
   email: string | null
   emailVerified: Date | null
-  verificationToken: string | null
-  verificationExpiry: Date | null
   image: string | null
   password: string | null
   role: $Enums.Role | null
+  bio: string | null
+  username: string | null
+  phone: string | null
+  dateOfBirth: Date | null
+  gender: $Enums.Gender | null
+  city: string | null
+  neighborhood: string | null
+  instagramUrl: string | null
+  tiktokUrl: string | null
+  xUrl: string | null
+  snapchatUrl: string | null
+  isProfilePublic: boolean | null
+  notifyLinkUps: boolean | null
+  notifyEvents: boolean | null
+  notifyReviews: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -61,12 +89,26 @@ export type UserCountAggregateOutputType = {
   lastName: number
   email: number
   emailVerified: number
-  verificationToken: number
-  verificationExpiry: number
   image: number
   password: number
   role: number
+  bio: number
+  username: number
+  phone: number
+  dateOfBirth: number
+  gender: number
+  city: number
+  neighborhood: number
+  instagramUrl: number
+  tiktokUrl: number
+  xUrl: number
+  snapchatUrl: number
+  isProfilePublic: number
+  notifyLinkUps: number
+  notifyEvents: number
+  notifyReviews: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -78,12 +120,26 @@ export type UserMinAggregateInputType = {
   lastName?: true
   email?: true
   emailVerified?: true
-  verificationToken?: true
-  verificationExpiry?: true
   image?: true
   password?: true
   role?: true
+  bio?: true
+  username?: true
+  phone?: true
+  dateOfBirth?: true
+  gender?: true
+  city?: true
+  neighborhood?: true
+  instagramUrl?: true
+  tiktokUrl?: true
+  xUrl?: true
+  snapchatUrl?: true
+  isProfilePublic?: true
+  notifyLinkUps?: true
+  notifyEvents?: true
+  notifyReviews?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -93,12 +149,26 @@ export type UserMaxAggregateInputType = {
   lastName?: true
   email?: true
   emailVerified?: true
-  verificationToken?: true
-  verificationExpiry?: true
   image?: true
   password?: true
   role?: true
+  bio?: true
+  username?: true
+  phone?: true
+  dateOfBirth?: true
+  gender?: true
+  city?: true
+  neighborhood?: true
+  instagramUrl?: true
+  tiktokUrl?: true
+  xUrl?: true
+  snapchatUrl?: true
+  isProfilePublic?: true
+  notifyLinkUps?: true
+  notifyEvents?: true
+  notifyReviews?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -108,12 +178,26 @@ export type UserCountAggregateInputType = {
   lastName?: true
   email?: true
   emailVerified?: true
-  verificationToken?: true
-  verificationExpiry?: true
   image?: true
   password?: true
   role?: true
+  bio?: true
+  username?: true
+  phone?: true
+  dateOfBirth?: true
+  gender?: true
+  city?: true
+  neighborhood?: true
+  instagramUrl?: true
+  tiktokUrl?: true
+  xUrl?: true
+  snapchatUrl?: true
+  isProfilePublic?: true
+  notifyLinkUps?: true
+  notifyEvents?: true
+  notifyReviews?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -194,14 +278,28 @@ export type UserGroupByOutputType = {
   name: string | null
   firstName: string | null
   lastName: string | null
-  email: string | null
+  email: string
   emailVerified: Date | null
-  verificationToken: string | null
-  verificationExpiry: Date | null
   image: string | null
   password: string | null
   role: $Enums.Role
+  bio: string | null
+  username: string | null
+  phone: string | null
+  dateOfBirth: Date | null
+  gender: $Enums.Gender | null
+  city: string | null
+  neighborhood: string | null
+  instagramUrl: string | null
+  tiktokUrl: string | null
+  xUrl: string | null
+  snapchatUrl: string | null
+  isProfilePublic: boolean
+  notifyLinkUps: boolean
+  notifyEvents: boolean
+  notifyReviews: boolean
   createdAt: Date
+  updatedAt: Date
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -230,14 +328,28 @@ export type UserWhereInput = {
   name?: Prisma.StringNullableFilter<"User"> | string | null
   firstName?: Prisma.StringNullableFilter<"User"> | string | null
   lastName?: Prisma.StringNullableFilter<"User"> | string | null
-  email?: Prisma.StringNullableFilter<"User"> | string | null
+  email?: Prisma.StringFilter<"User"> | string
   emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  verificationToken?: Prisma.StringNullableFilter<"User"> | string | null
-  verificationExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  bio?: Prisma.StringNullableFilter<"User"> | string | null
+  username?: Prisma.StringNullableFilter<"User"> | string | null
+  phone?: Prisma.StringNullableFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"User"> | $Enums.Gender | null
+  city?: Prisma.StringNullableFilter<"User"> | string | null
+  neighborhood?: Prisma.StringNullableFilter<"User"> | string | null
+  instagramUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  tiktokUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  xUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  snapchatUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  isProfilePublic?: Prisma.BoolFilter<"User"> | boolean
+  notifyLinkUps?: Prisma.BoolFilter<"User"> | boolean
+  notifyEvents?: Prisma.BoolFilter<"User"> | boolean
+  notifyReviews?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   ratings?: Prisma.RatingListRelationFilter
@@ -245,6 +357,7 @@ export type UserWhereInput = {
   posts?: Prisma.PostListRelationFilter
   linkUpsCreated?: Prisma.LinkUpListRelationFilter
   linkUpRequests?: Prisma.LinkUpRequestListRelationFilter
+  savedPlaces?: Prisma.SavedPlaceListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -252,14 +365,28 @@ export type UserOrderByWithRelationInput = {
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   firstName?: Prisma.SortOrderInput | Prisma.SortOrder
   lastName?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
-  verificationToken?: Prisma.SortOrderInput | Prisma.SortOrder
-  verificationExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
+  bio?: Prisma.SortOrderInput | Prisma.SortOrder
+  username?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  neighborhood?: Prisma.SortOrderInput | Prisma.SortOrder
+  instagramUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  tiktokUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  xUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  snapchatUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  isProfilePublic?: Prisma.SortOrder
+  notifyLinkUps?: Prisma.SortOrder
+  notifyEvents?: Prisma.SortOrder
+  notifyReviews?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   ratings?: Prisma.RatingOrderByRelationAggregateInput
@@ -267,11 +394,13 @@ export type UserOrderByWithRelationInput = {
   posts?: Prisma.PostOrderByRelationAggregateInput
   linkUpsCreated?: Prisma.LinkUpOrderByRelationAggregateInput
   linkUpRequests?: Prisma.LinkUpRequestOrderByRelationAggregateInput
+  savedPlaces?: Prisma.SavedPlaceOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
+  username?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -279,12 +408,25 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   firstName?: Prisma.StringNullableFilter<"User"> | string | null
   lastName?: Prisma.StringNullableFilter<"User"> | string | null
   emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  verificationToken?: Prisma.StringNullableFilter<"User"> | string | null
-  verificationExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  bio?: Prisma.StringNullableFilter<"User"> | string | null
+  phone?: Prisma.StringNullableFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"User"> | $Enums.Gender | null
+  city?: Prisma.StringNullableFilter<"User"> | string | null
+  neighborhood?: Prisma.StringNullableFilter<"User"> | string | null
+  instagramUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  tiktokUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  xUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  snapchatUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  isProfilePublic?: Prisma.BoolFilter<"User"> | boolean
+  notifyLinkUps?: Prisma.BoolFilter<"User"> | boolean
+  notifyEvents?: Prisma.BoolFilter<"User"> | boolean
+  notifyReviews?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   ratings?: Prisma.RatingListRelationFilter
@@ -292,21 +434,36 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   posts?: Prisma.PostListRelationFilter
   linkUpsCreated?: Prisma.LinkUpListRelationFilter
   linkUpRequests?: Prisma.LinkUpRequestListRelationFilter
-}, "id" | "email">
+  savedPlaces?: Prisma.SavedPlaceListRelationFilter
+}, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   firstName?: Prisma.SortOrderInput | Prisma.SortOrder
   lastName?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
-  verificationToken?: Prisma.SortOrderInput | Prisma.SortOrder
-  verificationExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
+  bio?: Prisma.SortOrderInput | Prisma.SortOrder
+  username?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  neighborhood?: Prisma.SortOrderInput | Prisma.SortOrder
+  instagramUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  tiktokUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  xUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  snapchatUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  isProfilePublic?: Prisma.SortOrder
+  notifyLinkUps?: Prisma.SortOrder
+  notifyEvents?: Prisma.SortOrder
+  notifyReviews?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -320,14 +477,28 @@ export type UserScalarWhereWithAggregatesInput = {
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   firstName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   lastName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  email?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  email?: Prisma.StringWithAggregatesFilter<"User"> | string
   emailVerified?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  verificationToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  verificationExpiry?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+  bio?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  username?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableWithAggregatesFilter<"User"> | $Enums.Gender | null
+  city?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  neighborhood?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  instagramUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  tiktokUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  xUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  snapchatUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  isProfilePublic?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  notifyLinkUps?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  notifyEvents?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  notifyReviews?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
@@ -335,14 +506,28 @@ export type UserCreateInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
@@ -350,6 +535,7 @@ export type UserCreateInput = {
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -357,14 +543,28 @@ export type UserUncheckedCreateInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
@@ -372,6 +572,7 @@ export type UserUncheckedCreateInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -379,14 +580,28 @@ export type UserUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
@@ -394,6 +609,7 @@ export type UserUpdateInput = {
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -401,14 +617,28 @@ export type UserUncheckedUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
@@ -416,6 +646,7 @@ export type UserUncheckedUpdateInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -423,14 +654,28 @@ export type UserCreateManyInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
@@ -438,14 +683,28 @@ export type UserUpdateManyMutationInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -453,14 +712,28 @@ export type UserUncheckedUpdateManyInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -470,12 +743,26 @@ export type UserCountOrderByAggregateInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
-  verificationToken?: Prisma.SortOrder
-  verificationExpiry?: Prisma.SortOrder
   image?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  bio?: Prisma.SortOrder
+  username?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  neighborhood?: Prisma.SortOrder
+  instagramUrl?: Prisma.SortOrder
+  tiktokUrl?: Prisma.SortOrder
+  xUrl?: Prisma.SortOrder
+  snapchatUrl?: Prisma.SortOrder
+  isProfilePublic?: Prisma.SortOrder
+  notifyLinkUps?: Prisma.SortOrder
+  notifyEvents?: Prisma.SortOrder
+  notifyReviews?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -485,12 +772,26 @@ export type UserMaxOrderByAggregateInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
-  verificationToken?: Prisma.SortOrder
-  verificationExpiry?: Prisma.SortOrder
   image?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  bio?: Prisma.SortOrder
+  username?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  neighborhood?: Prisma.SortOrder
+  instagramUrl?: Prisma.SortOrder
+  tiktokUrl?: Prisma.SortOrder
+  xUrl?: Prisma.SortOrder
+  snapchatUrl?: Prisma.SortOrder
+  isProfilePublic?: Prisma.SortOrder
+  notifyLinkUps?: Prisma.SortOrder
+  notifyEvents?: Prisma.SortOrder
+  notifyReviews?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -500,12 +801,26 @@ export type UserMinOrderByAggregateInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
-  verificationToken?: Prisma.SortOrder
-  verificationExpiry?: Prisma.SortOrder
   image?: Prisma.SortOrder
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  bio?: Prisma.SortOrder
+  username?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  neighborhood?: Prisma.SortOrder
+  instagramUrl?: Prisma.SortOrder
+  tiktokUrl?: Prisma.SortOrder
+  xUrl?: Prisma.SortOrder
+  snapchatUrl?: Prisma.SortOrder
+  isProfilePublic?: Prisma.SortOrder
+  notifyLinkUps?: Prisma.SortOrder
+  notifyEvents?: Prisma.SortOrder
+  notifyReviews?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -527,6 +842,14 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
 
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
+}
+
+export type NullableEnumGenderFieldUpdateOperationsInput = {
+  set?: $Enums.Gender | null
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -631,25 +954,54 @@ export type UserUpdateOneRequiredWithoutLinkUpRequestsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLinkUpRequestsInput, Prisma.UserUpdateWithoutLinkUpRequestsInput>, Prisma.UserUncheckedUpdateWithoutLinkUpRequestsInput>
 }
 
+export type UserCreateNestedOneWithoutSavedPlacesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedPlacesInput, Prisma.UserUncheckedCreateWithoutSavedPlacesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedPlacesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSavedPlacesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedPlacesInput, Prisma.UserUncheckedCreateWithoutSavedPlacesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedPlacesInput
+  upsert?: Prisma.UserUpsertWithoutSavedPlacesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSavedPlacesInput, Prisma.UserUpdateWithoutSavedPlacesInput>, Prisma.UserUncheckedUpdateWithoutSavedPlacesInput>
+}
+
 export type UserCreateWithoutAccountsInput = {
   id?: string
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -657,20 +1009,35 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -694,20 +1061,35 @@ export type UserUpdateWithoutAccountsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -715,20 +1097,35 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -736,20 +1133,35 @@ export type UserCreateWithoutSessionsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -757,20 +1169,35 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -794,20 +1221,35 @@ export type UserUpdateWithoutSessionsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -815,20 +1257,35 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRatingsInput = {
@@ -836,20 +1293,35 @@ export type UserCreateWithoutRatingsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRatingsInput = {
@@ -857,20 +1329,35 @@ export type UserUncheckedCreateWithoutRatingsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRatingsInput = {
@@ -894,20 +1381,35 @@ export type UserUpdateWithoutRatingsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRatingsInput = {
@@ -915,20 +1417,35 @@ export type UserUncheckedUpdateWithoutRatingsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -936,20 +1453,35 @@ export type UserCreateWithoutCommentsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -957,20 +1489,35 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -994,20 +1541,35 @@ export type UserUpdateWithoutCommentsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -1015,20 +1577,35 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -1036,20 +1613,35 @@ export type UserCreateWithoutPostsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -1057,20 +1649,35 @@ export type UserUncheckedCreateWithoutPostsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -1094,20 +1701,35 @@ export type UserUpdateWithoutPostsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -1115,20 +1737,35 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLinkUpsCreatedInput = {
@@ -1136,20 +1773,35 @@ export type UserCreateWithoutLinkUpsCreatedInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLinkUpsCreatedInput = {
@@ -1157,20 +1809,35 @@ export type UserUncheckedCreateWithoutLinkUpsCreatedInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLinkUpsCreatedInput = {
@@ -1194,20 +1861,35 @@ export type UserUpdateWithoutLinkUpsCreatedInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLinkUpsCreatedInput = {
@@ -1215,20 +1897,35 @@ export type UserUncheckedUpdateWithoutLinkUpsCreatedInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLinkUpRequestsInput = {
@@ -1236,20 +1933,35 @@ export type UserCreateWithoutLinkUpRequestsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  savedPlaces?: Prisma.SavedPlaceCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLinkUpRequestsInput = {
@@ -1257,20 +1969,35 @@ export type UserUncheckedCreateWithoutLinkUpRequestsInput = {
   name?: string | null
   firstName?: string | null
   lastName?: string | null
-  email?: string | null
+  email: string
   emailVerified?: Date | string | null
-  verificationToken?: string | null
-  verificationExpiry?: Date | string | null
   image?: string | null
   password?: string | null
   role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
   linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLinkUpRequestsInput = {
@@ -1294,20 +2021,35 @@ export type UserUpdateWithoutLinkUpRequestsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  savedPlaces?: Prisma.SavedPlaceUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLinkUpRequestsInput = {
@@ -1315,20 +2057,195 @@ export type UserUncheckedUpdateWithoutLinkUpRequestsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificationExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
   linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  savedPlaces?: Prisma.SavedPlaceUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSavedPlacesInput = {
+  id?: string
+  name?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  ratings?: Prisma.RatingCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestCreateNestedManyWithoutSenderInput
+}
+
+export type UserUncheckedCreateWithoutSavedPlacesInput = {
+  id?: string
+  name?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  bio?: string | null
+  username?: string | null
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  city?: string | null
+  neighborhood?: string | null
+  instagramUrl?: string | null
+  tiktokUrl?: string | null
+  xUrl?: string | null
+  snapchatUrl?: string | null
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  ratings?: Prisma.RatingUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedCreateNestedManyWithoutCreatorInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedCreateNestedManyWithoutSenderInput
+}
+
+export type UserCreateOrConnectWithoutSavedPlacesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedPlacesInput, Prisma.UserUncheckedCreateWithoutSavedPlacesInput>
+}
+
+export type UserUpsertWithoutSavedPlacesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSavedPlacesInput, Prisma.UserUncheckedUpdateWithoutSavedPlacesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedPlacesInput, Prisma.UserUncheckedCreateWithoutSavedPlacesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSavedPlacesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSavedPlacesInput, Prisma.UserUncheckedUpdateWithoutSavedPlacesInput>
+}
+
+export type UserUpdateWithoutSavedPlacesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  ratings?: Prisma.RatingUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSavedPlacesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  neighborhood?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  snapchatUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isProfilePublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyLinkUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyEvents?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyReviews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  ratings?: Prisma.RatingUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  linkUpsCreated?: Prisma.LinkUpUncheckedUpdateManyWithoutCreatorNestedInput
+  linkUpRequests?: Prisma.LinkUpRequestUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 
@@ -1344,6 +2261,7 @@ export type UserCountOutputType = {
   posts: number
   linkUpsCreated: number
   linkUpRequests: number
+  savedPlaces: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1354,6 +2272,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   posts?: boolean | UserCountOutputTypeCountPostsArgs
   linkUpsCreated?: boolean | UserCountOutputTypeCountLinkUpsCreatedArgs
   linkUpRequests?: boolean | UserCountOutputTypeCountLinkUpRequestsArgs
+  savedPlaces?: boolean | UserCountOutputTypeCountSavedPlacesArgs
 }
 
 /**
@@ -1415,6 +2334,13 @@ export type UserCountOutputTypeCountLinkUpRequestsArgs<ExtArgs extends runtime.T
   where?: Prisma.LinkUpRequestWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSavedPlacesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedPlaceWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1423,12 +2349,26 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
-  verificationToken?: boolean
-  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
+  bio?: boolean
+  username?: boolean
+  phone?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  city?: boolean
+  neighborhood?: boolean
+  instagramUrl?: boolean
+  tiktokUrl?: boolean
+  xUrl?: boolean
+  snapchatUrl?: boolean
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   ratings?: boolean | Prisma.User$ratingsArgs<ExtArgs>
@@ -1436,6 +2376,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
   linkUpsCreated?: boolean | Prisma.User$linkUpsCreatedArgs<ExtArgs>
   linkUpRequests?: boolean | Prisma.User$linkUpRequestsArgs<ExtArgs>
+  savedPlaces?: boolean | Prisma.User$savedPlacesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1446,12 +2387,26 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
-  verificationToken?: boolean
-  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
+  bio?: boolean
+  username?: boolean
+  phone?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  city?: boolean
+  neighborhood?: boolean
+  instagramUrl?: boolean
+  tiktokUrl?: boolean
+  xUrl?: boolean
+  snapchatUrl?: boolean
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1461,12 +2416,26 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
-  verificationToken?: boolean
-  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
+  bio?: boolean
+  username?: boolean
+  phone?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  city?: boolean
+  neighborhood?: boolean
+  instagramUrl?: boolean
+  tiktokUrl?: boolean
+  xUrl?: boolean
+  snapchatUrl?: boolean
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1476,15 +2445,29 @@ export type UserSelectScalar = {
   lastName?: boolean
   email?: boolean
   emailVerified?: boolean
-  verificationToken?: boolean
-  verificationExpiry?: boolean
   image?: boolean
   password?: boolean
   role?: boolean
+  bio?: boolean
+  username?: boolean
+  phone?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  city?: boolean
+  neighborhood?: boolean
+  instagramUrl?: boolean
+  tiktokUrl?: boolean
+  xUrl?: boolean
+  snapchatUrl?: boolean
+  isProfilePublic?: boolean
+  notifyLinkUps?: boolean
+  notifyEvents?: boolean
+  notifyReviews?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "email" | "emailVerified" | "verificationToken" | "verificationExpiry" | "image" | "password" | "role" | "createdAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "email" | "emailVerified" | "image" | "password" | "role" | "bio" | "username" | "phone" | "dateOfBirth" | "gender" | "city" | "neighborhood" | "instagramUrl" | "tiktokUrl" | "xUrl" | "snapchatUrl" | "isProfilePublic" | "notifyLinkUps" | "notifyEvents" | "notifyReviews" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
@@ -1493,6 +2476,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
   linkUpsCreated?: boolean | Prisma.User$linkUpsCreatedArgs<ExtArgs>
   linkUpRequests?: boolean | Prisma.User$linkUpRequestsArgs<ExtArgs>
+  savedPlaces?: boolean | Prisma.User$savedPlacesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1508,20 +2492,35 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     posts: Prisma.$PostPayload<ExtArgs>[]
     linkUpsCreated: Prisma.$LinkUpPayload<ExtArgs>[]
     linkUpRequests: Prisma.$LinkUpRequestPayload<ExtArgs>[]
+    savedPlaces: Prisma.$SavedPlacePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string | null
     firstName: string | null
     lastName: string | null
-    email: string | null
+    email: string
     emailVerified: Date | null
-    verificationToken: string | null
-    verificationExpiry: Date | null
     image: string | null
     password: string | null
     role: $Enums.Role
+    bio: string | null
+    username: string | null
+    phone: string | null
+    dateOfBirth: Date | null
+    gender: $Enums.Gender | null
+    city: string | null
+    neighborhood: string | null
+    instagramUrl: string | null
+    tiktokUrl: string | null
+    xUrl: string | null
+    snapchatUrl: string | null
+    isProfilePublic: boolean
+    notifyLinkUps: boolean
+    notifyEvents: boolean
+    notifyReviews: boolean
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1923,6 +2922,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   linkUpsCreated<T extends Prisma.User$linkUpsCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$linkUpsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   linkUpRequests<T extends Prisma.User$linkUpRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$linkUpRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkUpRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedPlaces<T extends Prisma.User$savedPlacesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedPlacesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1958,12 +2958,26 @@ export interface UserFieldRefs {
   readonly lastName: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly emailVerified: Prisma.FieldRef<"User", 'DateTime'>
-  readonly verificationToken: Prisma.FieldRef<"User", 'String'>
-  readonly verificationExpiry: Prisma.FieldRef<"User", 'DateTime'>
   readonly image: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
+  readonly bio: Prisma.FieldRef<"User", 'String'>
+  readonly username: Prisma.FieldRef<"User", 'String'>
+  readonly phone: Prisma.FieldRef<"User", 'String'>
+  readonly dateOfBirth: Prisma.FieldRef<"User", 'DateTime'>
+  readonly gender: Prisma.FieldRef<"User", 'Gender'>
+  readonly city: Prisma.FieldRef<"User", 'String'>
+  readonly neighborhood: Prisma.FieldRef<"User", 'String'>
+  readonly instagramUrl: Prisma.FieldRef<"User", 'String'>
+  readonly tiktokUrl: Prisma.FieldRef<"User", 'String'>
+  readonly xUrl: Prisma.FieldRef<"User", 'String'>
+  readonly snapchatUrl: Prisma.FieldRef<"User", 'String'>
+  readonly isProfilePublic: Prisma.FieldRef<"User", 'Boolean'>
+  readonly notifyLinkUps: Prisma.FieldRef<"User", 'Boolean'>
+  readonly notifyEvents: Prisma.FieldRef<"User", 'Boolean'>
+  readonly notifyReviews: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 
@@ -2187,7 +3201,7 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   /**
    * The data needed to create a User.
    */
-  data?: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
 }
 
 /**
@@ -2522,6 +3536,30 @@ export type User$linkUpRequestsArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.LinkUpRequestScalarFieldEnum | Prisma.LinkUpRequestScalarFieldEnum[]
+}
+
+/**
+ * User.savedPlaces
+ */
+export type User$savedPlacesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedPlace
+   */
+  select?: Prisma.SavedPlaceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedPlace
+   */
+  omit?: Prisma.SavedPlaceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedPlaceInclude<ExtArgs> | null
+  where?: Prisma.SavedPlaceWhereInput
+  orderBy?: Prisma.SavedPlaceOrderByWithRelationInput | Prisma.SavedPlaceOrderByWithRelationInput[]
+  cursor?: Prisma.SavedPlaceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedPlaceScalarFieldEnum | Prisma.SavedPlaceScalarFieldEnum[]
 }
 
 /**
