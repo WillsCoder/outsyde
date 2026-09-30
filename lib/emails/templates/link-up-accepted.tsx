@@ -39,7 +39,9 @@ export const LinkUpAcceptedEmail = ({
 }: Props) => (
   <Html>
     <Head />
-    <Preview>You're in! {creatorName} accepted your Link Up request</Preview>
+    <Preview>
+      You&apos;re in! {creatorName} accepted your Link Up request
+    </Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={header}>
@@ -53,7 +55,7 @@ export const LinkUpAcceptedEmail = ({
           </Text>
         </Section>
         <Section style={content}>
-          <Heading style={h1}>You're in! 🎉</Heading>
+          <Heading style={h1}>You&apos;re in! 🎉</Heading>
           <Text style={text}>Hi {requesterName},</Text>
           <Text style={text}>
             <strong>{creatorName}</strong> accepted your request to join their

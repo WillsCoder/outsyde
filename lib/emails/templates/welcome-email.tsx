@@ -34,7 +34,7 @@ type Props = {
 export const WelcomeEmail = ({ name }: Props) => (
   <Html>
     <Head />
-    <Preview>Welcome to Outsyde — Lagos's best spots await</Preview>
+    <Preview>Welcome to Outsyde — Nigeria&apos;s best spots await</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={header}>
@@ -51,17 +51,18 @@ export const WelcomeEmail = ({ name }: Props) => (
           <Heading style={h1}>We outside. 🎉</Heading>
           <Text style={text}>Hi {name},</Text>
           <Text style={text}>
-            Welcome to Outsyde — Lagos's guide to the best bars, restaurants,
-            beaches, events, and experiences in the city.
+            Welcome to Outsyde — Nigeria&apos;s guide to the best bars,
+            restaurants, beaches, events, and experiences in the city.
           </Text>
-          <Text style={text}>Here's what you can do:</Text>
+          <Text style={text}>Here&apos;s what you can do:</Text>
           <Section style={listBlock}>
             <Text style={listItem}>
               📍 <strong>Discover</strong> — Browse 200+ curated spots across
               Lagos
             </Text>
             <Text style={listItem}>
-              🎵 <strong>Events</strong> — Find what's happening this weekend
+              🎵 <strong>Events</strong> — Find what'&apos;s happening this
+              weekend
             </Text>
             <Text style={listItem}>
               🤝 <strong>Link Up</strong> — Find people to go out with

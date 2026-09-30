@@ -52,11 +52,9 @@ export const ReviewPostedEmail = ({
         <Section style={header}>
           <Text style={logo}>
             <Img
-              src={
-                "https://ik.imagekit.io/willsbucket/Outsyde/logo.png"
-              }
+              src={"https://ik.imagekit.io/willsbucket/Outsyde/logo.png"}
               alt="logo"
-              style={{width: 80, height: 80}}
+              style={{ width: 80, height: 80 }}
             />
             <span style={{ color: "#FF5C2B" }}>ut</span>syde
           </Text>
@@ -68,7 +66,7 @@ export const ReviewPostedEmail = ({
             {"☆".repeat(5 - rating)} review:
           </Text>
           <Section style={quoteBlock}>
-            <Text style={quoteText}>"{body}"</Text>
+            <Text style={quoteText}>&rdquo;{body}&rdquo;</Text>
           </Section>
           <Button href={placeUrl} style={btnOrange}>
             View on Outsyde

@@ -45,7 +45,7 @@ export const LinkUpDeclinedEmail = ({
       <Container style={container}>
         <Section style={header}>
           <Text style={logo}>
-                        <Img
+            <Img
               src={"https://ik.imagekit.io/willsbucket/Outsyde/logo.png"}
               alt="logo"
               style={{ width: 80, height: 80 }}
@@ -57,11 +57,12 @@ export const LinkUpDeclinedEmail = ({
           <Heading style={h1}>Request update</Heading>
           <Text style={text}>Hi {requesterName},</Text>
           <Text style={text}>
-            Unfortunately your request to join <strong>"{linkUpTitle}"</strong>{" "}
-            at {locationName} wasn't accepted this time.
+            Unfortunately your request to join{" "}
+            <strong>&rdquo;{linkUpTitle}&rdquo;</strong> at {locationName}{" "}
+            wasn't accepted this time.
           </Text>
           <Text style={text}>
-            Don't worry — there are plenty more Link Ups to join in Lagos.
+            Don&apos;t worry — there are plenty more Link Ups to join in Lagos.
           </Text>
           <Button href={browseUrl} style={btnOrange}>
             Browse open Link Ups

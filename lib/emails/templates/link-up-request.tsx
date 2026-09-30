@@ -14,7 +14,6 @@ import {
 import {
   btnGray,
   btnGreen,
-  btnOrange,
   btnRow,
   card,
   cardMeta,
@@ -89,7 +88,7 @@ export const LinkUpRequestEmail = ({
           </Section>
           {requesterBio && (
             <Section style={quoteBlock}>
-              <Text style={quoteText}>"{requesterBio}"</Text>
+              <Text style={quoteText}>&rdquo;{requesterBio}&rdquo;</Text>
             </Section>
           )}
           {message && (
@@ -101,7 +100,7 @@ export const LinkUpRequestEmail = ({
           )}
           {hasSocials && (
             <Text style={hint}>
-              They've shared their socials — log in to view them.
+              They&apos;ve shared their socials — log in to view them.
             </Text>
           )}
           <Section style={btnRow}>
