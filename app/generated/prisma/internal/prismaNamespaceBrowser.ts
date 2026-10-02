@@ -67,7 +67,8 @@ export const ModelName = {
   PostTag: 'PostTag',
   LinkUp: 'LinkUp',
   LinkUpRequest: 'LinkUpRequest',
-  SavedPlace: 'SavedPlace'
+  SavedPlace: 'SavedPlace',
+  ContactSubmission: 'ContactSubmission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -340,6 +341,18 @@ export const SavedPlaceScalarFieldEnum = {
 } as const
 
 export type SavedPlaceScalarFieldEnum = (typeof SavedPlaceScalarFieldEnum)[keyof typeof SavedPlaceScalarFieldEnum]
+
+
+export const ContactSubmissionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  subject: 'subject',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type ContactSubmissionScalarFieldEnum = (typeof ContactSubmissionScalarFieldEnum)[keyof typeof ContactSubmissionScalarFieldEnum]
 
 
 export const SortOrder = {

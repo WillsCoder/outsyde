@@ -133,7 +133,7 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
 
   return (
     <section className="section bg-white/50">
-      <div className="box py-6 lg:py-12">
+      <div className="box">
         <div className="lg:flex gap-6 lg:gap-12">
           {/* Heading */}
           <div className="shrink-0 flex lg:flex-col items-baseline justify-between mb-4 lg:mb-0">
@@ -145,7 +145,7 @@ const PlacesCategory = ({ categories }: PlacesCategoryProps) => {
                 Find exactly what you're in the mood for
               </p>
             </div>
-            <Button variant="ghost" className="hidden! lg:inline-flex">
+            <Button variant="ghost" className="hidden! lg:inline-flex!">
               <Link href="/places">See all ➔</Link>
             </Button>
           </div>

@@ -102,3 +102,8 @@ export type LinkUpRequest = Prisma.LinkUpRequestModel
  * 
  */
 export type SavedPlace = Prisma.SavedPlaceModel
+/**
+ * Model ContactSubmission
+ * 
+ */
+export type ContactSubmission = Prisma.ContactSubmissionModel

@@ -1,18 +1,44 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useActionState, useState } from "react";
 import { Profile } from "@/lib/const/types/profile";
-import { Avatar, Button } from "@/components/ui";
-import { IconCamera, IconEditCircle } from "@tabler/icons-react";
-import { format } from "date-fns";
+import { Button } from "@/components/ui";
+import { IconCamera } from "@tabler/icons-react";
+import { imageUpload } from "@/lib/utils/image-upload";
+import { updateProfile } from "@/app/(main)/profile/actions";
 import ProfileView from "./components/profile-view";
 import ProfileForm from "./components/profile-form";
+import { handleImageUpload } from "@/lib/utils/image-kit";
 
 interface Props {
   user: Profile;
 }
 const ProfileIndex = ({ user }: Props) => {
   const [viewState, setViewState] = useState<"view" | "update">("view");
+
+  const [state, action, isPending] = useActionState(updateProfile, {
+    error: null,
+    success: null,
+  });
+
+  const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files ?? []);
+
+    if (!files.length) return;
+
+    try {
+      const urls = await handleImageUpload(files);
+
+      const formData = new FormData();
+      formData.append("image", urls[0]);
+
+      action(formData);
+    } catch (error) {
+      console.error("Upload failed:", error);
+    }
+
+    // Allows selecting the same file again
+    event.target.value = "";
+  };
 
   return (
     <div className="section">
@@ -49,11 +75,21 @@ const ProfileIndex = ({ user }: Props) => {
                     </span>
                   )}
                 </div>
+                <input
+                  id="profile-image"
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleUpload}
+                />
                 <button
                   type="button"
+                  onClick={() =>
+                    document.getElementById("profile-image")?.click()
+                  }
                   className="absolute -top-1.5 -left-1.5 w-7 h-7 bg-white border border-brand-night/12 rounded-full flex items-center justify-center text-brand-night/60 hover:text-brand-night transition-colors shadow-sm"
                 >
-                  <IconCamera size={13} />
+                  {isPending ? "" : <IconCamera size={13} />}
                 </button>
 
                 {user.isProfilePublic && (
@@ -69,7 +105,7 @@ const ProfileIndex = ({ user }: Props) => {
                     : setViewState("view")
                 }
               >
-                {viewState === "update"? "Close Edit" : "Edit Profile"}
+                {viewState === "update" ? "Close Edit" : "Edit Profile"}
               </Button>
             </div>
 

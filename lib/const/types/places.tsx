@@ -24,6 +24,7 @@ export type PlaceDetail = PlaceDetailType & {
     user: { name: string | null; image: string | null };
     createdAt: Date;
   }[];
+  _count?: {  ratings: number; comments: number };
 };
 
 

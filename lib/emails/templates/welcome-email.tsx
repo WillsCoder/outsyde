@@ -72,7 +72,7 @@ export const WelcomeEmail = ({ name }: Props) => (
             </Text>
           </Section>
           <Button href="https://outsyde.org" style={btnOrange}>
-            Start exploring Lagos
+            Start exploring Nigeria
           </Button>
         </Section>
         <Footer />

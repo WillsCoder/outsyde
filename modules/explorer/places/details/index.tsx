@@ -6,6 +6,7 @@ import Gallery from "./components/gallery";
 import PlaceMap from "./components/place-map";
 import ReviewSection from "./components/review";
 import { SaveButton } from "./components/save-place";
+import { ViewMore } from "@/components/ui";
 
 interface PlaceDetailsIndexProps {
   place: PlaceDetail;
@@ -94,9 +95,7 @@ const PlaceDetailsIndex = async ({
               <h2 className="text-base font-semibold text-brand-night mb-3">
                 About this place
               </h2>
-              <p className="text-sm text-brand-night/60 leading-relaxed">
-                {place.description}
-              </p>
+              <ViewMore text={place.description}/>
             </div>
 
             {/* Map */}

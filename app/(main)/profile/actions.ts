@@ -28,6 +28,7 @@ export async function updateProfile(
   const phone = formData.get("phone")?.toString().trim();
   const city = formData.get("city")?.toString().trim();
   const neighborhood = formData.get("neighborhood")?.toString().trim();
+  const image = formData.get("image")?.toString().trim();
 
   const instagramUrl = formData.get("instagramUrl")?.toString().trim();
   const tiktokUrl = formData.get("tiktokUrl")?.toString().trim();
@@ -83,7 +84,7 @@ export async function updateProfile(
   if (phone !== undefined) data.phone = phone || null;
   if (city !== undefined) data.city = city || null;
   if (neighborhood !== undefined) data.neighborhood = neighborhood || null;
-
+  if (image !== undefined) data.image = image || null;
   if (instagramUrl !== undefined) {
     data.instagramUrl = instagramUrl || null;
   }

@@ -6,10 +6,7 @@ import { Button, Dropdown, DropdownItem, DropdownMenu } from "@/components/ui";
 import {
   IconUser,
   IconHeart,
-  IconMapPin,
-  IconCalendarEvent,
   IconUsers,
-  IconSettings,
   IconLogout,
   IconChevronDown,
   IconShield,
@@ -50,7 +47,7 @@ const AuthUserDropdown = ({ open }: Props) => {
     {
       group: "Account",
       items: [
-        { label: "Settings", icon: IconSettings, href: "/profile/settings" },
+        // { label: "Settings", icon: IconSettings, href: "/profile/settings" },
         // Show admin link only for admins
         ...(session?.user?.role === "ADMIN"
           ? [{ label: "Admin Panel", icon: IconShield, href: "/admin" }]

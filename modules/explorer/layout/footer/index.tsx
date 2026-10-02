@@ -11,9 +11,9 @@ const exploreLinks = [
 
 const companyLinks = [
   { label: "About", href: "/about" },
-  { label: "For venues", href: "#" },
-  { label: "Careers", href: "#" },
-  { label: "Contact", href: "mailto:hello@outsyde.ng" },
+  { label: "For venues", href: "/venues" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const supportLinks = [
